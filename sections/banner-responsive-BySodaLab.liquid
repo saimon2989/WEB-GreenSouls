@@ -1,0 +1,82 @@
+<style>
+  .banner-container video {
+    width: 100%;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+
+  .hidden-desktop {
+    display: block;
+  }
+
+  @media (min-width: 767px) {
+    .hidden-mobile {
+      display: block;
+    }
+
+    .hidden-desktop {
+      display: none;
+    }
+  }
+</style>
+
+{% if section.settings.desktop_video != blank and section.settings.mobile_video != blank %}
+  <div class="banner-container">
+    <a href="{{ section.settings.url_banner }}">
+      <video class="hidden-mobile" autoplay muted loop>
+        <source src="{{ section.settings.desktop_video }}" type="video/mp4">
+        Tu navegador no admite el elemento de video.
+      </video>
+    </a>
+    <a href="{{ section.settings.url_banner }}">
+      <video class="hidden-desktop" autoplay muted loop>
+        <source src="{{ section.settings.mobile_video }}" type="video/mp4">
+        Tu navegador no admite el elemento de video.
+      </video>
+    </a>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Video Banner",
+  "class": "desktop-mobile-banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video Banner"
+    },
+    {
+      "type": "url",
+      "id": "url_banner",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "label": "Desktop Video URL",
+      "id": "desktop_video"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Banner"
+    },
+    {
+      "type": "text",
+      "label": "Mobile Video URL",
+      "id": "mobile_video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Banner",
+      "category": "Video",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
