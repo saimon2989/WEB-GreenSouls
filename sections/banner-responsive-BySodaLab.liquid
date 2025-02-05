@@ -1,6 +1,8 @@
 <style>
-  .banner-container video {
+  .banner-container img {
     width: 100%;
+    height: auto;
+    display: block;
   }
 
   .hidden-mobile {
@@ -22,32 +24,26 @@
   }
 </style>
 
-{% if section.settings.desktop_video != blank and section.settings.mobile_video != blank %}
+{% if section.settings.desktop_image != blank and section.settings.mobile_image != blank %}
   <div class="banner-container">
     <a href="{{ section.settings.url_banner }}">
-      <video class="hidden-mobile" autoplay muted loop>
-        <source src="{{ section.settings.desktop_video }}" type="video/mp4">
-        Tu navegador no admite el elemento de video.
-      </video>
+      <img class="hidden-mobile" src="{{ section.settings.desktop_image | image_url }}" alt="Desktop Banner" width="1920px" height="750px">
     </a>
     <a href="{{ section.settings.url_banner }}">
-      <video class="hidden-desktop" autoplay muted loop>
-        <source src="{{ section.settings.mobile_video }}" type="video/mp4">
-        Tu navegador no admite el elemento de video.
-      </video>
+      <img class="hidden-desktop" src="{{ section.settings.mobile_image | image_url }}" alt="Mobile Banner" width="390px" height="547px">
     </a>
   </div>
 {% endif %}
 
 {% schema %}
 {
-  "name": "Video Banner",
+  "name": "Image Banner",
   "class": "desktop-mobile-banner",
   "tag": "section",
   "settings": [
     {
       "type": "header",
-      "content": "Video Banner"
+      "content": "Image Banner"
     },
     {
       "type": "url",
@@ -56,27 +52,25 @@
       "default": "/collections/all"
     },
     {
-      "type": "text",
-      "label": "Desktop Video URL",
-      "id": "desktop_video"
+      "type": "image_picker",
+      "label": "Desktop Image",
+      "id": "desktop_image"
     },
     {
       "type": "header",
       "content": "Mobile Banner"
     },
     {
-      "type": "text",
-      "label": "Mobile Video URL",
-      "id": "mobile_video"
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "mobile_image"
     }
   ],
   "presets": [
     {
-      "name": "Video Banner",
-      "category": "Video",
+      "name": "Image Banner",
       "settings": {}
     }
   ]
 }
 {% endschema %}
-
