@@ -2,7 +2,6 @@
 
 {%- liquid
   assign image_ratio = section.settings.image_ratio
-  assign show_on_devices = section.settings.show_on_devices
 -%}
 
 {%- if image_ratio == 'adapt' and section.settings.image != blank -%}
@@ -120,17 +119,6 @@
       display: block;
     }
   }
-
-  /* Control de visibilidad para dispositivos */
-  {% if show_on_devices %}
-    #Banner-{{ section.id }} {
-      display: block;
-    }
-  {% else %}
-    #Banner-{{ section.id }} {
-      display: none;
-    }
-  {% endif %}
 {% endstyle %}
 
 <div class="{{ section.id }} image-banner {% if section.settings.full_width %}{% else %}container{% endif %}">
@@ -230,12 +218,6 @@
 			"id": "full_width",
 			"default": true,
 			"label": "t:sections.image-banner.settings.full_width.label"
-		},
-		{
-			"type": "checkbox",
-			"id": "show_on_devices",
-			"default": true,
-			"label": "Mostrar en dispositivos (Desktop y Mobile)"
 		},
 		{
 			"type": "text",
