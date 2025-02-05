@@ -1,7 +1,6 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign image_ratio = section.settings.image_ratio
   assign image_desktop = section.settings.image_desktop
   assign image_mobile = section.settings.image_mobile
 -%}
@@ -10,6 +9,12 @@
   .banner {
     position: relative;
     width: 100%;
+    {% if section.settings.full_width %}
+      max-width: 100%;
+    {% else %}
+      max-width: 1200px;
+      margin: 0 auto;
+    {% endif %}
   }
   .banner__overlay {
     background-color: rgba(var(--color-overlay), {{ section.settings.opacity_overlay }});
@@ -22,18 +27,42 @@
   .banner img {
     width: 100%;
     height: auto;
+    display: block;
   }
   .banner__content {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    left: 10%;
+    transform: translateY(-50%);
+    text-align: left;
     color: white;
+    max-width: 50%;
+  }
+  .banner__content h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .banner__content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .banner__content .button {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
   }
   @media (max-width: 768px) {
     .banner img.desktop {
       display: none;
+    }
+    .banner__content {
+      left: 5%;
+      max-width: 90%;
+      text-align: center;
     }
   }
   @media (min-width: 769px) {
@@ -119,3 +148,4 @@
   ]
 }
 {% endschema %}
+
