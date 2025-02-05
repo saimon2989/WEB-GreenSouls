@@ -1,0 +1,120 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .cb__container.section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .section-{{ section.id }}
+  .cb-buttons {
+    display: grid;
+    justify-content: center;
+    gap: 1em;
+    border-top: 1px solid;
+    padding-top: 3em;
+  }
+
+
+  @media (min-width: 768px) {
+    .section-{{ section.id }} .cb-buttons {
+      grid-auto-flow: column;
+      padding-top: 4em;
+    }
+  }
+
+  @media (min-width: 1200px) {}
+{% endstyle %}
+
+<div class="cb__container section-{{ section.id }}">
+  <div class="cb-buttons">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'button' %}
+          <div class="cb-button__item">
+            <a class="cb__primary-button cb-button__link" href="{{ block.settings.button_link }}"
+              {% if block.settings.new_tab != false %}
+                target="_blank"
+              {% endif %}
+              >
+              {{ block.settings.button_label }}
+            </a>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Buttons by Codebulls",
+    "tag": "section",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section options"
+      }, {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin top"
+      }, {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin bottom"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "default": "Button label",
+            "label": "t:sections.all.button.button_text.label"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "t:sections.all.button.button_link.label"
+          },
+          {
+            "type": "checkbox",
+            "id": "new_tab",
+            "label": "Open link in new tab",
+            "default": false
+          }
+        ]
+
+      }
+    ],
+    "presets": [
+      {
+        "name": "Buttons by Codebulls",
+        "blocks": [
+          {
+            "type": "button"
+          }, {
+            "type": "button"
+          }, {
+            "type": "button"
+          }
+        ]
+      }
+
+    ]
+  }
+{% endschema %}

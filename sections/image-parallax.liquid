@@ -1,0 +1,361 @@
+{{ 'section-image-parallax.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+
+	.section-{{ section.id }}-padding {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+
+	.image-parallax-item__content{
+		min-height: calc(32rem - 40px -  40px )
+	}
+
+	@media screen and (min-width: 576px) {
+		.section-{{ section.id }}-padding {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		.image-parallax-item__content{
+			min-height: calc(39.6rem - {{ section.settings.padding_top }}px -  {{ section.settings.padding_bottom }}px );
+		}
+	}
+{% endstyle %}
+
+<section class="image-parallax">
+	<div class="container">
+		<div class="image-parallax__items">
+			{%- for block in section.blocks -%}
+				{%- case block.type -%}
+					{%- when 'image-parallax_block' -%}
+						<div
+							class="image-parallax-item jarallax color-background-2 {% if block.settings.color_scheme == "theme-dark" %}image-parallax-item--theme-dark{% else %}image-parallax-item--theme-light{% endif %} section-{{ section.id }}-padding"
+							data-jarallax
+							data-speed="{{- block.settings.speed -}}"
+							{{ block.shopify_attributes }}
+						>
+							{%- if block.settings.parallax_image != blank -%}
+								{%- capture sizes -%}
+									(max-width: 1920px) 3600px,
+									(max-width: 1440px) 1800px,
+									(max-width: 989px) 900px,
+								{%- endcapture -%}
+								{{
+									block.settings.parallax_image
+									| image_url: width: 3600
+									| image_tag:
+										loading: 'lazy',
+										widths: '900, 1800, 3600',
+										sizes: sizes,
+										class: 'jarallax-img'
+								}}
+							{%- else -%}
+								{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+							{%- endif -%}
+							<div class="image-parallax-item__content">
+								<div class="subtitle--wrapper">
+									{% if block.settings.parallax_subheading_1 != blank %}
+										<span>{{- block.settings.parallax_subheading_1 -}}</span>
+									{%- endif %}
+									{% if block.settings.parallax_subheading_2 != blank %}
+										<span>{{- block.settings.parallax_subheading_2 -}}</span>
+									{%- endif %}
+								</div>
+								<div class="image-parallax-item__container">
+									<h2 class="image-parallax-item__heading" class>
+										{{ block.settings.parallax_heading }}
+									</h2>
+									<div class="image-parallax-item__description">
+										{{ block.settings.parallax_description }}
+									</div>
+								</div>
+							</div>
+							<i
+								class="image-parallax-item__image-overlay"
+								style="opacity: {{ block.settings.opacity_overlay }}"
+							></i>
+							{%- if block.settings.link != blank -%}
+								<a
+									href="{{ block.settings.link }}"
+									class="image-parallax__link"
+									aria-label="link"
+								>
+								</a>
+							{%- endif -%}
+						</div>
+					{%- when 'video-parallax_block' -%}
+						<div
+							class="jarallax-video image-parallax-item color-background-2 {% if block.settings.color_scheme == "theme-dark" %}image-parallax-item--theme-dark{% else %}image-parallax-item--theme-light{% endif %} section-{{ section.id }}-padding"
+							data-video-src="{% if block.settings.video == null and block.settings.video_url != null %}{{ block.settings.video_url }}{% else %}mp4:{{ block.settings.video.sources[1].url }}{% endif %}"
+							data-speed="{{- block.settings.speed -}}"
+							{{ block.shopify_attributes }}
+						>
+							<div class="image-parallax-item__content">
+								<div class="subtitle--wrapper">
+									{% if block.settings.parallax_subheading_1 != blank %}
+										<span>{{- block.settings.parallax_subheading_1 -}}</span>
+									{%- endif %}
+									{% if block.settings.parallax_subheading_2 != blank %}
+										<span>{{- block.settings.parallax_subheading_2 -}}</span>
+									{%- endif %}
+								</div>
+								<div class="image-parallax-item__container">
+									<h2 class="image-parallax-item__heading" class>
+										{{ block.settings.parallax_heading }}
+									</h2>
+									<div class="image-parallax-item__description">
+										{{ block.settings.parallax_description }}
+									</div>
+								</div>
+							</div>
+							<i
+								class="image-parallax-item__image-overlay"
+								style="opacity: {{ block.settings.opacity_overlay }}"
+							></i>
+							{%- if block.settings.video_link != blank -%}
+								<a
+									href="{{ block.settings.video_link }}"
+									class="image-parallax__link"
+									aria-label="link"
+								>
+								</a>
+							{%- endif -%}
+						</div>
+				{%- endcase -%}
+			{%- endfor -%}
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "t:sections.image-parallax.name",
+	"tag": "section",
+	"class": "image-parallax",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "image-parallax_block",
+			"name": "t:sections.image-parallax.blocks.parallax_image.label",
+			"settings": [
+				{
+					"type": "select",
+					"id": "color_scheme",
+					"options": [
+						{
+							"value": "theme-dark",
+							"label": "t:sections.image-parallax.blocks.color_scheme.options__1.label"
+						},
+						{
+							"value": "theme-light",
+							"label": "t:sections.image-parallax.blocks.color_scheme.options__2.label"
+						}
+					],
+					"default": "theme-light",
+					"label": "t:sections.image-parallax.blocks.color_scheme.label"
+				},
+				{
+					"type": "text",
+					"id": "parallax_heading",
+					"default": "Heading for parallax",
+					"label": "t:sections.image-parallax.blocks.parallax_heading.label"
+				},
+				{
+					"type": "text",
+					"id": "parallax_subheading_1",
+					"default": "Subheading",
+					"label": "t:sections.image-parallax.blocks.parallax_subheading_1.label"
+				},
+				{
+					"type": "text",
+					"id": "parallax_subheading_2",
+					"default": "Subheading",
+					"label": "t:sections.image-parallax.blocks.parallax_subheading_2.label"
+				},
+				{
+					"type": "richtext",
+					"id": "parallax_description",
+					"default": "<p>Additional text for parallax</p>",
+					"label": "t:sections.image-parallax.blocks.parallax_description.label"
+				},
+				{
+					"type": "url",
+					"id": "link",
+					"label": "t:sections.image-parallax.blocks.link.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "parallax_image",
+					"label": "t:sections.image-parallax.blocks.parallax_image.label"
+				},
+				{
+					"type": "range",
+					"id": "opacity_overlay",
+					"min": 0,
+					"max": 1,
+					"step": 0.1,
+					"label": "t:sections.image-parallax.blocks.opacity_overlay.label",
+					"default": 0
+				},
+				{
+					"type": "range",
+					"id": "speed",
+					"min": 0,
+					"max": 1.5,
+					"step": 0.1,
+					"default": 0.5,
+					"unit": "s",
+					"label": "t:sections.image-parallax.blocks.speed.label"
+				}
+			]
+		},
+		{
+			"type": "video-parallax_block",
+			"name": "t:sections.image-parallax.blocks.parallax_video.label",
+			"settings": [
+				{
+					"type": "select",
+					"id": "color_scheme",
+					"options": [
+						{
+							"value": "theme-dark",
+							"label": "t:sections.image-parallax.blocks.color_scheme.options__1.label"
+						},
+						{
+							"value": "theme-light",
+							"label": "t:sections.image-parallax.blocks.color_scheme.options__2.label"
+						}
+					],
+					"default": "theme-light",
+					"label": "t:sections.image-parallax.blocks.color_scheme.label"
+				},
+				{
+					"type": "text",
+					"id": "parallax_heading",
+					"default": "Heading for parallax",
+					"label": "t:sections.image-parallax.blocks.parallax_heading.label"
+				},
+				{
+					"type": "text",
+					"id": "parallax_subheading_1",
+					"default": "Subheading",
+					"label": "t:sections.image-parallax.blocks.parallax_subheading_1.label"
+				},
+				{
+					"type": "text",
+					"id": "parallax_subheading_2",
+					"default": "Subheading",
+					"label": "t:sections.image-parallax.blocks.parallax_subheading_2.label"
+				},
+				{
+					"type": "richtext",
+					"id": "parallax_description",
+					"default": "<p>Additional text for parallax</p>",
+					"label": "t:sections.image-parallax.blocks.parallax_description.label"
+				},
+				{
+					"type": "url",
+					"id": "video_link",
+					"label": "t:sections.image-parallax.blocks.link.label"
+				},
+				{
+					"type": "video",
+					"id": "video",
+					"label": "t:sections.image-parallax.blocks.parallax_video.header_1"
+				},
+				{
+					"type": "video_url",
+					"id": "video_url",
+					"accept": ["youtube", "vimeo"],
+					"default": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+					"label": "t:sections.image-parallax.blocks.parallax_video.header_2",
+					"info": "t:sections.image-parallax.blocks.parallax_video.content"
+				},
+				{
+					"type": "range",
+					"id": "opacity_overlay",
+					"min": 0,
+					"max": 1,
+					"step": 0.1,
+					"label": "t:sections.image-parallax.blocks.opacity_overlay.label",
+					"default": 0.5
+				},
+				{
+					"type": "range",
+					"id": "speed",
+					"min": 0,
+					"max": 1.5,
+					"step": 0.1,
+					"default": 0.5,
+					"unit": "s",
+					"label": "t:sections.image-parallax.blocks.speed.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-parallax.presets.name",
+			"blocks": [
+				{
+					"type": "image-parallax_block"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

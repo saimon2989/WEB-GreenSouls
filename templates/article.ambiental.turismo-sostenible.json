@@ -1,0 +1,112 @@
+
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>Turismo con propósito: ¿cómo viajar de manera sostenible y respetuosa con el medio ambiente?</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.2,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h4><strong>El turismo es una actividad que nos permite explorar el mundo y conectarnos con otras culturas, pero también tiene un impacto considerable en el planeta. </strong></h4><h4></h4><p>Si no se realiza de manera consciente, puede contribuir a la degradación de los ecosistemas y la contaminación. El turismo con propósito es una forma de viajar que permite disfrutar de destinos espectaculares mientras se cuida el entorno natural y las comunidades locales. A continuación, te explicamos cómo puedes convertirte en un viajero sostenible y respetuoso con el medio ambiente.</p><p><br/></p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS4.jpg",
+        "bottom_left_image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS3.jpg",
+        "top_right_image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS2.jpg",
+        "right_text": "<h3>1. Elige destinos comprometidos con la sostenibilidad</h3><p><br/>Una de las mejores maneras de practicar el turismo con propósito es visitar destinos que implementen iniciativas de turismo sostenible. Esto incluye lugares donde las comunidades locales y las empresas colaboran para proteger los recursos naturales, como el agua y la fauna, y minimizar el impacto ambiental. Por ejemplo, en destinos como San Andrés, las actividades de conservación de océanos y protección de la biodiversidad son una prioridad. Opta por sitios donde se promueva el ecoturismo y las prácticas sostenibles.<br/></p><h3>2. Apoya alojamientos eco amigables</h3><p>Los hoteles y alojamientos que se centran en la sostenibilidad son fundamentales para reducir el impacto del turismo en el medio ambiente. Busca opciones que utilicen energías renovables, minimicen el uso de plásticos de un solo uso, implementen programas de reciclaje y respeten el entorno natural. Además, elige alojamientos que apoyen a las comunidades locales mediante el empleo de residentes y la compra de productos locales.<br/></p><h3>3. Participa en actividades eco amigables</h3><p><br/>Viajar de manera sostenible no significa solo evitar dañar el medio ambiente, sino también contribuir a su mejora. Actividades como la limpieza de playas, la siembra de corales o la liberación de especies son excelentes formas de marcar la diferencia durante tu viaje. En GreenSouls, organizamos estas experiencias para empresas y viajeros que desean ser parte activa de la protección del medio ambiente mientras disfrutan de su tiempo libre. Estas actividades no solo ayudan a restaurar los ecosistemas, sino que también crean conciencia sobre la importancia de preservar la biodiversidad.<br/></p>"
+      }
+    },
+    "cb_article_w_H3eYhG": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h3>4. Reduce tu huella ecológica durante el viaje</h3><p><br/>Viajar de manera sostenible implica tomar decisiones que reduzcan el impacto ambiental. Opta por medios de transporte que generen menos emisiones de carbono, como el tren o el autobús, en lugar de vuelos internos cortos. Si es posible, elige caminar o alquilar bicicletas para explorar los destinos. Además, lleva contigo una botella reutilizable y evita los plásticos de un solo uso, contribuyendo a la reducción de residuos.</p><p></p><h3>5. Respeta la flora, fauna y cultura locales</h3><p><br/>Cuando viajas a un destino natural, es esencial respetar las normas para proteger la biodiversidad y los ecosistemas. No interfieras con la fauna local, evita alimentar a los animales silvestres y sigue las rutas designadas para no dañar los hábitats naturales. Además, asegúrate de respetar las tradiciones y la cultura local, apoyando a los negocios de la comunidad y participando en experiencias auténticas que promuevan el turismo responsable.<br/></p><p></p><p><br/></p>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS6.jpg",
+        "bottom_left_image": "shopify://shop_images/banner4_cba3a4d5-6dca-44ca-bba3-466f86547a17.jpg",
+        "top_right_image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS78.jpg",
+        "right_text": "<p>En conclusión, el turismo con propósito es una forma de viajar que equilibra el disfrute de la naturaleza y las culturas locales con la responsabilidad de proteger el medio ambiente. Al tomar decisiones conscientes, como elegir alojamientos sostenibles, reducir la huella ecológica y participar en actividades de conservación, los viajeros pueden asegurarse de que su paso por el mundo deje una huella positiva. En GreenSouls, seguimos comprometidos con ofrecer experiencias que no solo enriquezcan la vida de los viajeros, sino que también contribuyan a la sostenibilidad y la protección del medio ambiente.<br/></p>"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_w_H3eYhG",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

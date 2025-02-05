@@ -1,0 +1,503 @@
+{{ 'section-instagram-slider.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+{% endstyle %}
+
+<section
+	class="section-container container js-get-instagram-slider image-slider-section"
+	id="section-{{ section.id }}"
+	data-section-id="{{ section.id }}"
+>
+	<div class="image-slider">
+		<div class="image-slider__wrapper color-background-2">
+			<div class="image-slider__item">
+				<div class="image-slider__item--content">
+					<div class="image-slider__header--container">
+						{%- if section.settings.heading != blank -%}
+							<h2 class="image-slider__title title--section h3">
+								{{ section.settings.heading }}
+							</h2>
+						{% endif %}
+						{%- if section.settings.title != blank -%}
+							<p class="image-slider__description">
+								{{ section.settings.title }}
+							</p>
+						{% endif %}
+					</div>
+					<div
+						class="image-slider__follow"
+						{% unless section.settings.heading != blank
+							and section.settings.title != blank
+						%}
+							style=" margin-top: 1.5rem"
+						{% endunless %}
+					>
+						<div class="image-slider__account">
+							{%- if section.settings.image_account != blank -%}
+								<a
+									{% if section.settings.button_link != blank %}
+										href="{{ section.settings.button_link }}"
+									{% endif %}
+									{% if section.settings.button_link == blank %}
+										aria-disabled="true"
+									{% endif %}
+									aria-label="link"
+								>
+									<figure class="image-slider__photo">
+										{{
+											section.settings.image_account
+											| image_url: width: 200
+											| image_tag: loading: 'lazy', widths: '50, 100, 150, 200'
+										}}
+									</figure>
+								</a>
+							{%- else -%}
+								{{
+									'image'
+									| placeholder_svg_tag: 'placeholder-svg-inst color-background-1'
+								}}
+							{%- endif -%}
+							{%- if section.settings.name_account != blank
+								or section.settings.desc_account != blank
+							-%}
+								<div class="image-slider__info">
+									{%- if section.settings.name_account != blank -%}
+										<a
+											{% if section.settings.button_link != blank %}
+												href="{{ section.settings.button_link }}"
+											{% endif %}
+											{% if section.settings.button_link == blank %}
+												aria-disabled="true"
+											{% endif %}
+											aria-label="link"
+										>
+											<span class="image-slider__name">
+												{{- section.settings.name_account | escape -}}
+											</span>
+										</a>
+									{% endif %}
+									{%- if section.settings.desc_account != blank -%}
+										<span class="image-slider__text">
+											{{- section.settings.desc_account | escape -}}
+										</span>
+									{% endif %}
+								</div>
+							{% endif %}
+						</div>
+						{%- if section.settings.button_label != blank -%}
+							<a
+								{% if section.settings.button_link != blank %}
+									href="{{ section.settings.button_link }}"
+								{% endif %}
+								class="image-slider__link button button--primary"
+								{% if section.settings.button_link == blank %}
+									aria-disabled="true"
+								{% endif %}
+								aria-label="link"
+							>
+								<span>
+									{{ section.settings.button_label | escape }}
+								</span>
+								{% render 'icon-button-arrow' %}
+							</a>
+						{%- endif -%}
+					</div>
+				</div>
+			</div>
+			<div class="insta-slider-container">
+				<div class="image-slider__swiper-h">
+					<div class="swiper-wrapper">
+						<div class="swiper mySwiper1 swiper-v">
+							<div class="swiper-wrapper">
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 1 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 2 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 3 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+							</div>
+						</div>
+						<div class="swiper mySwiper2 swiper-v">
+							<div class="swiper-wrapper">
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 4 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 5 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 6 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+							</div>
+						</div>
+						<div class="swiper mySwiper3 swiper-v">
+							<div class="swiper-wrapper">
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 7 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 8 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+								{%- for block in section.blocks -%}
+									{%- if forloop.index == 9 -%}
+										<div
+											class="swiper-slide slide_{{ forloop.index }}"
+											{{ block.shopify_attributes }}
+										>
+											{%- if block.settings.image != blank -%}
+												{%- capture sizes -%}
+															(min-width: 1800px)
+															{{ 1800 | minus: 100 | divided_by: 2 }}px,
+															(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+															2)
+													{%- endcapture -%}
+												{{
+													block.settings.image
+													| image_url: width: 1440
+													| image_tag: sizes: sizes, widths: '560, 720, 1440'
+												}}
+											{%- else -%}
+												{{
+													'image'
+													| placeholder_svg_tag: 'placeholder-svg-inst'
+												}}
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "t:sections.instagram-slider.name",
+	"max_blocks": 9,
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<p>Heading for Image slider</p>",
+			"label": "t:sections.instagram-slider.settings.heading.label",
+			"info": "Recomended 10 words"
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"default": "title for Image slider",
+			"label": "t:sections.instagram-slider.settings.title.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.author.header.content"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_account",
+			"label": "t:sections.all.author.avatar.label"
+		},
+		{
+			"type": "text",
+			"id": "name_account",
+			"default": "Some text",
+			"label": "t:sections.all.author.name.label"
+		},
+		{
+			"type": "text",
+			"id": "desc_account",
+			"default": "Some text",
+			"label": "t:sections.all.author.text.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Explore",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "instagram-slider_image",
+			"name": "t:sections.instagram-slider.blocks.instagram-slider_image.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.instagram-slider.blocks.instagram-slider_image.settings.image.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.instagram-slider.presets.name",
+			"blocks": [
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				},
+				{
+					"type": "instagram-slider_image"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

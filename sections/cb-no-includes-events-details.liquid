@@ -1,0 +1,227 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+    .cb__container.section-id-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-id-{{ section.id }} .contenedor-child {
+        grid-template-columns: 1fr 1fr;
+        border-radius: 0;
+    }
+
+    .section-id-{{ section.id }} .contenido {
+        padding: 12rem 8rem;
+    }
+
+    .section-{{ section.id }}.cb__show-border-top {
+          border-top-width: 1px;
+          border-top-color: {{ section.settings.border-color }};
+          border-top-style: solid;
+    }
+
+    .section-{{ section.id }}.cb__show-border-bottom {
+          border-bottom-width: 1px;
+          border-bottom-color: {{ section.settings.border-color }};
+          border-bottom-style: solid;
+    }
+
+    .section-{{ section.id }}.cb__background-color {
+        background-color: {{ section.settings.background-color }};
+    }
+
+    .section-{{ section.id }} .cb__title-text {
+        color: {{ section.settings.titulo_color }};
+    }
+
+    .section-{{ section.id }} .cb__subtitle-text {
+        color: {{ section.settings.subtitulo_color }};
+    }
+
+    .section-{{ section.id }} .cb__paragraph-text {
+        color: {{ section.settings.parrafo_color }};
+    }
+
+
+    .section-id-{{ section.id }} .cb__right-content-details {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-content: center;
+    }
+
+    .section-id-{{ section.id }} .cb__right-content-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0 12px;
+      padding: .5em 0;
+  }
+
+  .section-id-{{ section.id }} .cb__right-content-image {
+    display: grid;
+  }
+
+  .section-id-{{ section.id }} .cb__right-content-image img {
+    width: 40px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+    @media (max-width: 500px){
+        .section-id-{{ section.id }} .contenido {
+            padding: 0;
+          padding-bottom: 2em;
+        }
+
+    .section-id-{{ section.id }} .contenedor-child {
+            grid-template-columns: auto;
+        }
+    }
+{% endstyle %}
+
+<div class="cb__container section-id-{{ section.id }}">
+  <div
+    class="
+      section-{{ section.id }} contenedor-child cb__background-color{% if section.settings.show-border-top %} cb__show-border-top{% endif %}
+      {% if section.settings.show-border-bottom %} cb__show-border-bottom{% endif %}
+    "
+  >
+    <div class="contenido">
+      <div class="cb__title-text">{{ section.settings.titulo }}</div>
+      <div class="cb__subtitle-text">{{ section.settings.subtitulo }}</div>
+      <div class="cb__paragraph-text">{{ section.settings.parrafo }}</div>
+    </div>
+
+    <div class="cb__right-content-details">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'right_content' %}
+            <div class="cb__right-content-item">
+              <div class="cb__right-content-image">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/no_includes.svg?v=1697730524"
+                  loading="lazy"
+                >
+              </div>
+              <div class="cb__right-content-text">
+                {{ block.settings.details }}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "No Includes by Codebulls",
+  "tag": "section",
+        "settings": [
+        {
+            "type": "header",
+            "content": "Section options"
+        },
+        {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_top.label"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_bottom.label"
+            },
+            {
+                "type": "checkbox",
+                "default": true,
+                "id": "show-border-top",
+                "label": "Show border top"
+            },
+            {
+                "type": "checkbox",
+                "default": true,
+                "id": "show-border-bottom",
+                "label": "Show border bottom"
+            },
+            {
+                "type": "color",
+                "id": "border-color",
+                "label": "Border color",
+                "default": "#08393f"
+            },
+            {
+                "type": "header",
+                "content": "Text options"
+            },
+            {
+                "type": "richtext",
+                "id": "titulo",
+                "default": "<h2>Heading</h2>",
+                "label": "Heading"
+            },
+            {
+                "type": "color",
+                "id": "titulo_color",
+                "label": "Title color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "subtitulo",
+                "default": "Subheading",
+                "label": "Subtitle"
+            },
+            {
+                "type": "color",
+                "id": "subtitulo_color",
+                "label": "Subtitle color",
+                "default": "#000"
+            },
+            {
+                "type": "richtext",
+                "id": "parrafo",
+                "default": "<p>Some description</p>",
+                "label": "Text description"
+            },
+            {
+                "type": "color",
+                "id": "parrafo_color",
+                "label": "Paragraph color",
+                "default": "#000"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "right_content",
+                "name": "Detail",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "details",
+                        "default": "<p>Some description</p>",
+                        "label": "Text"
+                    }
+                ]
+
+            }
+        ],
+  "presets": [
+    {
+      "name": "No Includes by Codebulls"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,122 @@
+:root {
+  --image-parallax-light: #ffffff;
+}
+
+[data-scheme=dark] {
+  --image-parallax-light: #e6e6e6;
+}
+
+.image-parallax__items .image-parallax-item {
+  min-height: 32rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+}
+.image-parallax__items .image-parallax-item:not(:first-child) {
+  margin-top: 0.8rem;
+}
+@media (min-width: 576px) {
+  .image-parallax__items .image-parallax-item {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    min-height: 39.6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .image-parallax__items .image-parallax-item {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+.image-parallax__items .image-parallax-item .subtitle--wrapper {
+  color: var(--image-parallax-light);
+}
+.image-parallax__items .image-parallax-item .subtitle--wrapper span::after {
+  background-color: var(--image-parallax-light);
+}
+.image-parallax__items .image-parallax-item__container {
+  max-width: 68.5rem;
+  margin-top: 5rem;
+}
+@media (min-width: 750px) {
+  .image-parallax__items .image-parallax-item__container {
+    margin-top: 12.5rem;
+  }
+}
+.image-parallax__items .image-parallax-item__container .image-parallax-item__heading {
+  color: var(--image-parallax-light);
+}
+.image-parallax__items .image-parallax-item__container .image-parallax-item__heading {
+  margin: 0;
+}
+.image-parallax__items .image-parallax-item__container .image-parallax-item__description {
+  max-width: 44.4rem;
+  color: var(--image-parallax-light);
+  opacity: 0.7;
+}
+.image-parallax__items .image-parallax-item__container .image-parallax-item__description p {
+  margin: 0.8rem 0 0;
+}
+.image-parallax__items .image-parallax-item img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+}
+.image-parallax__items .image-parallax-item .placeholder-svg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.image-parallax__items .image-parallax-item div:not(.image-parallax-item__description):last-child {
+  border-radius: 6px;
+}
+.image-parallax__items .image-parallax-item__image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  border-radius: 6px;
+  z-index: 5;
+}
+.image-parallax__items .image-parallax-item__content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.image-parallax__items .image-parallax-item--theme-dark .image-parallax-item__image-overlay {
+  background-color: rgb(var(--color-overlay));
+}
+.image-parallax__items .image-parallax-item--theme-light .image-parallax-item__image-overlay {
+  background-color: var(--image-parallax-light);
+}
+.image-parallax__items .image-parallax-item--theme-light .image-parallax-item__heading {
+  color: rgb(var(--color-foreground-title));
+}
+.image-parallax__items .image-parallax-item--theme-light .image-parallax-item__description {
+  color: rgb(var(--color-foreground-title));
+}
+.image-parallax__items .image-parallax-item--theme-light .subtitle--wrapper {
+  color: rgb(var(--color-foreground-title));
+}
+.image-parallax__items .image-parallax-item--theme-light .subtitle--wrapper span::after {
+  background-color: rgb(var(--color-foreground-title));
+}
+.image-parallax .image-parallax__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 8;
+}

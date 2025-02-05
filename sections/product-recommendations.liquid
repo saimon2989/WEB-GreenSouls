@@ -1,0 +1,376 @@
+{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+
+	#shopify-section-{{ section.id }} .card-wrapper {
+		background-color: rgb(var(--color-{{ section.settings.color_scheme }}))
+	}
+{% endstyle %}
+
+{%- if settings.quickview_show -%}
+	<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<product-recommendations2
+	class="product-recommendations "
+	data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}"
+>
+	<section
+		class="product-carousel section-container container js-product-recommendations"
+		id="section-{{ section.id }}"
+		data-section-id="{{ section.id }}"
+	>
+		<div
+			class="product-carousel product-recommendations__item{%- if section.settings.border_top -%}--border{% endif %}"
+		>
+			<div class="product-carousel__block">
+				<div class="product-carousel__text-block color-background-2">
+					<div class="featured-products__text title-wrapper">
+						{%- if section.settings.subtitle != blank -%}
+							<div class="subtitle">
+								{{ section.settings.subtitle }}
+							</div>
+						{%- endif -%}
+						{%- if section.settings.heading != blank -%}
+							<h2 class="product-carousel__text-title">
+								{{ section.settings.heading }}
+							</h2>
+						{%- endif -%}
+					</div>
+
+					<div class="product-carousel__button-block">
+						{%- if section.settings.text != blank -%}
+							<p class="product-carousel__description">
+								{{ section.settings.text }}
+							</p>
+						{%- endif -%}
+						{% if section.settings.button_label != blank %}
+							<a
+								href="{{ section.settings.button_link.url }}"
+								class="button button--primary "
+								{% if section.settings.button_link.url == blank %}
+									aria-disabled="true"
+								{% endif %}
+							>
+								<span>{{ section.settings.button_label }}</span>
+								{% render 'icon-button-arrow' %}
+							</a>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="product-carousel__wrapper swiper js-swiper-product-recommendations">
+					<div class="swiper-wrapper">
+						{% for recommendation in recommendations.products %}
+							<div
+								class="product-carousel__product collection-product-card collection-popular-card featured-products__item featured-products__item--card quickview{%- if settings.quickview_hover -%}--hover{% endif %} swiper-slide"
+							>
+								{% render 'product-card',
+									product_card_product: recommendation,
+									media_size: section.settings.image_ratio,
+									media_fit: section.settings.image_fit,
+									show_secondary_image: section.settings.show_secondary_image,
+									show_vendor: section.settings.show_vendor,
+									show_desc: section.settings.show_desc,
+									section_id: section.id
+								%}
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+
+				<div class="nav-tools">
+					<div class="nav-tools__scroll-cell">
+						<div
+							class="swiper-scrollbar js-product-recommendations-swiper-scrollbar"
+						></div>
+					</div>
+					<div class="nav-tools__arrows">
+						<button
+							class="nav-tools__arrow nav-tools__arrow--next js-product-recommendations-arrow-next"
+							aria-label="Next"
+						>
+							{% render 'icon-long-arrow-prev',
+								className: 'nav-tools__arrow--prev-svg',
+								width: 39,
+								height: 16
+							%}
+						</button>
+						<button
+							class="nav-tools__arrow nav-tools__arrow--prev js-product-recommendations-arrow-prev"
+							aria-label="Prev"
+						>
+							{% render 'icon-long-arrow-next',
+								className: 'nav-tools__arrow--next-svg',
+								width: 39,
+								height: 16
+							%}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</product-recommendations2>
+
+{% javascript %}
+	const productRecommendationsSlider = () => {
+		$(document).ready(function () {
+			$('.js-product-recommendations').each(function (index, parent) {
+				let parentId = `#${$(parent).attr('id')}`;
+
+				let carousel = document
+					.querySelector(parentId)
+					.querySelector(`.js-swiper-product-recommendations`);
+
+				let scrollBar = document
+					.querySelector(parentId)
+					.querySelector(`.js-product-recommendations-swiper-scrollbar`);
+
+				let prev = document
+					.querySelector(parentId)
+					.querySelector(`.js-product-recommendations-arrow-prev`);
+
+				let next = document
+					.querySelector(parentId)
+					.querySelector(`.js-product-recommendations-arrow-next`);
+
+				let swiperCarousel = new Swiper(carousel, {
+					slidesPerView: 3,
+					spaceBetween: 8,
+					scrollbar: {
+						el: scrollBar,
+						draggable: true,
+					},
+					navigation: {
+						prevEl: prev,
+						nextEl: next,
+					},
+					breakpoints: {
+						0: { slidesPerView: 1 },
+						920: { slidesPerView: 2 },
+						1100: { slidesPerView: 3 },
+						1200: { slidesPerView: 2 },
+						1300: { slidesPerView: 3 },
+						1500: { slidesPerView: 3 },
+						1800: { slidesPerView: 3 },
+					},
+				});
+
+				if (
+					$('.js-product-recommendations-arrow-prev').hasClass(
+						'swiper-button-lock'
+					) ||
+					$('.js-product-recommendations-arrow-next').hasClass(
+						'swiper-button-lock'
+					)
+				) {
+					$('.nav-tools').css('display', 'none');
+				}
+			});
+		});
+	};
+
+	class ProductRecommendations2 extends HTMLElement {
+		constructor() {
+			super();
+
+			const handleIntersection = (entries, observer) => {
+				if (!entries[0].isIntersecting) return;
+				observer.unobserve(this);
+
+				fetch(this.dataset.url)
+					.then((response) => response.text())
+					.then((text) => {
+						const html = document.createElement('div');
+						html.innerHTML = text;
+						const recommendations = html.querySelector(
+							'product-recommendations2'
+						);
+						if (recommendations && recommendations.innerHTML.trim().length) {
+							this.innerHTML = recommendations.innerHTML;
+							productRecommendationsSlider();
+						}
+					})
+					.catch((e) => {
+						console.error(e);
+					});
+			};
+
+			new IntersectionObserver(handleIntersection.bind(this), {
+				rootMargin: '0px 0px 200px 0px',
+			}).observe(this);
+		}
+	}
+
+	customElements.define('product-recommendations2', ProductRecommendations2);
+
+	document.addEventListener('shopify:section:load', function () {
+		productRecommendationsSlider();
+	});
+{% endjavascript %}
+
+{% schema %}
+{
+	"name": "t:sections.product-recommendations.name",
+	"tag": "section",
+	"settings": [
+		{
+			"type": "paragraph",
+			"content": "t:sections.product-recommendations.settings.paragraph__1.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.product-recommendations.settings.border_top.label"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"default": "Featured Items",
+			"label": "t:sections.product-carousel.settings.subtitle.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<p>You May Also Like</p>",
+			"label": "t:sections.product-carousel.settings.heading.label"
+		},
+		{
+			"type": "textarea",
+			"id": "text",
+			"default": "Some description",
+			"label": "t:sections.product-carousel.settings.text.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "View Collection",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.product-recommendations.settings.header__2.content"
+		},
+		{
+			"type": "select",
+			"id": "color_scheme",
+			"options": [
+				{
+					"value": "background-card",
+					"label": "t:sections.product-recommendations.settings.color_scheme.default"
+				},
+				{
+					"value": "base-background-1",
+					"label": "t:sections.all.color_scheme.options__1.label"
+				},
+				{
+					"value": "base-background-2",
+					"label": "t:sections.all.color_scheme.options__2.label"
+				}
+			],
+			"default": "background-card",
+			"label": "t:sections.all.color_scheme.header"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "square",
+			"label": "t:sections.product-recommendations.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "image_fit",
+			"label": "t:sections.featured-products.settings.image_fit.label",
+			"options": [
+				{
+					"value": "contain",
+					"label": "t:sections.featured-products.settings.image_fit.options__1.label"
+				},
+				{
+					"value": "cover",
+					"label": "t:sections.featured-products.settings.image_fit.options__2.label"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_secondary_image",
+			"default": true,
+			"label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_vendor",
+			"default": true,
+			"label": "t:sections.product-recommendations.settings.show_vendor.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_desc",
+			"default": false,
+			"label": "t:sections.product-recommendations.settings.show_desc.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"templates": ["product"],
+	"presets": [
+		{
+			"name": "t:sections.product-recommendations.name"
+		}
+	]
+}
+{% endschema %}

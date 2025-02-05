@@ -1,0 +1,297 @@
+body[data-scheme=dark] .image-collage .placeholder-svg-inst {
+  fill: rgb(200, 200, 200);
+}
+
+.image-collage ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+.image-collage li {
+  list-style-type: none;
+  line-height: 0;
+  max-height: 46.3rem;
+  width: 100%;
+}
+@media (min-width: 0) {
+  .image-collage li {
+    flex: 1 0 48%;
+  }
+}
+@media (min-width: 576px) {
+  .image-collage li {
+    flex: 1 0 49%;
+  }
+}
+@media (min-width: 990px) {
+  .image-collage li {
+    flex: 1 0 24%;
+  }
+}
+@media (min-width: 1140px) {
+  .image-collage li {
+    flex: 1 0 19.7%;
+  }
+}
+@media (min-width: 1340px) {
+  .image-collage li {
+    flex: 1 0 19.7%;
+  }
+}
+@media (min-width: 1360px) {
+  .image-collage li {
+    flex: 1 0 15%;
+    max-height: 22.3rem;
+    max-width: 29.3rem;
+  }
+}
+@media (min-width: 1460px) {
+  .image-collage li {
+    max-height: 26.3rem;
+  }
+}
+@media (min-width: 1540px) {
+  .image-collage li {
+    flex: 1 0 16%;
+    max-height: 28.3rem;
+  }
+}
+@media (min-width: 1840px) {
+  .image-collage li {
+    flex: 1 0 16.5%;
+    max-height: 29.3rem;
+  }
+}
+.image-collage li:first-child {
+  max-height: 100vh;
+}
+.image-collage li:first-child, .image-collage li:nth-child(8) {
+  max-height: none;
+  width: 100%;
+}
+@media (min-width: 0) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 1 0 100%;
+  }
+}
+@media (min-width: 576px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    max-height: 46.3rem;
+  }
+}
+@media (min-width: 990px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 1 0 49%;
+    max-width: 49.6%;
+  }
+}
+@media (min-width: 1140px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 2 0 40%;
+    max-width: 49.6%;
+  }
+}
+@media (min-width: 1340px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 1 0 45%;
+    max-width: none;
+  }
+}
+@media (min-width: 1360px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 0 0 33%;
+    max-height: 22.3rem;
+    max-width: 32.9%;
+  }
+}
+@media (min-width: 1460px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    max-height: 26.3rem;
+    max-width: 59.5rem;
+  }
+}
+@media (min-width: 1540px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 2 0 32.5%;
+    max-height: 28.3rem;
+  }
+}
+@media (min-width: 1840px) {
+  .image-collage li:first-child, .image-collage li:nth-child(8) {
+    flex: 2 0 33%;
+    max-height: 29.3rem;
+  }
+}
+.image-collage li .placeholder-svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.6rem;
+}
+.image-collage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.6rem;
+}
+.image-collage .image-collage__follow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.image-collage .image-collage__item-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.6rem;
+  gap: 1.6rem;
+  overflow: hidden;
+}
+@media (min-width: 576px) {
+  .image-collage .image-collage__item-block {
+    flex-direction: row;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+.image-collage .image-collage__item-block::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.image-collage .image-collage__item-block::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-foreground), 0.7);
+  border-radius: 100px;
+}
+.image-collage__item {
+  border-radius: 0.6rem;
+  height: 100%;
+  padding: 3.7rem;
+}
+@media (min-width: 576px) {
+  .image-collage__item {
+    padding: 6.2rem 6.8rem;
+    flex-direction: row;
+  }
+}
+@media (min-width: 750px) {
+  .image-collage__item {
+    padding: 7.2rem 6.8rem;
+  }
+}
+@media (min-width: 990px) {
+  .image-collage__item {
+    padding: 2.9rem 3.8rem;
+  }
+}
+@media (min-width: 1200px) {
+  .image-collage__item {
+    padding: 6.2rem 6.8rem;
+  }
+}
+@media (min-width: 1360px) {
+  .image-collage__item {
+    padding: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.image-collage__item .placeholder-svg-inst {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  flex: 0 5rem;
+}
+.image-collage__title {
+  margin: 0;
+  text-transform: capitalize;
+  display: flex;
+}
+@media (min-width: 0) {
+  .image-collage__title {
+    align-items: center;
+  }
+}
+@media (min-width: 576px) {
+  .image-collage__title {
+    align-self: flex-start;
+    max-width: 22rem;
+  }
+}
+@media (min-width: 1360px) {
+  .image-collage__title {
+    font-size: calc(var(--font-heading-h4-size) - 5px);
+  }
+}
+@media (min-width: 1570px) {
+  .image-collage__title {
+    font-size: var(--font-heading-h4-size);
+  }
+}
+.image-collage__account {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1rem;
+}
+.image-collage__photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  margin: 0;
+  border-radius: 50%;
+  flex: 0 5rem;
+}
+.image-collage__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.image-collage__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 140%;
+  max-width: 23rem;
+}
+.image-collage__info a {
+  text-decoration: none;
+}
+.image-collage__name {
+  font-weight: var(--font-header-menu-weight);
+  font-size: var(--font-body-size);
+  transition: var(--duration-default);
+  letter-spacing: -0.02em;
+  word-wrap: break-word;
+}
+.image-collage__name:hover {
+  transition: var(--duration-default);
+  opacity: 0.7;
+}
+.image-collage__text {
+  font-size: 1.4rem;
+}
+.image-collage__link {
+  margin-top: 2rem;
+  padding: 0 3.5rem;
+  white-space: normal;
+  line-height: 1.5;
+}
+@media (min-width: 990px) {
+  .image-collage__link {
+    margin-top: 4rem;
+    padding: 0 4.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .image-collage__link {
+    word-break: break-all;
+  }
+}

@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cb_fullwidth_text_section_3eGyK4": {
+      "type": "cb-fullwidth-text-section",
+      "settings": {
+        "fullwidth_section": false,
+        "padding_top": 200,
+        "padding_bottom": 200,
+        "background_image": "shopify://shop_images/santa-marta-banner_7d929412-33f9-4b32-b1bf-8e24e2b99a3f.jpg",
+        "title": "<p>GAIA Terra Fest: <br/>Un evento de impacto social y ambiental en Santa Marta.</p>",
+        "title_color": "#ffffff",
+        "title_alignment": "right"
+      }
+    },
+    "rich_text_JDJhRQ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_AiEKAY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Santa Marta, Colombia – Para conmemorar el día de la tierra el 22 de abril, las marcas Dislicores, Maaji, Task, L’Occitane , ISDIN, Localiza y Tay Beach Hotel se unieron a GreenSouls y a un grupo de inﬂuencers y artistas para celebrar GAIA Terra Fest, un evento enfocado en promover la sostenibilidad y generar conciencia ambiental a través de un mensaje de inspiración y acción.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_AiEKAY"
+      ],
+      "custom_css": [
+        ".rich-text {padding-block: 2em; position: relative;}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_article_ipzizd": {
+      "type": "cb-article",
+      "blocks": {
+        "header_dVqgKL": {
+          "type": "header",
+          "settings": {
+            "text": "<p>Durante el evento, los participantes llevaron a cabo diversas actividades en beneﬁcio del medio ambiente y las comunidades locales. El primer día se llevó a cabo una siembra de 60 fragmentos de corales utilizando vidrio reciclado de las botellas de Dislicores. Estos fragmentos de corales hacen parte de la iniciativa a largo plazo de GreenSouls y Dislicores en colaboración con los biólogos expertos de Corpamag y la fundación CIMCaribe: “Un Arrecife de Vida” con el que se busca sembrar más de 20.000 fragmentos en el 2023.</p>",
+            "image": "shopify://shop_images/banner-4-1.jpg"
+          }
+        },
+        "block_Tn9AjQ": {
+          "type": "block",
+          "settings": {
+            "text": "<h4>La liberación de 20 tortugas marinas de las especies caguamas y verdes rescatadas y rehabilitadas por más de 2 años por Corpamag también formó parte de las actividades más que más tocó el corazón de los asistentes.</h4>",
+            "image": "shopify://shop_images/banner-1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_dVqgKL",
+        "block_Tn9AjQ"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#000000"
+      }
+    },
+    "cb_article_w_rWzKRr": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>El segundo día, la limpieza de playas fue la actividad principal, con la colaboración de las comunidades     locales y las bolsas hechas de plástico reciclado de TASK. Se logró recoger más de 450 kg de residuos, con 300 kg de ellos siendo aprovechables. También se realizó un torneo de Surf, en el que se premió a jóvenes deportistas locales y se entregaron dotaciones deportivas, tablas profesionales de Surf y repuestos para las mismas elaboradas con materiales amigables con el medio ambiente. Además, se donaron implementos de cocina y de aseo para las familias de estos deportistas.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/prox-eventos_4.jpg",
+        "bottom_left_image": "shopify://shop_images/Asset_2-100.jpg",
+        "top_right_image": "shopify://shop_images/banner-3.jpg",
+        "right_text": "<h4>El evento concluyó con una charla de astrología impartida por líderes \"mamos\" indígenas de la tribu Kogui de la Sierra Nevada de Santa Marta.</h4><p><strong><br/></strong>Estas actividades contaron con la participación de reconocidos inﬂuenciadores y artistas, incluyendo a Ana Sofía Henao, Los de Ñam, Nicole Betancur, María \"Mona\" Osorio, Sophie Echeverri, Mario Espitia y Marce La Recicladora.<br/><br/>Cada marca también aportó su granito de arena para lograr un impacto positivo en el evento. Maaji, marca líder en beachwear y sostenibilidad, vistió a los participantes con rashguards para protegerlos del sol durante la limpieza de playas. Dislicores proporcionó el vidrio de sus botellas para reciclarlo y crear bases para sembrar un arrecife de coral nuevo. Task dotó la limpieza de playas con sus bolsas hechas en un 98% con materiales reciclados y donó más de 50 kits de aseo y cocina para las comunidades locales. Localiza, por su parte, contribuyó a movilizar personas,  donaciones y sueños a los diferentes espacios donde se realizó el evento. Loccitane proporcionó una  experiencia sensorial con sus productos, mientras que ISDIN protegió la piel de los participantes con su fotoprotector solar durante los 3 días de arduo trabajo por el planeta.</p>"
+      }
+    },
+    "rich_text_LYah8R": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iUxdkY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GreenSouls, liderado por su fundador Camilo Jaramillo, agradece a todas las marcas, inﬂuenciadores y participantes por su colaboración en este evento, que busca fomentar la sostenibilidad y generar un cambio positivo en nuestro planeta e invita a seguir impulsando este tipo de espacios para crear el cambio que queremos ver el en mundo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iUxdkY"
+      ],
+      "custom_css": [
+        ".rich-text {padding: 4em 1em; position: relative; background-color: #d1dbd9; border-radius: 30px;}",
+        "@media (min-width: 1024px) {.rich-text {padding: 4em; }}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_buttons_mrhzYF": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_Dzw3ne": {
+          "type": "button",
+          "settings": {
+            "button_label": "Lee más artículos",
+            "button_link": "shopify://blogs/news"
+          }
+        }
+      },
+      "block_order": [
+        "button_Dzw3ne"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_featured_blogs_YpePkn": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 2,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "cb_fullwidth_text_section_3eGyK4",
+    "rich_text_JDJhRQ",
+    "cb_article_ipzizd",
+    "cb_article_w_rWzKRr",
+    "rich_text_LYah8R",
+    "cb_buttons_mrhzYF",
+    "cb_featured_blogs_YpePkn"
+  ]
+}

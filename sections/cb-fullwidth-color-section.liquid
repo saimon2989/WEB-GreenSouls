@@ -1,0 +1,501 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+    .cb__container.section-id-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-id-{{ section.id }}.cb__background-color {
+        background-color: {{ section.settings.background_color }};
+    }
+
+    .section-id-{{ section.id }} .cb__title-text {
+        color: {{ section.settings.title_color }}
+    }
+
+    .section-id-{{ section.id }} .cb__subtitle-text {
+        color: {{ section.settings.subtitle_color }}
+    }
+
+    .section-id-{{ section.id }} .cb__paragraph-text {
+        color: {{ section.settings.paragraph_color }}
+    }
+
+    .section-id-{{ section.id }} .cb__imagen img {
+        width: 100%;
+        border-radius: 30px;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .section-id-{{ section.id }} .cb__imagen img:first-child {
+        margin-bottom: 24px;
+    }
+
+    .section-id-{{ section.id }} .contenedor-child {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-id-{{ section.id }} .cb__price-container {
+        padding-block: 2rem;
+        border-top: 1px solid #FFF;
+        border-bottom: 1px solid #FFF;
+        margin-top: 32px;
+        margin-bottom: 2em;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
+    .section-id-{{ section.id }} .cb__price-item {
+        color: #FFF;
+        font-weight: 900;
+        font-size: 40px;
+    }
+
+    .section-id-{{ section.id }} .product-form__buttons {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .section-id-{{ section.id }} .product-form {
+      margin-top: 24px;
+    }
+
+    .section-id-{{ section.id }} .shopify-payment-button__button {
+      border-radius: 30px;
+      background-color: #FFF;
+      color: #000;
+      font-size: var(--font-body-size);
+      font-family: var(--font-body-family);
+      font-weight: 900;
+    }
+
+    .section-id-{{ section.id }} .shopify-payment-button__button:hover {
+      background-color: #1fa0a2;
+    }
+
+    .section-id-{{ section.id }} .cb__product-description > * {
+      color: #FFF;
+      font-family: var(--font-body-family);
+    }
+
+
+    .section-id-{{ section.id }} .cb__secondary-button-outline {
+      border-color: #FFF;
+      background-color: transparent;
+      color: #FFF;
+      transition: all 300ms ease-in-out;
+    }
+
+    .section-id-{{ section.id }} .cb__secondary-button-outline:hover {
+      background-color: #FFF;
+      color: #000;
+    }
+
+    .section-id-{{ section.id }} .cb__secondary-button-outline::before {
+      left: -100%;
+      transition: all 600ms ease-in-out;
+  }
+
+
+  .section-id-{{ section.id }} .cb__secondary-button-outline:hover::before {
+    left: 100%;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-container .panel {
+    display: none;
+    overflow: hidden;
+    padding-top: 3em;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-container .panel.active {
+    display: block;
+  }
+
+
+  .section-id-{{ section.id }} .cb__accordion-text-details {
+    margin-bottom: 32px;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon img {
+    object-fit: contain;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon svg {
+    width: 100%;
+    fill: #FFF;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-details {
+    border-top: 1px solid #FFF;
+    padding-top: 2em;
+  }
+
+
+  .section-id-{{ section.id }} .cb__accordion-text-details > *,
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon > *,
+  .section-id-{{ section.id }} .cb__price-text  > * {
+    color: {{ section.settings.text_color }};
+  }
+
+
+
+
+    @media (min-width: 1023px){
+        .section-id-{{ section.id }} .cb__imagen.image-alignment-right {
+            grid-column-start: 2;
+        }
+
+        .section-id-{{ section.id }} .contenido.image-alignment-right {
+            grid-row-start: 1;
+        }
+    }
+
+    @media (max-width: 500px){
+        .section-id-{{ section.id }} .contenedor-child {
+            grid-template-columns: auto;
+        }
+
+        .section-id-{{ section.id }} .contenido {
+            padding_top: 2rem;
+        }
+
+        .section-id-{{ section.id }} .cb__imagen {
+            margin-bottom: 24px;
+        }
+
+        .section-id-{{ section.id }} .cb__imagen img {
+            height: 320px;
+        }
+
+        .section-id-{{ section.id }} .cb__price-item {
+            font-size: 32px;
+        }
+
+        .section-id-{{ section.id }} .product-form__buttons {
+          grid-template-columns: auto;
+          gap: 0;
+        }
+
+        .section-id-{{ section.id }} .cb__accordion-text-details-icon {
+          grid-template-columns: auto;
+        }
+    }
+{% endstyle %}
+
+{% assign product = section.settings.product %}
+{% assign price = product.price | money_without_trailing_zeros | slice: 0, 3 | append: 'K' %}
+
+<div class="cb__container section-id-{{ section.id }} {% if section.settings.background_color != blank %}cb__background-color{% endif %}">
+  <div class="contenedor-child">
+    <div class="cb__imagen {%  if section.settings.images_alignment == 'right' %}image-alignment-right{% endif %}">
+      {% if section.settings.image_1 == blank %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% else %}
+        <img src="{{ section.settings.image_1 | image_url }}">
+      {% endif %}
+      {% if section.settings.image_2 == blank %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% else %}
+        <img src="{{ section.settings.image_2 | image_url }}">
+      {% endif %}
+    </div>
+    <div class="contenido{% if section.settings.images_alignment == 'right' %} image-alignment-right{% endif %}">
+      <h1 class="cb__title-text">{{ product.title }}</h1>
+
+      <div class="cb__product-description">{{ product.description }}</div>
+
+      <div class="cb__accordion-container">
+        <button class="accordion cb__primary-button cb__secondary-button-outline">{{ section.settings.button_label }}</button>
+        <div class="panel">
+          <div class="cb__accordion-details">
+            <div class="cb__accordion-text-details">
+              {{ section.settings.details_1 }}
+            </div>
+            <div class="cb__accordion-text-details-icon">
+              <span>
+                {% if section.settings.icon_image == blank %}
+                  {{ 'image' | placeholder_svg_tag }}
+                {% else %}
+                  {%- assign image_width = section.settings.image_width | append: 'x' -%}
+                    <img
+                      srcset="{{ section.settings.icon_image | img_url: image_width }} 1x, {{ section.settings.icon_image | img_url: image_width, scale: 2 }} 2x"
+                      src="{{ section.settings.icon_image | img_url: image_width }}"
+                      width="{{ section.settings.image_width }}"
+                      height="{{ section.settings.icon_image.height }}"
+                      alt="{{ section.settings.icon_image.alt | default: shop.name | escape }}"
+                      loading="lazy"
+                    >
+                {% endif %}
+              </span>
+              <p>{{ section.settings.details_2 }}</p>
+            </div>
+          </div>
+          <div class="cb__price-container">
+            <div class="cb__price-text">{{ section.settings.details_3 }}</div>
+            <span class="cb__price-item">
+              {{ price }}
+            </span>
+          </div>
+
+          {% if product != blank %}
+            <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}">
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  role="presentation"
+                  class="icon icon-error"
+                  viewBox="0 0 13 13"
+                >
+                  <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                  <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                  <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                  <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                </svg>
+                <span class="product-form__error-message"></span>
+              </div>
+    
+              {%- assign product_form_id = 'product-form-' | append: section.id -%}
+              {%- form 'product',
+                product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+    
+                <div class="product-form__buttons">
+                  <div class="product-form__checkout">
+                    {{ form | payment_button }}
+                  </div>
+    
+                  <button
+                    id="ProductSubmitButton-{{ section.id }}"
+                    type="submit"
+                    name="add"
+                    class="cb__primary-button cb__secondary-button-outline"
+                    {% if product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    {% comment %}{{ 'products.product.add_to_cart' | t }}{% endcomment %}
+                    {{ 'Añadir al carrito' }}
+                  </button>
+                </div>
+              {%- endform -%}
+            </product-form>
+          {% endif %}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const accordionElements = document.querySelectorAll(".section-id-{{ section.id }} .cb__accordion-container .accordion");
+      if(accordionElements){
+        accordionElements.forEach((el, i) => {
+          el.addEventListener('click', (e) => {
+            console.log(accordionElements)
+              let item = e.target.nextElementSibling;
+              item.classList.toggle('active')
+            })
+        })
+      }
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Fullwidth Color Section",
+  "tag": "section",
+        "settings": [
+          {
+  "type": "product",
+  "id": "product",
+  "label": "Product"
+}
+,
+            {
+                "type": "header",
+                "content": "Section options"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_top.label"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_bottom.label"
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color",
+                "default": "#f4f4f4"
+            },
+            {
+                "type": "select",
+                "id": "images_alignment",
+                "label": "Images alignment",
+                "options": [
+                    {
+                    "value": "left",
+                    "label": "Left"
+                    },
+                    {
+                    "value": "right",
+                    "label": "Right"
+                    }
+                ],
+                "default": "left"
+            },
+            {
+                "type": "header",
+                "content": "Text options"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "default": "Heading",
+                "label": "Title"
+            },
+            {
+                "type": "color",
+                "id": "title_color",
+                "label": "Title color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "subtitle",
+                "default": "Subtitle",
+                "label": "Subtitle"
+            },
+            {
+                "type": "color",
+                "id": "subtitle_color",
+                "label": "Subtitle color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "paragraph",
+                "default": "Some description",
+                "label": "Paragraph"
+            },
+            {
+                "type": "color",
+                "id": "paragraph_color",
+                "label": "Paragraph color",
+                "default": "#000"
+            },
+            {
+                "type": "header",
+                "content": "Image options"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_2",
+                "label": "Image"
+            },
+            {
+                "type": "header",
+                "content": "Button options"
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "default": "Button label",
+                "label": "t:sections.all.button.button_text.label"
+            },
+            {
+              "type": "header",
+              "content": "Details options"
+            },
+            {
+              "type": "image_picker",
+              "id": "icon_image",
+              "label": "Icon image"
+            },
+            {
+              "type": "range",
+              "id": "image_width",
+              "min": 50,
+              "max": 200,
+              "step": 10,
+              "default": 150,
+              "unit": "t:sections.footer.settings.logo_width.unit",
+              "label": "Icon width"
+            },
+            {
+                "type": "richtext",
+                "id": "details_1",
+                "default": "<p>Some description</p>",
+                "label": "Text"
+            },
+            {
+                "type": "richtext",
+                "id": "details_2",
+                "default": "<p>Some description</p>",
+                "label": "Text"
+            },
+            {
+                "type": "richtext",
+                "id": "details_3",
+                "default": "<p>Some description</p>",
+                "label": "Text"
+            },
+            {
+                "type": "color",
+                "id": "text_color",
+                "label": "Text color",
+                "default": "#FFF"
+            }
+        ],
+  "presets": [
+    {
+      "name": "Fullwidth Color by Codebulls"
+    }
+  ]
+}
+{% endschema %}

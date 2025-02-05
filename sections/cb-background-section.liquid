@@ -1,0 +1,161 @@
+{% style %}
+  .cb__container.cb__container--{{ section.id }} {
+      padding-inline: 2rem;
+      padding-block: 0;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+  }
+
+  .cb__container--{{ section.id }} .cb__background {
+      border-radius: 30px;
+      overflow: hidden;
+      display: grid;
+      place-content: center;
+      height: {{ section.settings.section_height }}px;
+  }
+
+  .cb__container--{{ section.id }} .cb__background--color {
+      background-color: {{ section.settings.background_color }};
+  }
+
+  .cb__container--{{ section.id }} .cb__background--image {
+      background-image: url({{ section.settings.background_image | image_url }});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+  }
+
+  .cb__container--{{ section.id }} .cb__background--image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #0008;
+  }
+
+  .cb__container--{{ section.id }} .cb__image svg {
+      width: 100%;
+  }
+
+  .cb__container--{{ section.id }} .cb__image {
+      position: relative;
+  }
+
+
+  @media (min-width: 1023px){
+      .cb__container.cb__container--{{ section.id }} {
+          padding-inline: 4rem;
+      }
+  }
+{% endstyle %}
+
+<div class="cb__container cb__container--{{ section.id }}">
+  <div class="cb__background cb__background--{{ section.settings.background_type }}">
+    <div class="cb__image">
+      {% if section.settings.image == blank %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% else %}
+        {% assign width = section.settings.image_width %}
+        <img
+          src="{{ section.settings.image | image_url }}"
+          width="{{ width }}"
+        >
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Background section",
+  "tag": "section",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section options"
+            },
+            {
+                "type": "range",
+                "id": "section_height",
+                "min": 0,
+                "max": 600,
+                "step": 10,
+                "default": 400,
+                "unit": "px",
+                "label": "Section height"
+            },
+            {
+                "type": "range",
+                "id": "margin_top",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "Margin top"
+            },
+            {
+                "type": "range",
+                "id": "margin_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "Margin bottom"
+            },
+            {
+                "type": "select",
+                "id": "background_type",
+                "label": "Background Type",
+                "options": [
+                    {
+                    "value": "color",
+                    "label": "Color"
+                    },
+                    {
+                    "value": "image",
+                    "label": "Image"
+                    }
+
+                ],
+                "default": "color"
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color",
+                "default": "#0a8699"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+                },
+            {
+                "type": "header",
+                "content": "Image options"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+              "type": "range",
+              "id": "image_width",
+              "min": 50,
+              "max": 500,
+              "step": 10,
+              "default": 200,
+              "unit": "px",
+              "label": "Image width"
+            }
+        ],
+  "presets": [
+    {
+      "name": "Background section by Codebulls"
+    }
+  ]
+}
+{% endschema %}

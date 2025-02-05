@@ -1,0 +1,261 @@
+<link
+	rel="stylesheet"
+	href="{{ 'template-collection.css' | asset_url }}"
+	media="print"
+	onload="this.media='all'"
+>
+
+<noscript>
+	{{- 'template-collection.css' | asset_url | stylesheet_tag -}}
+</noscript>
+
+<div class="container">
+	<div class="page-header page-header-top">
+		<div class="page-header__inner">
+			<h1 class="main-page-title page-title title--page">
+				{{ section.settings.title | escape }}
+			</h1>
+		</div>
+	</div>
+
+	{%- liquid
+		case section.settings.sort
+			when 'products_high', 'products_low'
+				assign collections = collections | sort: 'all_products_count'
+			when 'date', 'date_reversed'
+				assign collections = collections | sort: 'published_at'
+		endcase
+
+		if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+			assign collections = collections | reverse
+		endif
+
+		if section.settings.collection_individual != blank
+			assign collection_individual_id = section.settings.collection_individual.id
+		endif
+	-%}
+
+	<ul class="collection-product-list collections-grid" role="list">
+		{%- for collection in collections -%}
+			<li class="collections-grid__card {% if section.settings.image_ratio == 'portrait' or section.settings.image_ratio == 'portrait' %} collections-grid__card--portrait {% endif %}">
+				<div class="media image-ratio--{{ section.settings.image_ratio }}">
+					{% liquid
+						if collection.id != collection_individual_id
+							case section.settings.image
+								when 'product_hover'
+									assign image_first = collection.products[0].images[1]
+									assign image_second = collection.products[0].images[0]
+									assign image_third = collection.featured_image
+								when 'product'
+									assign image_first = collection.products[0].images[0]
+									assign image_second = collection.featured_image
+									assign image_third = collection.products[0].images[1]
+								when 'collection'
+									assign image_first = collection.featured_image
+									assign image_second = collection.products[0].images[1]
+									assign image_third = collection.products[0].images[0]
+							endcase
+						endif
+					%}
+
+					{% if collection.id != collection_individual_id %}
+						{% if image_first != blank %}
+							{% assign collection_product_image = image_first %}
+						{% elsif image_second != blank %}
+							{% assign collection_product_image = image_second %}
+						{% else %}
+							{% assign collection_product_image = image_third %}
+						{% endif %}
+					{% else %}
+						{% assign collection_product_image = collection.featured_image %}
+					{% endif %}
+
+					{%- if collection_product_image != blank -%}
+						{% assign fit = '' %}
+						{% if section.settings.image_fit == 'contain' %}
+							{% assign fit = 'object-fit: contain;' %}
+						{% endif %}
+						{% if section.settings.image_fit == 'cover' %}
+							{% assign fit = 'object-fit: cover;' %}
+						{% endif %}
+						{%- capture sizes -%}
+              (min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+            {%- endcapture -%}
+						{{
+							collection_product_image
+							| image_url: width: 533
+							| image_tag:
+								loading: 'lazy',
+								sizes: sizes,
+								widths: '533, 720, 940, 1066',
+								class: 'card-wrapper__image motion-reduce img-scale',
+								style: fit,
+								width: collection_product_image.width,
+								height: collection_product_image.height
+						}}
+					{% endif %}
+					<a
+						href="{{ collection.url | default: '#' }}"
+						class="link link--overlay card-wrapper__link--overlay"
+						aria-label="link"
+					></a>
+				</div>
+
+				<div class="collections-grid__information">
+					<div class="card-information__wrapper">
+						<h4 class="collections-grid__title">
+							<a
+								href="{{ collection.url | default: '#' }}"
+								class="link-hover-line link-hover-arrow"
+							>
+								{{- collection.title -}}
+							</a>
+						</h4>
+						{% if section.settings.show_count %}
+							<span class="card-information__count">
+								{{
+									'templates.search.item_count'
+									| t: count: collection.all_products_count
+								}}
+							</span>
+						{% endif %}
+					</div>
+					{%- if collection.description != blank
+						and section.settings.show_desc
+					-%}
+						<p class="collections-grid__desc">
+							{{- collection.description | strip_html | truncatewords: 8 -}}
+						</p>
+					{%- endif -%}
+				</div>
+			</li>
+		{%- endfor -%}
+	</ul>
+
+	{%- if paginate.pages > 1 -%}
+		{% render 'pagination', paginate: paginate %}
+	{%- endif -%}
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-list-collections.name",
+	"tag": "section",
+	"class": "section-list-collections",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "t:sections.main-list-collections.settings.title.label",
+			"default": "Collections"
+		},
+		{
+			"type": "select",
+			"id": "sort",
+			"options": [
+				{
+					"value": "alphabetical",
+					"label": "t:sections.main-list-collections.settings.sort.options__1.label"
+				},
+				{
+					"value": "alphabetical_reversed",
+					"label": "t:sections.main-list-collections.settings.sort.options__2.label"
+				},
+				{
+					"value": "date_reversed",
+					"label": "t:sections.main-list-collections.settings.sort.options__3.label"
+				},
+				{
+					"value": "date",
+					"label": "t:sections.main-list-collections.settings.sort.options__4.label"
+				},
+				{
+					"value": "products_high",
+					"label": "t:sections.main-list-collections.settings.sort.options__5.label"
+				},
+				{
+					"value": "products_low",
+					"label": "t:sections.main-list-collections.settings.sort.options__6.label"
+				}
+			],
+			"default": "alphabetical",
+			"label": "t:sections.main-list-collections.settings.sort.label"
+		},
+		{
+			"type": "select",
+			"id": "image",
+			"options": [
+				{
+					"value": "collection",
+					"label": "t:sections.main-list-collections.settings.image.options__1.label"
+				},
+				{
+					"value": "product",
+					"label": "t:sections.main-list-collections.settings.image.options__2.label"
+				},
+				{
+					"value": "product_hover",
+					"label": "t:sections.main-list-collections.settings.image.options__3.label"
+				}
+			],
+			"default": "product_hover",
+			"label": "t:sections.main-list-collections.settings.image.label"
+		},
+		{
+			"type": "collection",
+			"id": "collection_individual",
+			"label": "t:sections.main-list-collections.settings.collection_individual.label",
+			"info": "t:sections.main-list-collections.settings.collection_individual.info"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.main-list-collections.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.main-list-collections.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.main-list-collections.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "landscape",
+			"label": "t:sections.main-list-collections.settings.image_ratio.label",
+			"info": "t:sections.main-list-collections.settings.image_ratio.info"
+		},
+		{
+			"type": "select",
+			"id": "image_fit",
+			"label": "t:sections.featured-products.settings.image_fit.label",
+			"options": [
+				{
+					"value": "contain",
+					"label": "t:sections.featured-products.settings.image_fit.options__1.label"
+				},
+				{
+					"value": "cover",
+					"label": "t:sections.featured-products.settings.image_fit.options__2.label"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_count",
+			"default": true,
+			"label": "t:sections.main-list-collections.settings.show_count.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_desc",
+			"default": false,
+			"label": "t:sections.main-list-collections.settings.show_desc.label"
+		}
+	]
+}
+{% endschema %}

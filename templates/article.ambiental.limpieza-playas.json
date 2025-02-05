@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>La Importancia de las Limpiezas de Playas para la Preservación de la Biodiversidad Marina</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/resultados-y-alcance-greensouls.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.2,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h4>En GreenSouls, cada acción que tomamos está orientada hacia un objetivo claro: </h4><h5>Proteger nuestro planeta y sus ecosistemas. Las limpiezas de playas son una de nuestras iniciativas más impactantes, ya que no solo ayudan a mejorar la salud de nuestras costas, sino que también juegan un papel crucial en la preservación de la biodiversidad marina.<br/></h5>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/LIMPIEZA-DE-PLAYAS-GREENSOULS.png",
+        "bottom_left_image": "shopify://shop_images/banner4_cba3a4d5-6dca-44ca-bba3-466f86547a17.jpg",
+        "top_right_image": "shopify://shop_images/LAS-PLAYAS-GREENSOULS.png",
+        "right_text": "<p>La contaminación del medio ambiente, especialmente en los océanos, es un problema creciente que afecta a innumerables especies marinas. Plásticos, residuos y otros desechos contaminan el agua, dañan los hábitats y ponen en peligro la vida marina. A través de nuestras actividades eco amigables, hemos visto cómo la limpieza de playas puede reducir significativamente estos impactos negativos, removiendo toneladas de basura que de otra manera terminarían en el océano.</p><p>El cuidado del océano es esencial para la protección de la biodiversidad. Las especies marinas, desde las pequeñas criaturas hasta las grandes, dependen de un entorno limpio y saludable para sobrevivir. Las limpiezas de playas, por lo tanto, no solo eliminan los desechos visibles, sino que también ayudan a preservar los hábitats vitales. En GreenSouls, promovemos la conservación de océanos a través de estas limpiezas, y trabajamos para crear conciencia sobre el impacto del plástico en el océano y cómo podemos mitigarlo.<br/></p><p>Más allá de los beneficios ambientales, estas acciones también refuerzan la sostenibilidad social. Involucrar a las comunidades locales en las limpiezas de playas les da las herramientas necesarias para cuidar su entorno y educar a las futuras generaciones sobre la importancia de la sostenibilidad. Es un ejemplo de cómo las estrategias de impacto social pueden combinarse con iniciativas ambientales para crear un cambio duradero.</p><p></p>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<h4>Las limpiezas de playas son, en esencia, una herramienta poderosa para la protección del medio ambiente. Cada vez que participamos en una, estamos tomando un paso hacia un mundo más limpio y saludable. En GreenSouls, estamos comprometidos con esta misión, y creemos que estas acciones son fundamentales para garantizar un futuro sostenible para todas las especies que dependen de nuestros océanos.</h4>",
+            "image": "shopify://shop_images/LIMPIEZA-DE-OCEANOS.png"
+          }
+        },
+        "header_XtW7iA": {
+          "type": "header",
+          "settings": {
+            "text": "<h5>Te invitamos a unirte a nosotros en nuestra próxima limpieza de playas y ser parte de un movimiento que protege la biodiversidad marina y promueve la sostenibilidad. </h5><h5><a href=\"/products/oasis-santa-marta-nos-espera\" title=\"Oasis -  By GreenSouls Santa Marta nos espera\"><em>¡Haz clic aquí para conocer OASIS </em></a> para obtener más información sobre cómo puedes participar y contribuir a la conservación de océanos. ¡Juntos, podemos hacer una diferencia significativa en la salud de nuestro planeta!</h5>",
+            "image": "shopify://shop_images/LIMPIEZA-DE-OCEANOS2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "header_XtW7iA"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#4b8e97"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}
+

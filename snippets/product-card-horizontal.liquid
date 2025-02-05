@@ -1,0 +1,121 @@
+<div class="card-horizontal-wrapper">
+	<span class="visually-hidden">{{ product_card_product.title | escape }}</span>
+
+	<div class="card-horizontal__image" tabindex="-1">
+		<div class="card-horizontal__inner full-unstyled-link">
+			{%- liquid
+				assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+
+				if product_card_product.featured_media.aspect_ratio == null
+					assign featured_media_aspect_ratio = 1
+				endif
+			-%}
+
+			<div
+				class="media media--transparent media--{{ media_size }} media--hover-effect"
+				{%- if media_size == 'landscape' -%}
+					style="padding-bottom: 70%;"
+				{%- endif -%}
+				{%- if media_size == 'portrait' -%}
+					style="padding-bottom: 130%;"
+				{%- endif -%}
+				{%- if media_size == 'square' -%}
+					style="padding-bottom: 100%;"
+				{%- endif -%}
+			>
+				{%- if product_card_product.featured_media -%}
+					{% assign fit = '' %}
+					{% if media_fit == 'contain' %}
+						{% assign fit = 'object-fit: contain;' %}
+					{% endif %}
+					{% if media_fit == 'cover' %}
+						{% assign fit = 'object-fit: cover;' %}
+					{% endif %}
+					{{
+						product_card_product.featured_media
+						| image_url: width: 1066
+						| image_tag:
+							loading: 'lazy',
+							widths: '360, 533, 720, 940, 1066',
+							class: 'motion-reduce',
+							style: fit,
+							width: product_card_product.featured_media.width,
+							height: product_card_product.featured_media.height
+					}}
+					{%- if product_card_product.media[1] != null
+						and show_secondary_image
+					-%}
+						{{
+							product_card_product.media[1]
+							| image_url: width: 1066
+							| image_tag:
+								loading: 'lazy',
+								widths: '165, 360, 533, 720, 940, 1066',
+								class: 'motion-reduce',
+								style: fit,
+								width: product_card_product.media[1].width,
+								height: product_card_product.media[1].height
+						}}
+					{%- endif -%}
+				{%- else -%}
+					{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+				{%- endif -%}
+			</div>
+		</div>
+		<a
+			href="{{ product_card_product.url | default: '#' }}"
+			class="link--overlay card-wrapper__link--overlay"
+			aria-label="link"
+		></a>
+	</div>
+
+	<div class="card-horizontal__information">
+		{%- if show_vendor -%}
+			<span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+			{%- if product_card_product.vendor != blank -%}
+				<div class="caption-with-letter-spacing subtitle subtitle--secondary">
+					{{ product_card_product.vendor }}
+				</div>
+			{%- else -%}
+				<div class="caption-with-letter-spacing subtitle subtitle--secondary">
+					{{ 'products.product.vendor' | t }}
+				</div>
+			{%- endif -%}
+		{%- endif -%}
+
+		<div class="card-horizontal__title">
+			{%- if product_card_product.title != blank -%}
+				<h5>
+					<a href="{{ product_card_product.url | default: '#' }}">
+						{{ product_card_product.title | escape }}
+					</a>
+				</h5>
+			{%- else -%}
+				<h5>{{ 'products.product.product_heading' | t }}</h5>
+			{%- endif -%}
+			<a
+				href="{{ product_card_product.url | default: '#' }}"
+				class="button button--simple card-horizontal__button"
+				aria-label="card link"
+				{% if product_card_product.url == blank %}
+					aria-disabled="true"
+				{% endif %}
+			>
+				{% render 'icon-button-arrow' %}
+			</a>
+		</div>
+
+		{%- if show_desc and product_card_product.description != blank -%}
+			<div class="card-horizontal__description">
+				{{ product_card_product.description | strip_html | truncate: 120 }}
+			</div>
+		{%- endif -%}
+
+		{% render 'price', product: product_card_product, price_class: '' %}
+	</div>
+	<a
+		href="{{ product_card_product.url | default: '#' }}"
+		class="link link--overlay card-wrapper__link--overlay"
+		aria-label="link"
+	></a>
+</div>

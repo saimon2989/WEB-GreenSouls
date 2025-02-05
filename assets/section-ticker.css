@@ -1,0 +1,47 @@
+.ticker {
+  position: relative;
+  overflow: hidden;
+}
+.ticker .swiper-wrapper {
+  width: auto !important;
+  transition-timing-function: linear !important;
+}
+.ticker .swiper-slide {
+  width: auto !important;
+  flex-shrink: 1;
+  display: inline-flex;
+}
+.ticker__svg {
+  width: 4.3rem;
+  height: 4.3rem;
+  position: relative;
+  margin: 0 1.5rem;
+}
+@media screen and (min-width: 576px) {
+  .ticker__svg {
+    margin: 0 2.7rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .ticker__svg {
+    margin: 0 3.7rem;
+  }
+}
+.ticker__svg svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  color: rgb(var(--color-accent));
+}
+.ticker__title {
+  margin: 0;
+  text-align: center;
+  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}

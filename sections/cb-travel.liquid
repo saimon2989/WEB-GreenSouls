@@ -1,0 +1,265 @@
+{% style %}
+  .cb__container.section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .section-{{ section.id }}
+  .cb-card {
+    display: grid;
+    gap: 3em;
+    border-radius: 30px;
+    padding: 0 2em 3em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }}
+  .cb-card::before {
+    content: '';
+    position: absolute;
+    background: #00000091;
+    inset: 0;
+    z-index: 2;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__item:not(.cb-card__item--bg) .cb-card__text {
+    margin-bottom: 2em;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__item:not(.cb-card__item--bg) .cb-card__text:nth-child(2) {
+    border-left: 2px solid #FFF;
+    padding-left: 1em;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__item {
+    position: relative;
+    z-index: 3;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__item--bg {
+    background-color: #FFF;
+    padding: 8em 1.5em 3em;
+    border-radius: 0 0 100px;
+    border-top: 1px solid;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__item--bg .cb-card__text::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 2px;
+    background-color: #000;
+    top: 30%;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__block {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    column-gap: 1em;
+    border-bottom: 3px solid;
+    padding-block: 1.2em;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__svg svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__text > * {
+    color: #FFF;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__icon {
+    display: block;
+    margin-left: auto;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__item--bg .cb-card__text > * {
+    color: #000
+  }
+
+  .section-{{ section.id }}
+  .cb-card__svg svg {
+    width: 100%;
+    height: 100%;
+  }
+
+    @media (min-width: 767px) and (max-width: 1199px) {
+      .section-{{ section.id }}
+  .cb-card__item--bg {
+    padding-inline: 4em;
+  }
+    }
+
+  @media (min-width: 1200px) {
+    .section-{{ section.id }} .cb-card {
+      grid-template-columns: minmax(200px, 40%) auto;
+      align-items: center;
+      gap: 8em;
+      padding: 0 3em 3em;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__icon {
+      display: block;
+      margin-left: auto;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__block {
+      justify-content: start;
+      padding-left: 3em;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__item--bg {
+      padding: 20em 3em 8em;
+      border-radius: 0 0 200px;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__icon {
+      width: 70px;
+      height: 70px;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__item:not(.cb-card__item--bg) {
+      padding-inline: 4em;
+      margin-top: 8em;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__item--bg .cb-card__text::before {
+      width: 130px;
+      height: 4px;
+      top: 300px;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__item:not(.cb-card__item--bg) .cb-card__text:nth-child(2) {
+      border-left: 4px solid #FFF;
+      margin-bottom: 8em;
+      padding-left: 2em;
+    }
+
+  }
+
+{% endstyle %}
+
+<div class="cb__container section-{{ section.id }}">
+  <div class="cb-card">
+      {% if section.settings.image == blank %}
+        <div class="cb-card__svg">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% else %}
+        <img
+          class="cb-card__image"
+          src="{{ section.settings.image | image_url }}"
+          alt="{{ section.settings.image.alt | default: shop.name | escape }}"
+          loading="lazy">
+      {% endif %}
+    <div class="cb-card__item cb-card__item--bg">
+      <div class="cb-card__text">{{ section.settings.left_text }}</div>
+    </div>
+    <div class="cb-card__item">
+      <div class="cb-card__text">{{ section.settings.right_text_top }}</div>
+      <div class="cb-card__text">{{ section.settings.right_text_bottom }}</div>
+      <div>
+        <img
+          class="cb-card__icon"
+          src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_13-8.png"
+          width="40"
+          height="40" />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Travel by Codebulls",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section options"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin top"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin bottom"
+      },
+      {
+        "type": "header",
+        "content": "Background options"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "header",
+        "content": "Text options"
+      }, {
+        "type": "richtext",
+        "id": "left_text",
+        "default": "<h2>¡Viaja, siembra, libera y restaura playas en Colombia, sé parte de estas almas verdes!</h2>",
+        "label": "Text"
+      }, {
+        "type": "richtext",
+        "id": "right_text_top",
+        "default": "<p>Te sumergirás en un viaje que redeﬁne el turismo con propósito.</p>",
+        "label": "Text"
+      }, {
+        "type": "richtext",
+        "id": "right_text_bottom",
+        "default": "<p>Desde avistamiento de fauna, plantar árboles y liberar especies, cada actividad se convierte en un acto simbólico y transformador. </p>",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Travel by Codebulls"
+      }
+    ]
+  }
+{% endschema %}

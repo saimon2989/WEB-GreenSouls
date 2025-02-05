@@ -1,0 +1,286 @@
+{{ 'section-card-grid.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+	 {% render 'spaced-section-inner' %}
+{% endstyle %}
+
+<div class="card-grid color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+	<div class="card-grid container">
+		{%- if section.settings.subtitle != blank
+			or section.settings.title != blank
+		-%}
+			<div class="card-grid__text title-wrapper">
+				{%- if section.settings.subtitle != blank -%}
+					<div class="subtitle">
+						{{ section.settings.subtitle }}
+					</div>
+				{%- endif -%}
+				{%- if section.settings.title != blank -%}
+					<h2 class="card-grid__title">
+						{{ section.settings.title }}
+					</h2>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		<div class="card-grid__block">
+			{%- for block in section.blocks -%}
+				<div
+					id="{{ block.id }}"
+					class="card-grid-card color-background-2 {% if block.settings.active %}card-grid-card--active{% endif %} card-grid-card--width-variant-{{ block.settings.card_width }} {% if block.settings.block_image == blank %}card-grid-card--noimg{% endif %}"
+					{{ block.shopify_attributes }}
+				>
+					{% style %}
+						#{{ block.id }}{
+							--opacity_overlay: rgba(var(--color-overlay), {{ block.settings.opacity_overlay }})
+						}
+					{% endstyle %}
+					<div
+						class="card-grid-card__picture"
+					>
+						{%- if block.settings.block_image != blank -%}
+							{% assign big = '' %}
+							{% if block.settings.active %}
+								{% assign big = 'card-grid-card__img-show' %}
+							{% endif %}
+							{{
+								block.settings.block_image
+								| image_url: width: 3600
+								| image_tag:
+									loading: 'lazy',
+									class: big,
+									widths: '640, 880, 1300, 1780, 1800, 2600, 3600'
+							}}
+						{%- else -%}
+							<div class="card-grid-card__placeholder-img {% if block.settings.active %}card-grid-card__img-show{% endif %}">
+								{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="card-grid-card__number">
+						<span>{{ forloop.index }}</span>
+						{%- if block.settings.block_image != blank -%}
+							{% assign small = 'card-grid-card__small-img' %}
+							{% if block.settings.active %}
+								{% assign small = 'card-grid-card__small-img card-grid-card__small-img--hide' %}
+							{% endif %}
+							<figure>
+								{{
+									block.settings.block_image
+									| image_url: width: 200
+									| image_tag: loading: 'lazy', widths: '100, 200', class: small
+								}}
+							</figure>
+						{%- else -%}
+							<div class="card-grid-card__small-img {% if block.settings.active %}card-grid-card__small-img--hide{% endif %}">
+								{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="card-grid-card__text">
+						{%- if block.settings.block_title != blank -%}
+							<h4 class="card-grid-card__title">
+								{{ block.settings.block_title }}
+							</h4>
+						{%- endif -%}
+						{%- if block.settings.block_text != blank -%}
+							<p class="card-grid-card__description">
+								{{ block.settings.block_text }}
+							</p>
+						{%- endif -%}
+					</div>
+					{%- if block.settings.block_link != blank -%}
+						<a
+							href="{{ block.settings.block_link }}"
+							class="card-grid-card__link"
+							aria-label="link"
+						>
+						</a>
+					{%- endif -%}
+				</div>
+			{%- endfor -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.card-grid.name",
+	"tag": "section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"class": "card-grid-section",
+	"settings": [
+		{
+			"type": "select",
+			"id": "color_scheme",
+			"options": [
+				{
+					"value": "background-1",
+					"label": "t:sections.all.color_scheme.options__1.label"
+				},
+				{
+					"value": "background-2",
+					"label": "t:sections.all.color_scheme.options__2.label"
+				},
+				{
+					"value": "background-5",
+					"label": "t:sections.all.color_scheme.options__3.label"
+				}
+			],
+			"default": "background-1",
+			"label": "t:sections.all.color_scheme.header"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"default": "Subheading",
+			"label": "t:sections.card-grid.settings.subtitle.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "title",
+			"default": "Some header",
+			"label": "t:sections.card-grid.settings.heading.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "column",
+			"name": "t:sections.card-grid.blocks.heading.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "block_image",
+					"label": "t:sections.card-grid.blocks.heading.settings.img.label"
+				},
+				{
+					"type": "range",
+					"id": "opacity_overlay",
+					"min": 0,
+					"max": 1,
+					"step": 0.1,
+					"label": "t:sections.card-grid.blocks.heading.settings.opacity_overlay.label",
+					"default": 0
+				},
+				{
+					"type": "select",
+					"id": "card_width",
+					"options": [
+						{
+							"value": "1",
+							"label": "t:sections.card-grid.settings.card_width.options__1.label"
+						},
+						{
+							"value": "2",
+							"label": "t:sections.card-grid.settings.card_width.options__2.label"
+						},
+						{
+							"value": "3",
+							"label": "t:sections.card-grid.settings.card_width.options__3.label"
+						},
+						{
+							"value": "4",
+							"label": "t:sections.card-grid.settings.card_width.options__4.label"
+						}
+					],
+					"default": "1",
+					"label": "t:sections.card-grid.settings.card_width.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "active",
+					"default": false,
+					"label": "t:sections.card-grid.blocks.heading.settings.active.label"
+				},
+				{
+					"type": "text",
+					"id": "block_title",
+					"default": "Some heading",
+					"label": "t:sections.card-grid.blocks.heading.settings.title.label"
+				},
+				{
+					"type": "textarea",
+					"id": "block_text",
+					"default": "Some description",
+					"label": "t:sections.card-grid.blocks.heading.settings.text.label"
+				},
+				{
+					"type": "url",
+					"id": "block_link",
+					"label": "t:sections.card-grid.blocks.heading.settings.link.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.card-grid.name",
+			"blocks": [
+				{
+					"type": "column",
+					"settings": {
+						"card_width": "2"
+					}
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+.cb__siembra-corales-container .contenedor-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0;
+    padding-left: 0;
+    align-items: center;
+  }
+  .cb__siembra-corales-container .contenedor-child .contenido {
+    padding: 3rem;
+    border-radius: 30px;
+    position: relative;
+    z-index: 1;
+    height: fit-content;
+    display: grid;
+    left: 150px;
+    max-width: 600px;
+  }
+  
+  .cb__siembra-corales-container .imagen {
+    position: relative;
+    right: 150px;
+    transform: none;
+    transform-origin: initial;
+  }
+
+  .cb__siembra-corales-container .imagen {
+    border-radius: 30px;
+    overflow: hidden;
+    transform: scale(1.05);
+    transform-origin: right;
+  }
+  
+  .cb__siembra-corales-container .imagen img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+    .cb__siembra-corales-container .cb__title-text {
+      font-size: 32px;
+    }
+  
+  @media (max-width: 500px){
+    .cb__siembra-corales-container .contenedor-child {
+      grid-template-columns: auto;
+    }
+  
+    .cb__siembra-corales-container .contenedor-child .contenido {
+      left: 0;
+    }
+  
+    .cb__siembra-corales-container .imagen {
+      right: 0;
+    }
+  
+    .cb__siembra-corales-container.cb__siembra-corales-container .contenedor-child .contenido {
+      padding: 3rem;
+    }
+
+    .cb__siembra-corales-container .cb__title-text {
+      font-size: 28px;
+    }
+
+    .cb__siembra-corales-container .imagen {
+      transform: scale(1);
+    }
+  }

@@ -1,0 +1,208 @@
+{% style %}
+  .cb__container {
+    max-width: 1840px;
+    margin: 0 auto;
+  }
+
+    .cb__container.cb__container--{{ section.id }} {
+      padding-inline: 2rem;
+      padding-block: 0;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__content {
+      display: grid;
+      gap: 1em;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__column {
+      display: grid;
+      gap: 2em;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__image {
+      border-radius: 30px;
+      overflow: hidden;
+      background-color: #f2f2f2;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__image img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__image svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__icon svg {
+      width: 50px;
+    }
+
+    .cb__container--{{ section.id }}
+    .cb__text {
+      margin-bottom: 1.2em;
+    }
+
+
+    @media (min-width: 1023px) {
+      .cb__container.cb__container--{{ section.id }} {
+        padding-inline: 4rem;
+      }
+
+      .cb__container--{{ section.id }}
+      .cb__content {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3em;
+      }
+
+      .cb__container--{{ section.id }}
+      .cb__image img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cb__container--{{ section.id }}
+      .cb__text {
+        margin-bottom: 0;
+      }
+
+      .cb__container--{{ section.id }}
+      .cb__column {
+        grid-template-rows: max-content;
+        gap: 3em;
+      }
+
+      .cb__container--{{ section.id }} .cb__content
+      .cb__column:last-child {
+          grid-template-rows: 1fr min-content;
+      }
+    }
+{% endstyle %}
+
+<div class="cb__container cb__container--{{ section.id }}">
+  <div class="cb__content">
+    <div class="cb__column">
+      <div class="cb__text">
+        {{ section.settings.text }}
+      </div>
+      <div class="cb__image">
+        {% if section.settings.top_left_image == blank %}
+          {{ 'image' | placeholder_svg_tag }}
+        {% else %}
+          <img src="{{ section.settings.top_left_image | image_url }}">
+        {% endif %}
+      </div>
+      {% if section.settings.show_additional_image != 'no' %}
+        <div class="cb__image">
+          {% if section.settings.bottom_left_image == blank %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% else %}
+            <img src="{{ section.settings.bottom_left_image | image_url }}">
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="cb__column">
+      <div class="cb__image">
+        {% if section.settings.top_right_image == blank %}
+          {{ 'image' | placeholder_svg_tag }}
+        {% else %}
+          <img src="{{ section.settings.top_right_image | image_url }}">
+        {% endif %}
+      </div>
+      <div class="cb__text">
+        {{ section.settings.right_text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Article by Codebulls",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section options"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px",
+      "label": "Margin top"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px",
+      "label": "Margin bottom"
+    },
+    {
+      "type": "header",
+      "content": "Text options"
+    }, {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>El segundo día, la limpieza de playas fue la actividad principal, con la colaboración de las comunidades     locales y las bolsas hechas de plástico reciclado de TASK. Se logró recoger más de 450 kg de residuos, con 300 kg de ellos siendo aprovechables. También se realizó un torneo de Surf, en el que se premió a jóvenes deportistas locales y se entregaron dotaciones deportivas, tablas profesionales de Surf y repuestos para las mismas elaboradas con materiales amigables con el medio ambiente. Además, se donaron implementos de cocina y de aseo para las familias de estos deportistas.</p>",
+      "label": "Text"
+    }, {
+      "type": "header",
+      "content": "Image options"
+    }, {
+      "type": "select",
+      "id": "show_additional_image",
+      "label": "Show Additonal Image",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        }, {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "yes"
+    }, {
+      "type": "image_picker",
+      "id": "top_left_image",
+      "label": "Image"
+    }, {
+      "type": "image_picker",
+      "id": "bottom_left_image",
+      "label": "Image"
+    }, {
+      "type": "image_picker",
+      "id": "top_right_image",
+      "label": "Image"
+    }, {
+      "type": "richtext",
+      "id": "right_text",
+      "default": "<p><b>El evento concluyó con una charla de astrología impartida por líderes mamos indígenas de la tribu Kogui de la Sierra Nevada de Santa Marta.</b>Estas actividades contaron con la participación de reconocidos inﬂuenciadores y artistas, incluyendo a Ana Sofía Henao, Los de Ñam, Nicole Betancur, María Mona Osorio, Sophie Echeverri, Mario Espitia y Marce La Recicladora. Cada marca también aportó su granito de arena para lograr un impacto positivo en el evento. Maaji, marca líder en beachwear y sostenibilidad, vistió a los participantes con rashguards para protegerlos del sol durante la limpieza de playas. Dislicores proporcionó el vidrio de sus botellas para reciclarlo y crear bases para sembrar un arrecife de coral nuevo. Task dotó la limpieza de playas con sus bolsas hechas en un 98% con materiales reciclados y donó más de 50 kits de aseo y cocina para las comunidades locales. Localiza, por su parte, contribuyó a movilizar personas,  donaciones y sueños a los diferentes espacios donde se realizó el evento. Loccitane proporcionó una  experiencia sensorial con sus productos, mientras que ISDIN protegió la piel de los participantes con su fotoprotector solar durante los 3 días de arduo trabajo por el planeta.</p>",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article by Codebulls"
+    }
+  ]
+}
+{% endschema %}

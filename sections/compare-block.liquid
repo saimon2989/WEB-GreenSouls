@@ -1,0 +1,217 @@
+{{ 'twentytwenty.css' | asset_url | stylesheet_tag }}
+{{ 'section-compare.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'jquery.event.move.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'jquery.twentytwenty.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+	{% render 'spaced-section' %}
+{% endstyle %}
+
+<section class="compare">
+	<div class="container">
+		<div class="compare__box">
+			<div class="compare__content">
+				{%- if section.settings.heading != blank
+					or section.settings.title != blank
+				-%}
+					<div class="title-wrapper">
+						{%- if section.settings.heading != blank -%}
+							<div class="compare__subtitle subtitle">
+								{{ section.settings.heading }}
+							</div>
+						{%- endif -%}
+						{%- if section.settings.title != blank -%}
+							<h2 class="compare__title">{{ section.settings.title }}</h2>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+
+				{%- if section.settings.text != blank -%}
+					<div class="compare__description">
+						<p class="compare__text">{{ section.settings.text }}</p>
+					</div>
+				{%- endif -%}
+				{%- if section.settings.compare_product != blank -%}
+					<div class="compare__product {% if section.settings.compare_product != blank %}collection-product-card collection-popular-card featured-products__item featured-products__item--card quickview{%- if settings.quickview_hover -%}--hover{% endif %}{% endif %}">
+						{% render 'product-card-horizontal',
+							product_card_product: section.settings.compare_product,
+							media_size: section.settings.image_ratio,
+							media_fit: section.settings.image_fit,
+							show_secondary_image: section.settings.show_secondary_image,
+							show_vendor: section.settings.show_vendor,
+							show_desc: section.settings.show_desc,
+							section_id: section.id
+						%}
+					</div>
+				{%- endif -%}
+			</div>
+			<div class="compare__slayd">
+				{%- if section.settings.image_before != blank
+					and section.settings.image_after != blank
+				-%}
+					<div class="twentytwenty-wrapper twentytwenty-horizontal">
+						<div class="twentytwenty-container">
+							{{
+								section.settings.image_before
+								| image_url: width: 1790
+								| image_tag: loading: 'lazy', widths: '553, 895, 1790'
+							}}
+							{{
+								section.settings.image_after
+								| image_url: width: 1790
+								| image_tag: loading: 'lazy', widths: '553, 895, 1790'
+							}}
+						</div>
+					</div>
+				{%- else -%}
+					<div class="compare__defoult">
+						{{
+							'product-1'
+							| placeholder_svg_tag: 'placeholder-svg placeholder'
+						}}
+						{{
+							'product-2'
+							| placeholder_svg_tag: 'placeholder-svg placeholder'
+						}}
+					</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "t:sections.compare-block.name",
+	"tag": "section",
+	"class": "section-compare",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "Compare",
+			"label": "t:sections.compare-block.settings.heading.label"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"default": "Some header",
+			"label": "t:sections.compare-block.settings.title.label"
+		},
+		{
+			"type": "textarea",
+			"id": "text",
+			"default": "Some description",
+			"label": "t:sections.compare-block.settings.text.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_before",
+			"label": "t:sections.compare-block.settings.image_before.label",
+			"info": "t:sections.compare-block.settings.image_before.info"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_after",
+			"label": "t:sections.compare-block.settings.image_after.label",
+			"info": "t:sections.compare-block.settings.image_before.info"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.product-recommendations.settings.header__2.content"
+		},
+		{
+			"type": "product",
+			"id": "compare_product",
+			"label": "t:sections.compare-block.settings.compare_product.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "square",
+			"label": "t:sections.product-recommendations.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "image_fit",
+			"label": "t:sections.featured-products.settings.image_fit.label",
+			"options": [
+				{
+					"value": "contain",
+					"label": "t:sections.featured-products.settings.image_fit.options__1.label"
+				},
+				{
+					"value": "cover",
+					"label": "t:sections.featured-products.settings.image_fit.options__2.label"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_secondary_image",
+			"default": true,
+			"label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_vendor",
+			"default": true,
+			"label": "t:sections.product-recommendations.settings.show_vendor.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_desc",
+			"default": false,
+			"label": "t:sections.product-recommendations.settings.show_desc.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.compare-block.presets.name"
+		}
+	]
+}
+{% endschema %}

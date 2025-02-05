@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<h1><strong>VITA: Carrera con propósito</strong></h1>",
+        "heading_size": "medium",
+        "text_information": "20 de Octubre de 2024",
+        "text_align": "center",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/vita-carrera-x-el-planetaa.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.6,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h3><strong>Vivimos una experiencia única donde el deporte, la sostenibilidad y el compromiso con nuestra ciudad se unieron de manera poderosa; este evento fue más que una carrera: </strong></h3>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/vita-carrera-x-el-planetaaaaa.jpg",
+        "bottom_left_image": "shopify://shop_images/vita-carrera-x-el-planetaaaa.jpg",
+        "top_right_image": "shopify://shop_images/vita-carrera-x-el-planetaaa.jpg",
+        "right_text": "<p>Fue un símbolo de cómo pequeñas acciones colectivas pueden tener un gran impacto en el bienestar social y ambiental. Durante la jornada, más de 700 corredores se unieron para recorrer las calles de Medellín, alcanzando un total de 6.545 kilómetros, esto representa nuestro compromiso de recolectar 6.545 kg de residuos, cumpliendo la meta de recoger 1 kg de basura por cada kilómetro recorrido. <br/>El propósito de VITA era claro: correr por una Medellín más consciente y sostenible. Junto a nuestros aliados como Task, Tetra Pak, INDER, Agua Cristal, Electrolit, El Tesoro, San Diego, Almacentro, Telemedellín y muchos más, logramos que esta jornada fuera una auténtica revolución de bienestar y conciencia, cada paso que dieron los participantes fue un paso hacia una ciudad más comprometida con su futuro y con su entorno.<br/>Gracias a la participación en este evento, Medellín será impactada positivamente con la recolección de residuos en las zonas más críticas de la ciudad. Nuestro compromiso no solo se limita a organizar una carrera, sino a contribuir activamente en la limpieza y recuperación de los espacios que más lo necesitan.<br/>GreenSouls, como organizador de VITA, reafirma su misión de crear eventos y experiencias que promuevan el impacto positivo. Este ha sido solo el comienzo de un movimiento que no se detiene, seguiremos trabajando por un futuro más sostenible, donde el deporte y la conciencia ambiental se unan.<br/></p>"
+      }
+    },
+    "cb_article_cLhHip": {
+      "type": "cb-article",
+      "blocks": {
+        "header_PcxGRP": {
+          "type": "header",
+          "settings": {
+            "text": "",
+            "image": "shopify://shop_images/vita-carrera-x-el-planetaa.jpg"
+          }
+        },
+        "block_MaLPrR": {
+          "type": "block",
+          "settings": {
+            "text": "<h2>¡Nos vemos en VITA 2025, listos para seguir corriendo por el cambio!</h2><h2><a href=\"/pages/vita-festival-carrera-5k-10k-15k\" target=\"_blank\" title=\"Vita Festival - Carrera 5k 10k y 15k\">Conoce más</a></h2>",
+            "image": "shopify://shop_images/vita-carrera-x-el-planetaaaaaa.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_PcxGRP",
+        "block_MaLPrR"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#e23a00"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_cLhHip",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

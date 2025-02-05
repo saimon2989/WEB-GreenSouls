@@ -1,0 +1,202 @@
+{{ 'section-brand.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+	{% render 'spaced-section-inner' %}
+{% endstyle %}
+
+<div class="brands container">
+	<div class="border-wrapper {% if section.settings.border_top %}brand__border--top{% endif %} {% if section.settings.border_bottom %}brand__border--bottom{% endif %} ">
+		<div class="brands__items section-{{ section.id }}-padding">
+			{%- for block in section.blocks -%}
+				<a
+					class="brands__item"
+					{% if block.settings.brand_link.url != blank %}
+						href="{{ block.settings.brand_link }}"
+					{% endif %}
+					{% if block.settings.brand_link.url == blank %}
+						aria-disabled="true"
+					{% endif %}
+					{{ block.shopify_attributes }}
+				>
+					{%- assign height = block.settings.image.height -%}
+					{%- assign width = block.settings.image_width -%}
+					{%- assign sizes = '(min-width: 1100px) 750, (min-width: 750px) 550, 275' -%}
+					{%- if block.settings.image_2 != blank
+						or block.settings.image != blank
+					-%}
+						{%- if block.settings.image_2 != blank -%}
+							{{
+								block.settings.image_2
+								| image_url: width: 710
+								| image_tag:
+									loading: 'lazy',
+									sizes: sizes,
+									widths: '550, 750',
+									height: height,
+									width: width,
+									class: 'brands__image brands__image--dark'
+							}}
+						{%- endif -%}
+						{%- if block.settings.image != blank -%}
+							{{
+								block.settings.image
+								| image_url: width: 710
+								| image_tag:
+									loading: 'lazy',
+									sizes: sizes,
+									widths: '550, 750',
+									height: height,
+									width: width,
+									class: 'brands__image brands__image--light'
+							}}
+						{%- endif -%}
+					{% else %}
+						<div class="brands__placeholder">Brand</div>
+					{%- endif -%}
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.brand-image.name",
+	"class": "spaced-section",
+	"tag": "section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "header",
+			"content": "t:sections.all.section-border.header.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.all.section-border.border_top.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_bottom",
+			"default": true,
+			"label": "t:sections.all.section-border.border_bottom.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "column",
+			"name": "t:sections.brand-image.blocks.column.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.brand-image.blocks.column.settings.image.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_2",
+					"label": "t:sections.brand-image.blocks.column.settings.image_2.label"
+				},
+				{
+					"type": "range",
+					"id": "image_width",
+					"min": 40,
+					"max": 300,
+					"step": 5,
+					"unit": "px",
+					"label": "t:sections.brand-image.blocks.column.settings.image_width.label",
+					"default": 140
+				},
+				{
+					"type": "url",
+					"id": "brand_link",
+					"label": "t:sections.brand-image.blocks.column.settings.brand_link.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.brand-image.presets.name",
+			"blocks": [
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

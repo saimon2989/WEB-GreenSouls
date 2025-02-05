@@ -1,0 +1,133 @@
+
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "OASIS X GREENSOULS",
+        "heading": "<p>OASIS: Impacto Ambiental y Social que Inspira al Cambio en Santa Marta</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/festival-con-proposito-oasis.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>En GreenSouls, estamos<br/>convencidos de que cada acción, por pequeña que sea, tiene el poder de<br/>construir un mundo más justo y sostenible. Durante <strong>OASIS</strong>, nuestro evento<br/>insignia celebrado del 20 al 22 de noviembre en Santa Marta, reafirmamos<br/>nuestro compromiso con la <strong>protección<br/>del medio ambiente</strong> y el apoyo a las comunidades locales. Este<br/>encuentro reunió a empresas aliadas, comunidades e influencers, logrando dejar<br/>una huella significativa a través de acciones concretas que promueven la <strong>sostenibilidad ambiental</strong><br/>y <strong>social</strong>. </p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/limpieza-de-playas-oasis.jpg",
+        "bottom_left_image": "shopify://shop_images/limpieza-de-playas-oasis.png",
+        "top_right_image": "shopify://shop_images/limpieza-de-playas-en-oasis-greensouls.jpg",
+        "right_text": "<p>Uno de los momentos más conmovedores de <strong>OASIS</strong> fue la entrega de una beca completa por parte de <strong>Ceipa</strong> a un joven de 17 años con una historia de resiliencia que nos inspira profundamente. En GreenSouls, quisimos sumar a esta oportunidad entregándole un computador, facilitando así su acceso a la educación y dándole herramientas para construir un futuro mejor. Este gesto reafirma nuestra convicción de que la educación es una de las formas más poderosas de generar impacto social.</p><p>Además, OASIS nos permitió llevar a cabo acciones que fortalecieron nuestra conexión con las comunidades y con el medio ambiente. Junto a <strong>Colgate</strong>, entregamos <strong>500 kits de higiene oral</strong> a estudiantes de la <strong>Institución Educativa Distrital Técnica Guachaca</strong> y otros 26 kits a surfistas y recicladores, promoviendo el cuidado personal y la salud.</p>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<p>Junto a<strong>Task</strong>, realizamos una limpieza de playas donde recogimos aproximadamente<strong>25 kg de residuosy</strong>se entregaron<strong>cuatro baterías completas de cocina y utensilios</strong>a recicladores, agradeciendo su labor diaria. Como parte del compromiso con la<strong>sostenibilidad social</strong>, entregamos<strong>dos tablas de surf</strong>a la comunidad local, impulsando el deporte como una forma de conexión y respeto por la naturaleza.</p>",
+            "image": "shopify://shop_images/task-y-greensouls.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#08393f"
+      }
+    },
+    "cb_article_w_dBKYny": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>Nos sentimos profundamente agradecidos por el apoyo de otros aliados como <strong>JetSMART, KIA, Hilton, Tay Beach, Dislicores, Biosophia e Isdin</strong>, quienes compartieron nuestra visión y se unieron para construir un futuro más verde.</p><p>Más que un evento, OASIS fue una plataforma para demostrar que los pequeños gestos generan grandes cambios. Cada actividad que realizamos refuerza nuestra filosofía: el trabajo colectivo y la determinación pueden transformar vidas y proteger los ecosistemas.</p><p>En GreenSouls,  seguimos comprometidos con la misión de inspirar y accionar por un planeta más sostenible. <strong>Te invitamos a unirte a nuestro movimiento y a ser parte de esta transformación.</strong> Juntos, podemos crear un impacto positivo que trascienda generaciones.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/oasis-blog-post.png",
+        "bottom_left_image": "shopify://shop_images/oasis-festival-by-greensoulsglobal.jpg",
+        "top_right_image": "shopify://shop_images/oasis-festival-by-greensouls.jpg",
+        "right_text": ""
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_article_w_dBKYny",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

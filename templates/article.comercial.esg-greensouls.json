@@ -1,0 +1,112 @@
+
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p><strong>ESG: Qué son, por qué son esenciales para tu empresa y cómo GreenSouls te ayuda a implementarlos</strong></p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/task-y-greensouls.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.3,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>En un mundo donde la sostenibilidad empresarial no es solo una opción, sino una necesidad, los <strong>ESG (Environmental, Social, and Governance)</strong> se han convertido en los pilares fundamentales para medir el compromiso de las empresas con el impacto ambiental, social y su gobernanza interna. Estas estrategias no solo benefician al planeta, sino que también construyen un camino hacia la sostenibilidad financiera y reputacional.<br/><br/><strong>¿Qué son los ESG?</strong></p><p>Los <strong>criterios ESG</strong> son un marco que ayuda a evaluar cómo las empresas gestionan su impacto en el medio ambiente, sus relaciones con las comunidades y empleados, y sus prácticas de gobernanza. Estos estándares permiten identificar organizaciones responsables, transparentes y con propósito.</p><p>1️. <strong>E (Environmental):</strong> Medidas relacionadas con el medio ambiente, como la reducción de emisiones, la gestión de residuos o la conservación de recursos naturales.<br/><br/>2️. <strong>S (Social):</strong> Impacto en las comunidades, derechos laborales, diversidad e inclusión, y relaciones con los stakeholders.<br/><br/>3️. <strong>G (Governance):</strong> Prácticas éticas, transparencia en decisiones, igualdad en la dirección y responsabilidad corporativa.</p><h4><strong>La importancia de cumplir con los estándares ESG</strong></h4><p>Adoptar <strong>criterios y estándares ESG</strong> ya no es opcional para las empresas. Consumidores, inversores y reguladores exigen un compromiso claro con la sostenibilidad y la responsabilidad social. Además, normativas como la <strong>CSRD (Corporate Sustainability Reporting Directive)</strong> y los <strong>Criterios y Estándares RSE </strong>están impulsando la transición hacia reportes más detallados y acciones<br/>concretas.</p><p>✔ <strong>Reputación sólida:</strong> Empresas que cumplen con estándares ESG son percibidas como responsables y alineadas con los valores de sus consumidores.<br/><br/>✔ <strong>Atracción de inversores:</strong> Fondos de inversión responsables priorizan organizaciones con estrategias ESG bien definidas.<br/><br/>✔ <strong>Cumplimiento normativo:</strong> La integración de estándares como la <strong>CSRD </strong>asegura que las empresas se mantengan competitivas y cumplan con las exigencias regulatorias.</p>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/colgate-y-greenosuls_en_san-andres.jpg",
+        "bottom_left_image": "shopify://shop_images/empresas-greensouls_c76efa4d-6cd5-4260-906a-4348c7c7a9aa.jpg",
+        "top_right_image": "shopify://shop_images/LAS-PLAYAS-GREENSOULS.png",
+        "right_text": "<h4><strong>¿Cómo GreenSouls ayuda a cumplir con los criterios ESG?</strong></h4><p>En GreenSouls, integramos estrategias de impacto ambiental y social que fortalecen los pilares ESG de las empresas. Nuestros servicios están diseñados para alinear tus operaciones con los <strong>criterios y estándares ESG</strong>, mientras generamos resultados tangibles para el planeta y las comunidades.</p><p>✔ <strong>Proyectos ambientales:</strong> Limpiezas de playas, siembras de manglares y conservación de ecosistemas que refuerzan el componente ambiental.<br/><br/>✔ <strong>Impacto social:</strong> Actividades que empoderan comunidades locales, generan empleo y promueven la inclusión social.<br/><br/>✔ <strong>Transparencia y medición:</strong> Diseñamos reportes claros que demuestran el impacto real de tus acciones, alineados con la <strong>CSRD</strong> y otros estándares de sostenibilidad empresarial.</p>"
+      }
+    },
+    "cb_article_w_H3eYhG": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h4><strong>Beneficios de integrar ESG en tu empresa</strong></h4><p>La adopción de estrategias ESG no solo posiciona a tu marca como líder en <strong>sostenibilidad empresarial</strong>, sino que también:</p><p><strong>- Reduce riesgos:</strong> Ayuda a prever impactos ambientales y sociales que puedan afectar las operaciones.</p><p><strong>- Incrementa la fidelidad de los consumidores:</strong> Las audiencias valoran las marcas responsables y comprometidas con su entorno.</p><p><strong>- Fortalece las alianzas estratégicas:</strong> Involucrar a socios y aliados en acciones sostenibles genera valor compartido.</p><h4><strong>Sé parte del cambio con GreenSouls</strong></h4><p>En GreenSouls, entendemos que cumplir con los <strong>criterios y estándares ESG</strong> es un paso fundamental hacia un futuro más sostenible. Estamos aquí para ayudarte a diseñar estrategias que alineen tu negocio con estas exigencias, mientras generas un impacto positivo en el medio ambiente y la sociedad.</p><h5><strong>¿Estás listo para transformar tu empresa y liderar el cambio?</strong> </h5><p>Contáctanos y juntos construyamos un camino hacia la sostenibilidad y la responsabilidad<br/>corporativa🌍💚</p>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/donaciones-a-comunidades-by-greensouls.jpg",
+        "bottom_left_image": "shopify://shop_images/banner4_cba3a4d5-6dca-44ca-bba3-466f86547a17.jpg",
+        "top_right_image": "shopify://shop_images/donaciones-gaia2.jpg",
+        "right_text": ""
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_w_H3eYhG",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

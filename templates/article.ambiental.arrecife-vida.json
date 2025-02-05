@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>Cómo la siembra de corales puede ayudar a restaurar la salud de los océanos y a proteger las especies marinas</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/la-importancia-de-sembrar-corales.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.2,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h4><strong>Los océanos son el hogar de una gran parte de la biodiversidad del planeta, y los arrecifes de coral juegan un papel crucial en el mantenimiento de estos ecosistemas. </strong></h4><p>Sin embargo, los corales enfrentan una creciente amenaza debido al cambio climático, la contaminación del medio ambiente y la sobreexplotación de los recursos marinos. En GreenSouls, sabemos que la siembra de corales es una herramienta poderosa para restaurar la salud de los océanos y proteger las especies marinas que dependen de estos hábitats.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/la-importancia-de-sembrar-coral.jpg",
+        "bottom_left_image": "shopify://shop_images/siembra-corales.jpg",
+        "top_right_image": "shopify://shop_images/siembra-coral_3576ee02-3b0b-46de-9fd5-c227940b5bff.jpg",
+        "right_text": "<p>Un ejemplo claro de este compromiso es nuestro proyecto “Un Arrecife de Vida”, donde hemos implementado la siembra de corales en áreas degradadas de San Andrés. Gracias a tecnologías avanzadas como la microfragmentadora, hemos logrado acelerar el crecimiento de corales al cortar fragmentos más pequeños, lo que aumenta la capacidad de regeneración. </p><p></p><h3><strong>Hasta ahora, hemos sembrado miles de fragmentos de coral, restaurando áreas críticas y ayudando a la recuperación de los ecosistemas marinos.</strong></h3><h5>La siembra de corales no solo beneficia a los arrecifes, sino también a la biodiversidad marina, estos son el hogar de miles de especies, y su restauración es esencial para proporcionar refugio y alimento a una gran variedad de especies marinas. Al restaurar estos ecosistemas, estamos protegiendo la cadena alimenticia y ayudando a mantener el equilibrio en los océanos.</h5>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<p>Además de mejorar la sostenibilidad ambiental, la siembra de corales tiene un impacto positivo en el turismo sostenible. Los arrecifes sanos atraen a turistas interesados en el ecoturismo en Colombia, creando oportunidades económicas para las comunidades locales y promoviendo el turismo con propósito. Este tipo de turismo no solo fomenta la conservación de océanos, sino que también educa a los visitantes sobre la importancia de proteger nuestros mares y la biodiversidad marina.</p>",
+            "image": "shopify://shop_images/corales.jpg"
+          }
+        },
+        "header_XtW7iA": {
+          "type": "header",
+          "settings": {
+            "text": "<p>La siembra de corales es, sin duda, una solución efectiva para restaurar los ecosistemas marinos y proteger a las especies marinas. En GreenSouls, seguiremos liderando estos esfuerzos para asegurar un futuro más saludable para nuestros océanos. </p><p>Te invitamos a conocer más sobre nuestro proyecto <a href=\"/pages/un-arrecife-de-vida-x-dislicores-junto-a-greensouls\" target=\"_blank\" title=\"Un arrecife de vida x Dislicores junto a GreenSouls\"><em>“Un Arrecife de Vida” y a unirte a este movimiento </em></a>de sostenibilidad que está generando un impacto positivo tanto en la naturaleza como en las comunidades.</p>",
+            "image": "shopify://shop_images/siembra_de-corales-guarderias_43007292-fe80-4060-a987-496608ddf6d5.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "header_XtW7iA"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#00b2c1"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}
+

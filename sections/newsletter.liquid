@@ -1,0 +1,435 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'newsletter.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+	#shopify-section-{{ section.id }}  .countdown-block-font {
+		font-size: {{ section.settings.countdown_block_font | times: 0.5 | round: 0 }}px;
+	}
+	@media screen and (min-width: 576px) {
+		#shopify-section-{{ section.id }} .countdown-block-font {
+			font-size: {{ section.settings.countdown_block_font | times: 0.5 | round: 0 }}px;
+		}
+	}
+	@media screen and (min-width: 990px) {
+		#shopify-section-{{ section.id }} .countdown-block-font {
+			font-size: {{ section.settings.countdown_block_font | times: 0.8 | round: 0 }}px;
+		}
+	}
+	@media screen and (min-width: 1400px) {
+		#shopify-section-{{ section.id }} .countdown-block-font {
+			font-size: {{ section.settings.countdown_block_font | times: 0.9 | round: 0 }}px;
+		}
+	}
+	@media screen and (min-width: 1600px) {
+		#shopify-section-{{ section.id }} .countdown-block-font {
+			font-size: {{ section.settings.countdown_block_font }}px;
+		}
+	}
+	{% render 'spaced-section' %}
+	.section-{{ section.id }}-padding {
+		padding-top: {{ section.settings.padding_top | times: 0.35 | round: 0 }}px;
+		padding-bottom: {{ section.settings.padding_bottom | times: 0.35 | round: 0 }}px;
+	}
+
+	@media screen and (min-width: 990px) {
+		.section-{{ section.id }}-padding {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+{% endstyle %}
+
+<section
+	class="newsletter container js-countdown js-countdown-{{ section.id }} countdown--{%- if section.settings.section_type == 'with_overlay' -%}overlay{%- endif -%}"
+	data-date="{{ section.settings.date_picker }}"
+	data-time="{{ section.settings.time_picker }}"
+	data-completed="{{ section.settings.completed_countdown }}"
+>
+	{%- if section.settings.section_type == 'with_overlay' -%}
+		<div class="bg__overlay--container">
+			<div class="countdown__bg">
+				<span
+					class="countdown__bg-overlay"
+					style="background-color: rgba(var(--color-overlay), {{ section.settings.opacity_overlay }})"
+				></span>
+				{%- if section.settings.image != blank -%}
+					{%- capture style -%}
+					object-position: {{ section.settings.image.presentation.focal_point }};
+				{%- endcapture -%}
+					{{
+						section.settings.image.preview_image
+						| image_url: width: 1946
+						| image_tag:
+							class: 'countdown__image',
+							loading: 'lazy',
+							widths: '493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+							style: style
+					}}
+				{%- endif -%}
+			</div>
+
+	{%- endif -%}
+	<div
+		class="
+			newsletter__wrapper
+				{%- if section.settings.section_type == 'simple' -%}
+					{% if section.settings.border_bottom %} newsletter__border--bottom {% endif %}
+					{% if section.settings.border_top %} newsletter__border--top {% endif %}
+				{% endif %}
+			{% if section.settings.color_scheme == 'dark' %} dark-color {% endif %}{% if section.settings.color_scheme == 'light' %} light-color {% endif %}
+				 section-{{ section.id }}-padding
+		"
+	>
+		<div class="newsletter__heading ">
+			<div class="newsletter__heading--container">
+				<h2 class="newsletter__heading">{{ section.settings.heading }}</h2>
+				<p class="newsletter__text">
+					{{ section.settings.newsletter_text_1 }}
+				</p>
+				{%- if section.settings.button_label != blank -%}
+					<a
+						{% if section.settings.button_link != blank %}
+							href="{{ section.settings.button_link }}"
+						{% endif %}
+						class="image-countdown__link button button--primary"
+						{% if section.settings.button_link == blank %}
+							aria-disabled="true"
+						{% endif %}
+					>
+						<span>
+							{{ section.settings.button_label | escape }}
+						</span>
+						{% render 'icon-button-arrow' %}
+					</a>
+				{%- endif -%}
+			</div>
+		</div>
+		<div class="newsletter__timer">
+			<div class="countdown">
+				<div class="countdown__item day">
+					<span
+						class="num h2 date__days countdown-block-font"
+						id="days"
+					></span>
+					<p class="word">{{ 'general.countdown.days' | t }}</p>
+				</div>
+				<div class="countdown__item hour">
+					<span
+						class="num h2 date__hours countdown-block-font"
+						id="hours"
+					></span>
+					<p class="word">{{ 'general.countdown.hours' | t }}</p>
+				</div>
+				<div class="countdown__item min">
+					<span
+						class="num h2 date__mins countdown-block-font"
+						id="mins"
+					></span>
+					<p class="word">{{ 'general.countdown.minutes' | t }}</p>
+				</div>
+				<div class="countdown__item sec ">
+					<span
+						class="num h2 date__secs countdown-block-font"
+						id="secs"
+					></span>
+					<p class="word">{{ 'general.countdown.seconds' | t }}</p>
+				</div>
+			</div>
+			<div class="newsletter__form">
+				<p class="newsletter__title">
+					{{ section.settings.newsletter_text_2 }}
+				</p>
+				{% form 'customer', class: 'newsletter-form' %}
+					<div class="newsletter-form__inner">
+						<input type="hidden" name="contact[tags]" value="newsletter">
+						<div class="newsletter-form__field-wrapper">
+							<div class="field">
+								<input
+									id="NewsletterForm--{{ section.id }}"
+									type="email"
+									name="contact[email]"
+									class="field__input field"
+									value="{{ form.email }}"
+									aria-required="true"
+									autocorrect="off"
+									autocapitalize="off"
+									autocomplete="email"
+									{% if form.errors %}
+										autofocus
+										aria-invalid="true"
+										aria-describedby="Newsletter-error--{{ section.id }}"
+									{% elsif form.posted_successfully? %}
+										aria-describedby="Newsletter-success--{{ section.id }}"
+									{% endif %}
+									placeholder="{{ 'newsletter.label' | t }}"
+									required
+								>
+								<label
+									class="field__label"
+									for="NewsletterForm--{{ section.id }}"
+									placeholder="{{ 'newsletter.label' | t }}"
+									type="hidden"
+								></label>
+							</div>
+							{%- if form.errors -%}
+								<small
+									class="newsletter-form__message form__message"
+									id="Newsletter-error--{{ section.id }}"
+								>
+									{%- render 'icon-error' -%}
+									{{- form.errors.translated_fields.email | capitalize }}
+									{{ form.errors.messages.email -}}
+								</small>
+							{%- endif -%}
+						</div>
+						<button
+							type="submit"
+							class="newsletter__button button button--primary"
+							name="commit"
+						>
+							<span>{{ 'newsletter.button_label' | t }}</span>
+							{% render 'icon-button-arrow' %}
+						</button>
+					</div>
+					{%- if form.posted_successfully? -%}
+						<h3
+							class="newsletter-form__message newsletter-form__message--success form__message"
+							id="Newsletter-success--{{ section.id }}"
+							tabindex="-1"
+							autofocus
+						>
+							{% render 'icon-success' -%}
+							{{- 'newsletter.success' | t }}
+						</h3>
+					{%- endif -%}
+				{% endform %}
+			</div>
+		</div>
+		{% if section.settings.countdown_heading %}
+			<div class="countdown__heading">
+				<h3 class="h3 richtext__content">
+					{{ section.settings.countdown_heading }}
+				</h3>
+			</div>
+		{% endif %}
+	</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "t:sections.newsletter.name",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "select",
+			"id": "section_type",
+			"options": [
+				{
+					"value": "simple",
+					"label": "t:sections.newsletter.settings.section_type.options__1.label"
+				},
+				{
+					"value": "with_overlay",
+					"label": "t:sections.newsletter.settings.section_type.options__2.label"
+				}
+			],
+			"default": "simple",
+			"label": "t:sections.newsletter.settings.section_type.label"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "Heading for subscribe form",
+			"label": "t:sections.newsletter.settings.heading.label"
+		},
+		{
+			"type": "textarea",
+			"id": "newsletter_text_1",
+			"default": "Additional text for subscribe form.",
+			"label": "t:sections.newsletter.settings.newsletter_text_1.label"
+		},
+		{
+			"type": "textarea",
+			"id": "newsletter_text_2",
+			"default": "Additional text for subscribe form.",
+			"label": "t:sections.newsletter.settings.newsletter_text_2.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.newsletter.header.content"
+		},
+		{
+			"type": "text",
+			"id": "date_picker",
+			"default": "2023-12-31",
+			"info": "YYYY-MM-DD",
+			"label": "t:sections.newsletter.settings.date_picker.label"
+		},
+		{
+			"type": "text",
+			"id": "time_picker",
+			"default": "00:00",
+			"info": "hh:mm",
+			"label": "t:sections.newsletter.settings.time_picker.label"
+		},
+		{
+			"type": "range",
+			"id": "countdown_block_font",
+			"min": 10,
+			"max": 100,
+			"step": 5,
+			"unit": "px",
+			"label": "t:sections.newsletter.settings.countdown_block_font.label",
+			"default": 60
+		},
+		{
+			"type": "select",
+			"id": "completed_countdown",
+			"options": [
+				{
+					"value": "hide_section",
+					"label": "t:sections.newsletter.settings.completed_countdown.options_1.label"
+				},
+				{
+					"value": "show_text",
+					"label": "t:sections.newsletter.settings.completed_countdown.options_2.label"
+				}
+			],
+			"default": "show_text",
+			"label": "t:sections.newsletter.settings.completed_countdown.label"
+		},
+		{
+			"type": "richtext",
+			"id": "countdown_heading",
+			"default": "<p>Header after countdown</p>",
+			"info": "t:sections.newsletter.settings.countdown_heading.info",
+			"label": "t:sections.newsletter.settings.countdown_heading.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:sections.newsletter.settings.paragraph.content"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-border.header.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.all.section-border.border_top.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_bottom",
+			"default": true,
+			"label": "t:sections.all.section-border.border_bottom.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.newsletter.settings.header__1.content"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:sections.newsletter.settings.image.label",
+			"info": "t:sections.newsletter.settings.image.info"
+		},
+		{
+			"type": "select",
+			"id": "color_scheme",
+			"default": "light",
+			"label": "t:sections.announcement-bar.settings.color_scheme.label",
+			"options": [
+				{
+					"value": "dark",
+					"label": "t:sections.announcement-bar.settings.options__1.label"
+				},
+				{
+					"value": "light",
+					"label": "t:sections.announcement-bar.settings.options__2.label"
+				}
+			]
+		},
+		{
+			"type": "range",
+			"id": "opacity_overlay",
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"label": "t:sections.newsletter.settings.opacity_overlay.label",
+			"default": 0.4
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 70,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 80,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.newsletter.name"
+		}
+	]
+}
+{% endschema %}

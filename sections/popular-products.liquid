@@ -1,0 +1,299 @@
+{{ 'section-popular-products.css' | asset_url | stylesheet_tag }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'popular-products.js' | asset_url }}" defer="defer"></script>
+
+{%- if settings.quickview_show -%}
+	<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- assign product_types = section.settings.collection.products
+	| map: 'type'
+	| uniq
+-%}
+
+{% style %}
+	{% render 'spaced-section' %}
+
+	#shopify-section-{{ section.id }} .card-wrapper {
+		background-color: rgb(var(--color-{{ section.settings.color_scheme }}))
+	}
+{% endstyle %}
+
+<div class="popular-products">
+	<div class="container">
+		{%- if section.settings.subtitle != blank
+			or section.settings.heading != blank
+			or section.settings.link != blank
+		-%}
+			<div class="popular-products__top title-wrapper {%- if section.settings.border_top -%}--border{% endif %}">
+				<div class="profucts__left">
+					{%- if section.settings.subtitle != blank -%}
+						<div class="subtitle">
+							{{ section.settings.subtitle }}
+						</div>
+					{%- endif -%}
+					{%- if section.settings.heading != blank -%}
+						<h2 class="h2 popular-products__heading">
+							{{ section.settings.heading }}
+						</h2>
+					{%- endif -%}
+				</div>
+
+				{% if section.settings.link != blank %}
+					<a
+						{% if section.settings.button_link.url != blank %}
+							href="{{ section.settings.button_link.url }}"
+						{% endif %}
+						class="button button--primary "
+						{% if section.settings.button_link.url == blank %}
+							aria-disabled="true"
+						{% endif %}
+					>
+						<span>{{ section.settings.link }}</span>
+						{% render 'icon-button-arrow' %}
+					</a>
+				{% endif %}
+			</div>
+		{%- endif -%}
+
+		{% if section.settings.filter %}
+			{%- if product_types.size > 1 -%}
+				<div class="popular-products__filters-wrapper">
+					<ul class="popular-products__filters filters">
+						<li>
+							<a
+								href="/"
+								class="filters__item filters__item_active"
+								data-type-target="all"
+							>
+								{{- 'products.facets.all' | t -}}
+							</a>
+						</li>
+						{% for type in product_types %}
+							<li>
+								<a href="/" class="filters__item" data-type-target="{{ type }}">
+									{{- type -}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{%- endif -%}
+		{% endif %}
+
+		{%- liquid
+			assign columns = section.blocks.size
+			if columns > 4
+				assign columns = 4
+			endif
+		-%}
+
+		<ul
+			class="popular-products__wrapper list-unstyled"
+			data-limit="{{ section.settings.products_limit }}"
+		>
+			{%- for product in section.settings.collection.products -%}
+				<li
+					data-type="{{ product.type }}"
+					class="
+						collection-product-card collection-popular-card featured-products__item featured-products__item--card
+						quickview{%- if settings.quickview_hover -%}--hover{% endif %} {% if forloop.index <= section.settings.products_limit %} show {% endif %}
+					"
+				>
+					{% render 'product-card',
+						product_card_product: product,
+						media_size: section.settings.image_ratio,
+						media_fit: section.settings.image_fit,
+						show_secondary_image: section.settings.show_secondary_image,
+						show_vendor: section.settings.show_vendor,
+						show_desc: section.settings.show_desc,
+						section_id: section.id
+					%}
+				</li>
+			{%- else -%}
+				{%- for i in (1..4) -%}
+					<li class="collection-product-card collection-popular-card collection-popular-card--placeholder featured-products__item">
+						{% render 'product-card-placeholder', media_size: 'square' %}
+					</li>
+				{%- endfor -%}
+			{%- endfor -%}
+		</ul>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.popular-products.name",
+	"tag": "section",
+	"class": "popular-products",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.product-recommendations.settings.border_top.label"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"default": "Subheading",
+			"label": "t:sections.popular-products.settings.subtitle.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<p>Popular Items</p>",
+			"label": "t:sections.popular-products.settings.heading.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "filter",
+			"default": false,
+			"label": "t:sections.popular-products.settings.filter.label",
+			"info": "t:sections.popular-products.settings.filter.info"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "link",
+			"default": "View All",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.product-recommendations.settings.header__2.content"
+		},
+		{
+			"type": "collection",
+			"id": "collection",
+			"label": "t:sections.popular-products.settings.collection.label"
+		},
+		{
+			"type": "range",
+			"id": "products_limit",
+			"min": 4,
+			"max": 12,
+			"step": 4,
+			"default": 4,
+			"label": "t:sections.popular-products.settings.products_limit.label"
+		},
+		{
+			"type": "select",
+			"id": "color_scheme",
+			"options": [
+				{
+					"value": "background-card",
+					"label": "t:sections.product-recommendations.settings.color_scheme.default"
+				},
+				{
+					"value": "base-background-1",
+					"label": "t:sections.all.color_scheme.options__1.label"
+				},
+				{
+					"value": "base-background-2",
+					"label": "t:sections.all.color_scheme.options__2.label"
+				}
+			],
+			"default": "background-card",
+			"label": "t:sections.all.color_scheme.header"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "square",
+			"label": "t:sections.product-recommendations.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "image_fit",
+			"label": "t:sections.featured-products.settings.image_fit.label",
+			"options": [
+				{
+					"value": "contain",
+					"label": "t:sections.featured-products.settings.image_fit.options__1.label"
+				},
+				{
+					"value": "cover",
+					"label": "t:sections.featured-products.settings.image_fit.options__2.label"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_secondary_image",
+			"default": true,
+			"label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_vendor",
+			"default": true,
+			"label": "t:sections.product-recommendations.settings.show_vendor.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_desc",
+			"default": false,
+			"label": "t:sections.product-recommendations.settings.show_desc.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.popular-products.presets.name"
+		}
+	]
+}
+{% endschema %}

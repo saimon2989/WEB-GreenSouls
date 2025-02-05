@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<h2><strong>Plogging Post-Carrera: </strong></h2><h2>Un Compromiso Cumplido con el Medio Ambiente</h2>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/interceptors.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.5,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>En GreenSouls, estamos convencidos de que cada pequeño acto cuenta cuando se trata de cuidar el planeta. El pasado 5 de noviembre, nuestro equipo, junto con una increíble red de aliados y miembros de la comunidad, se unió para una jornada de<strong>plogging</strong>en la canalización cerca del Estadio en Medellín, recogiendo 7,250 kg de residuos. Esta actividad fue una extensión del compromiso que iniciamos con la<strong>Carrera VITA</strong>, y se convirtió en un esfuerzo colectivo que ejemplifica el poder de la movilización comunitaria y la<strong>responsabilidad social</strong>.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/plogging-en-medellin.jpg",
+        "bottom_left_image": "shopify://shop_images/plogging-en-medellin-2.jpg",
+        "top_right_image": "shopify://shop_images/plogging-en-medellin-3.jpg",
+        "right_text": "<h3><strong>La Fuerza de la Comunidad </strong></h3><p>La jornada de plogging contó con la colaboración de 25 policías, 4 influencers, 6 corredores de la Carrera VITA, 5 miembros de la comunidad, 7 recicladores, 15 colaboradores de la Secretaría de Medio Ambiente y 8 integrantes del equipo de GreenSouls. Este esfuerzo conjunto demuestra que, al unir fuerzas, podemos lograr un <strong>impacto ambiental positivo</strong> significativo. La <strong>colaboración intersectorial</strong> es clave para enfrentar la <strong>contaminación del medio ambiente</strong> y restaurar los espacios naturales de nuestras ciudades. </p><p></p><h3><strong>Aliados Clave para el Cambio </strong></h3><p>La <strong>Carrera VITA</strong> y esta jornada de plogging fueron posibles gracias al apoyo de nuestros aliados: Alcaldía de Medellín, Origen Fest, Task, Tetra Pack, Electrolit, Kelley, Agua Cristal, Inder, Asemar, Smarfit, Telemedellín, Spirit, Mattelsa, y muchos otros. Su colaboración no solo facilitó la logística del evento, sino que también envió un mensaje poderoso sobre la <strong>responsabilidad social</strong> y el impacto que cada organización puede generar a través de <strong>estrategias de sostenibilidad</strong>. Estos aliados ayudaron a mostrar cómo el compromiso colectivo y las <strong>actividades eco amigables</strong> pueden generar <strong>resultados comerciales sostenibles</strong> que beneficien tanto a la comunidad como al medio ambiente.</p><p>Esta jornada de plogging demostró que pequeños actos pueden generar un cambio significativo cuando se unen. Además de los 7,250 kg de residuos recolectados, esta actividad generó un impacto social positivo, fortaleciendo el sentido de comunidad y promoviendo el <strong>cuidado y protección del medio ambiente</strong>. Esta acción de VITA es solo el comienzo de un esfuerzo continuo de GreenSouls y sus aliados para promover el <strong>cuidado del medio ambiente</strong> a través de iniciativas de impacto que inspiren a otros a unirse a la causa.</p>"
+      }
+    },
+    "cb_article_cLhHip": {
+      "type": "cb-article",
+      "blocks": {
+        "header_PcxGRP": {
+          "type": "header",
+          "settings": {
+            "text": "",
+            "image": "shopify://shop_images/PLOGGING2.png"
+          }
+        },
+        "block_MaLPrR": {
+          "type": "block",
+          "settings": {
+            "text": "<p>En GreenSouls, creemos que la <strong>sostenibilidad</strong> y el <strong>marketing de propósito</strong> son herramientas poderosas para inspirar y crear un cambio positivo. A través de eventos como este, continuamos fomentando la participación activa de la comunidad y fortaleciendo la colaboración con aliados comprometidos. Nuestro objetivo es seguir promoviendo el <strong>cuidado del medio ambiente</strong> y el <strong>impacto social positivo</strong> en cada acción que realizamos.</p><p>Gracias a todos los que se unieron a esta jornada de plogging y a nuestros aliados por hacer de este evento una realidad. Juntos, estamos liderando un movimiento de cambio hacia un futuro más sostenible y respetuoso con el planeta. ¡Sigamos demostrando que un mundo mejor es posible!</p>",
+            "image": "shopify://shop_images/PLOGGING3.png"
+          }
+        }
+      },
+      "block_order": [
+        "header_PcxGRP",
+        "block_MaLPrR"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#262626"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_cLhHip",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}
+

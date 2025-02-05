@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>Experiencias de Marca: Conectando con los Consumidores a Través del Propósito</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/experiencias_de_marca.png",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.3,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>En un mundo donde las marcas compiten no solo por calidad, sino también por significado, las <strong>experiencias de marca</strong> se han convertido en una herramienta esencial para conectar de manera auténtica con los consumidores. En <strong>GreenSouls</strong>, hemos comprobado que los eventos diseñados con propósito no solo reflejan los valores de las marcas, sino que también generan una conexión emocional duradera que fortalece la lealtad.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/Blogpost-impulsando-san-andres4_55d6f84c-1c66-439d-8712-b252cd73fdbd.jpg",
+        "bottom_left_image": "shopify://shop_images/empresas-greensouls_c76efa4d-6cd5-4260-906a-4348c7c7a9aa.jpg",
+        "top_right_image": "shopify://shop_images/producto-2.jpg",
+        "right_text": "<h4><strong>La fuerza de las experiencias significativas</strong></h4><p>Crear una experiencia de marca va más allá de un evento bien organizado. Se trata de diseñar momentos que resuenen con las audiencias, alineándose con sus valores y preocupaciones. Las personas buscan cada vez más marcas que actúen en favor de la <strong>sostenibilidad ambiental</strong> y el <strong>impacto social positivo</strong>, y las experiencias diseñadas con propósito son el puente que conecta esas expectativas con acciones concretas.</p><h4><strong>¿Cómo creamos conexiones profundas?</strong></h4><p>En GreenSouls, trabajamos junto a las empresas para transformar sus valores en acciones tangibles que el consumidor pueda vivir y sentir. Diseñamos experiencias que no solo generan impacto, sino que también cuentan historias poderosas que quedan grabadas en las mentes y corazones de quienes participan.</p><p>Estas actividades no solo benefician al medio ambiente y a las comunidades locales, sino que también refuerzan la percepción de las marcas como aliadas en la creación de un mundo más justo y sostenible.</p>"
+      }
+    },
+    "cb_article_w_H3eYhG": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h4><strong>Resultados que trascienden</strong></h4><p>Cuando las marcas invierten en experiencias alineadas con la <strong>sostenibilidad empresarial</strong> y el propósito, los beneficios son claros:<br/><br/>✔ Mayor lealtad del consumidor.<br/><br/>✔ Conexiones emocionales más fuertes.<br/><br/>✔ Un impacto medible en términos ambientales y sociales.</p><p>Las experiencias de marca con propósito no solo transforman la percepción de las empresas, sino que también inspiran a otros a actuar.</p><h4><strong>El futuro está en las experiencias con propósito</strong></h4><p>En un mercado cada vez más consciente, las marcas que logren conectar emocionalmente con sus audiencias serán las que lideren el cambio. En GreenSouls, creemos que cada evento es una oportunidad para inspirar y accionar por un mundo mejor.</p><p><strong>¿Estás listo para que tu marca conecte de manera auténtica con sus consumidores?</strong> 💡🌱 <strong>Contáctanos y diseñemos juntos una experiencia que no solo cuente una historia, sino que deje una huella duradera.</strong></p>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/aqua-4.jpg",
+        "bottom_left_image": "shopify://shop_images/banner4_cba3a4d5-6dca-44ca-bba3-466f86547a17.jpg",
+        "top_right_image": "shopify://shop_images/TURISMO-SOSTENIBLE-GREENSOULS78.jpg",
+        "right_text": ""
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_w_H3eYhG",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

@@ -1,0 +1,255 @@
+{% style %}
+  .cb__container.section-id-{{ section.id }} {
+        padding-top: 0;
+        padding-bottom: 0;
+
+    }
+
+    .cb__container .section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-id-{{ section.id }} .contenedor-child {
+        grid-template-columns: 1fr auto;
+        border-radius: 0;
+    }
+
+    .section-id-{{ section.id }} .contenido {
+        padding: 0 8rem;
+    }
+
+    .section-id-{{ section.id }} .cb__show-border-top {
+          border-top-width: 1px;
+          border-top-color: {{ section.settings.border-color }};
+          border-top-style: solid;
+    }
+
+    .section-id-{{ section.id }} .cb__show-border-bottom {
+          border-bottom-width: 1px;
+          border-bottom-color: {{ section.settings.border-color }};
+          border-bottom-style: solid;
+    }
+
+    .section-{{ section.id }}.cb__background-color {
+        background-color: {{ section.settings.background-color }};
+    }
+
+    .section-{{ section.id }} .cb__title-text {
+        color: {{ section.settings.titulo_color }};
+    }
+
+    .section-{{ section.id }} .cb__subtitle-text {
+        color: {{ section.settings.subtitulo_color }};
+    }
+
+    .section-{{ section.id }} .cb__paragraph-text {
+        color: {{ section.settings.parrafo_color }};
+    }
+
+
+    .section-id-{{ section.id }} .cb__right-content-details {
+      display: grid;
+      grid-auto-flow: row;
+      align-content: center;
+    }
+
+    .section-id-{{ section.id }} .cb__right-content-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid;
+      padding: 1.2em 0;
+  }
+
+  .section-id-{{ section.id }} .cb__right-content-image img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .section-id-{{ section.id }} .cb__right-content-image svg {
+    width: 100%;
+  }
+
+
+    @media (max-width: 500px){
+        .section-id-{{ section.id }} .contenido {
+            padding: 0;
+        }
+
+    .section-id-{{ section.id }} .contenedor-child {
+            grid-template-columns: auto;
+            row-gap: 40px;
+        }
+    }
+{% endstyle %}
+
+<div class="cb__container section-id-{{ section.id }}">
+  <div
+    class="
+      section-{{ section.id }} contenedor-child cb__background-color{% if section.settings.show-border-top %} cb__show-border-top{% endif %}
+      {% if section.settings.show-border-bottom %} cb__show-border-bottom{% endif %}
+    "
+  >
+    <div class="contenido">
+      <div class="cb__title-text">{{ section.settings.titulo }}</div>
+      <div class="cb__subtitle-text">{{ section.settings.subtitulo }}</div>
+      <div class="cb__paragraph-text">{{ section.settings.parrafo }}</div>
+    </div>
+
+    <div class="cb__right-content-details">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'right_content' %}
+            <div class="cb__right-content-item">
+              <div class="cb__right-content-image">
+                {% if block.settings.icon_image == blank %}
+                  {{ 'image' | placeholder_svg_tag }}
+                {% else %}
+                  {%- assign image_width = block.settings.image_width | append: 'x' -%}
+                  <img
+                    srcset="{{ block.settings.icon_image | img_url: image_width }} 1x, {{ block.settings.icon_image | img_url: image_width, scale: 2 }} 2x"
+                    src="{{ block.settings.icon_image | img_url: image_width }}"
+                    width="{{ block.settings.image_width }}"
+                    height="{{ block.settings.icon_image.height }}"
+                    alt="{{ block.settings.icon_image.alt | default: shop.name | escape }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="cb__right-content-text">
+                {{ block.settings.details }}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Details by Codebulls",
+  "tag": "section",
+        "settings": [
+        {
+            "type": "header",
+            "content": "Section options"
+        },
+        {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_top.label"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_bottom.label"
+            },
+            {
+                "type": "checkbox",
+                "default": true,
+                "id": "show-border-top",
+                "label": "Show border top"
+            },
+            {
+                "type": "checkbox",
+                "default": true,
+                "id": "show-border-bottom",
+                "label": "Show border bottom"
+            },
+            {
+                "type": "color",
+                "id": "border-color",
+                "label": "Border color",
+                "default": "#08393f"
+            },
+            {
+                "type": "header",
+                "content": "Text options"
+            },
+            {
+                "type": "richtext",
+                "id": "titulo",
+                "default": "<h2>Heading</h2>",
+                "label": "Heading"
+            },
+            {
+                "type": "color",
+                "id": "titulo_color",
+                "label": "Title color",
+                "default": "#000"
+            },
+            {
+                "type": "richtext",
+                "id": "subtitulo",
+                "default": "<p>Subheading</p>",
+                "label": "Subtitle"
+            },
+            {
+                "type": "color",
+                "id": "subtitulo_color",
+                "label": "Subtitle color",
+                "default": "#000"
+            },
+            {
+                "type": "richtext",
+                "id": "parrafo",
+                "default": "<p>Some description</p>",
+                "label": "Text description"
+            },
+            {
+                "type": "color",
+                "id": "parrafo_color",
+                "label": "Paragraph color",
+                "default": "#000"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "right_content",
+                "name": "Detail",
+                "settings": [
+                    {
+                    "type": "image_picker",
+                    "id": "icon_image",
+                    "label": "Icon image"
+                    },
+                    {
+                    "type": "range",
+                    "id": "image_width",
+                    "min": 50,
+                    "max": 200,
+                    "step": 10,
+                    "default": 100,
+                    "unit": "t:sections.footer.settings.logo_width.unit",
+                    "label": "Icon width"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "details",
+                        "default": "<p>Some description</p>",
+                        "label": "Text"
+                    }
+                ]
+
+            }
+        ],
+  "presets": [
+    {
+      "name": "Details by Codebulls"
+    }
+  ]
+}
+{% endschema %}

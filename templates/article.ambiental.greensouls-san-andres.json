@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "Un Arrecife de Vida",
+        "heading": "<h1>GreenSouls impulsando el cambio en la<br/>Isla de San Andrés</h1>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/Impulsando_el_futuro_de_San_Andr_s.jpg",
+        "image_ratio": "adapt",
+        "opacity_overlay": 0.6,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>AQUA no solo fue una experiencia inolvidable para los participantes, sino también un éxito rotundo en términos de impacto ambiental y social. Con una participación activa de la comunidad y la colaboración de diversas marcas y socios comprometidos, logramos avances significativos en la conservación del agua y la educación ambiental. Los asistentes pudieron sumergirse en actividades que no solo educaron, sino que también inspiraron a tomar medidas concretas para proteger nuestros recursos hídricos.<br/></p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/Blog_Post-impulsando-san-andres.jpg",
+        "bottom_left_image": "shopify://shop_images/BlogPost-impulsando-san-andres_islas.jpg",
+        "top_right_image": "shopify://shop_images/siembra_de_coral_por_greensouls.jpg",
+        "right_text": "<p>Entre los logros más destacados, se encuentra la recolección de toneladas de residuos en nuestras limpiezas de playas, de los cuales 41 kilos fueron aprovechables, una acción directa que contribuyó a la preservación de nuestros ecosistemas acuáticos, apoyada por Task. Además, se realizaron donaciones de elementos de cocina y aseo para biólogos y personas de la comunidad, gracias al apoyo de Ilko. Estas donaciones, junto con la entrega de más de 30 gafas para pescadores, capitanes de embarcaciones y biólogos, son ejemplos del compromiso de las empresas con la causa ambiental.<br/><br/>El evento también tuvo un fuerte componente social, beneficiando a 60 niñas con programas educativos y apoyos específicos, y logrando más de 570 donaciones en total. Estas cifras son un testimonio del poder de la colaboración y la solidaridad en la construcción de un futuro sostenible.<br/></p>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<p>El evento también fue una plataforma para fortalecer la economía circular y promover alianzas estratégicas. Marcas como YOYO, HD Ópticas, Colgate, Task, Nattivo y Dislicores se unieron para mostrar cómo la innovación ambiental puede ser un motor de crecimiento, demostrando que es posible combinar impacto social y beneficio económico. Estas colaboraciones no solo amplían el alcance de nuestras acciones, sino que también generan nuevas oportunidades para futuros proyectos de sostenibilidad.<br/><br/>Con estos resultados, AQUA ha dejado una huella significativa, y estamos emocionados por lo que el futuro nos depara. Si no pudiste asistir, te invitamos a estar pendiente de nuestrso próximos eventos. ¡No te pierdas la oportunidad de ser parte de un movimiento que está cambiando el mundo! </p>",
+            "image": "shopify://shop_images/Blogpost-impulsando-san-andres_YOYO.jpg"
+          }
+        },
+        "block_TPRwzx": {
+          "type": "block",
+          "settings": {
+            "text": "<h1><strong>Únete a nosotros en nuestra próxima edición y juntos hagamos la diferencia.</strong></h1>",
+            "image": "shopify://shop_images/colgate-y-greenosuls_en_san-andres.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "block_TPRwzx"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#093e4a"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

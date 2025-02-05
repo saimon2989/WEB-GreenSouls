@@ -1,0 +1,160 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .cb__container.section-id-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-id-{{ section.id }} .cb__includes-container {
+      display: grid;
+      grid-template-columns: repeat(4,auto);
+      gap: 50px 100px;
+  }
+
+  .section-id-{{ section.id }} .cb__includes-item-image {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 30px;
+  }
+
+  .section-id-{{ section.id }} .cb__includes-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+  }
+
+  .section-id-{{ section.id }} .cb__includes-item-image svg {
+      width: 100%;
+      height: 100%;
+  }
+
+  .section-id-{{ section.id }} .cb__includes-item-content {
+      display: grid;
+      gap: 24px;
+  }
+
+  .section-id-{{ section.id }} .cb__includes-container-heading {
+      margin-bottom: 4em;
+  }
+
+  .section-id-{{ section.id }} .cb__inner-container {
+      padding: 12rem 8rem;
+  }
+
+    @media (max-width: 500px){
+     .section-id-{{ section.id }} .cb__inner-container {
+        padding: 0;
+    }
+
+     .section-id-{{ section.id }} .cb__includes-container {
+        grid-template-columns:auto;
+    }
+  }
+{% endstyle %}
+
+<div class="cb__container section-id-{{ section.id }}">
+  <div class="cb__inner-container">
+    <div class="cb__includes-container-heading">
+      {{ section.settings.heading }}
+    </div>
+    <div class="cb__includes-container">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'column' %}
+            <div class="cb__includes-item">
+              <div class="cb__includes-item-content">
+                <div class="cb__includes-item-image">
+                  {% if block.settings.image == blank %}
+                    {{ 'image' | placeholder_svg_tag }}
+                  {% else %}
+                    <img src="{{ block.settings.image | image_url }}" loading="lazy">
+                  {% endif %}
+                </div>
+                <p class="cb__includes-item-text">{{ block.settings.text }}</p>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+	"name": "Includes by Codebulls",
+	"settings": [
+		{
+			"type": "header",
+			"content": "t:sections.all.section-padding.header.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 60,
+			"unit": "px",
+			"label": "t:sections.all.section-padding.padding_bottom.label"
+		},
+        {
+        "type": "richtext",
+        "id": "heading",
+        "default": "<h1>Heading</h1>",
+        "label": "Heading"
+    }
+
+	],
+	"blocks": [
+		{
+			"type": "column",
+			"name": "Item",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "default": "<p>Some description</p>",
+                    "label": "Description"
+                }
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Includes by Codebulls",
+			"blocks": [
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

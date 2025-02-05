@@ -1,0 +1,358 @@
+/**
+* Converts SVG into data url so that this SVG could be used as a
+* background image
+*
+* @example
+*	background-image: svgtodataurl("<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">...</svg>");
+*/
+[data-slider-hover-autoplay-stop=true] .about__carousel:hover + .swiper-pagination .swiper-pagination-bullet-active svg circle:last-child {
+  display: none;
+}
+
+[data-scheme=dark] .about__carousel-cell {
+  --cb--track-bg-color: #e6e6e6;
+  --cb--fill-color: var(--cb--track-bg-color, #e6e6e6);
+}
+
+.empty-image-about-carcass {
+  width: 100%;
+  height: auto !important;
+}
+
+body[data-scheme=dark] .about__item-empty-svg {
+  fill: rgb(200, 200, 200);
+}
+body[data-scheme=dark] .about .circle-button__svg circle:last-child {
+  stroke: rgb(255, 255, 255);
+}
+
+.about {
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4rem;
+  padding-bottom: 8rem;
+}
+.about *,
+.about *:after,
+.about *:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+@media screen and (min-width: 990px) {
+  .about {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 5rem;
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: 990px) {
+  .about {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    padding-left: 10rem;
+  }
+}
+@media screen and (min-width: 1560px) {
+  .about {
+    padding-top: 14.8rem;
+    padding-bottom: 14.8rem;
+    padding-left: 15rem;
+  }
+}
+.about .text-carousel {
+  width: 80%;
+  display: block;
+}
+@media screen and (max-width: 990px) {
+  .about .text-carousel {
+    width: 100%;
+  }
+}
+.about .swiper-pagination {
+  display: flex;
+  justify-content: flex-start;
+  gap: unset;
+  position: absolute;
+  left: 0.1rem;
+  bottom: -60px;
+  height: max-content;
+}
+@media screen and (min-width: 1200px) {
+  .about .swiper-pagination {
+    bottom: -70px;
+  }
+}
+@media screen and (min-width: 1560px) {
+  .about .swiper-pagination {
+    bottom: -90px;
+  }
+}
+.about .swiper-pagination .swiper-pagination-bullet {
+  margin: 0 0.1rem !important;
+}
+@media screen and (max-width: 1200px) {
+  .about .about__left {
+    padding-top: 0;
+  }
+}
+@media screen and (max-width: 990px) {
+  .about {
+    display: block;
+  }
+  .about .about__left,
+  .about .about__right {
+    width: 100%;
+  }
+  .about .about__section-title {
+    min-width: 100%;
+    line-height: 120%;
+  }
+  .about .about__left {
+    padding-right: 0;
+  }
+  .about .about__right {
+    padding-top: clamp(2.5rem, 5.2083333333vw, 5rem);
+  }
+}
+.about__left {
+  width: 45.7%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.about__right {
+  width: 54.3%;
+}
+.about__cat-tag {
+  margin: 0;
+}
+.about__section-title {
+  line-height: 100%;
+  letter-spacing: -0.18rem;
+  margin-top: 0.8rem;
+  max-width: 64rem;
+}
+.about__section-caption {
+  letter-spacing: -0.03rem;
+  max-width: 45rem;
+  margin-top: 4rem;
+}
+.about__carousel-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.about__carousel-cell {
+  position: relative;
+  top: 0;
+  left: 0;
+  --cb--track-bg-color: #fff;
+  --cb--rotator-stroke-color: rgb(var(--color-accent));
+  --cb--text-color: rgb(var(--color-accent-default));
+  --cb--stroke-width: 0.3rem;
+  --cb--track-bg-opacity: 0.6;
+  --cb--between-stroke-and-fill: 0.9rem;
+  --cb--width: 4.4rem;
+  --cb--height: 4.4rem;
+  --cb--svg-circle--diameter: 6.2rem;
+  --cb--font-size: 1.8rem;
+  --cb--fill-color: var(--cb--track-bg-color, #fff);
+  --cb--circle-length: 195px;
+  --cb--font-size: 1.3rem;
+}
+.about__carousel-cell .about__item-empty-img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto !important;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+  z-index: 1;
+}
+.about__carousel-cell .about__carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.about__carousel-cell .circle-button {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: var(--cb--width, 6.2rem);
+  height: var(--cb--height, 6.2rem);
+  display: block;
+  margin: 0 !important;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 1;
+  background: none;
+  flex-shrink: 0;
+  transition: linear transform 0.16s;
+  will-change: transform;
+}
+.about__carousel-cell .circle-button .circle-button__thumbnail, .about__carousel-cell .circle-button .circle-button__thumbnail-empty-svg, .about__carousel-cell .circle-button:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - var(--cb--between-stroke-and-fill, 1.5rem));
+  height: calc(100% - var(--cb--between-stroke-and-fill, 1.5rem));
+  border-radius: 50%;
+  overflow: hidden;
+}
+.about__carousel-cell .circle-button:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: attr(data-content);
+  background-color: var(--cb--fill-color);
+  font-size: var(--cb--font-size, 1.8rem);
+  color: var(--cb--text-color, rgb(var(--color-accent)));
+  opacity: 0;
+  transition: linear 0.16s opacity;
+  will-change: opacity;
+}
+.about__carousel-cell .circle-button__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.about__carousel-cell .circle-button__svg circle {
+  fill: none;
+  stroke-width: var(--cb--stroke-width, 0.3rem);
+}
+.about__carousel-cell .circle-button__svg circle:first-child {
+  stroke: var(--cb--track-bg-color, #fff);
+  stroke-opacity: var(--cb--track-bg-opacity, 0.3);
+  opacity: 0;
+  transition: linear 0.16s opacity;
+  will-change: opacity;
+}
+.about__carousel-cell .circle-button__svg circle:last-child {
+  stroke: var(--cb--rotator-stroke-color, #fff);
+  stroke-dasharray: var(--cb--circle-length);
+  stroke-dashoffset: var(--cb--circle-length);
+  opacity: 0;
+  transition: linear 0.16s all;
+}
+.about__carousel-cell .circle-button__thumbnail {
+  opacity: 1;
+  transition: linear 0.16s opacity;
+  will-change: opacity;
+}
+.about__carousel-cell .circle-button__thumbnail, .about__carousel-cell .circle-button__thumbnail-empty-svg {
+  z-index: 10;
+}
+.about__carousel-cell .circle-button svg circle:last-child {
+  opacity: 1;
+}
+.about__carousel-cell .circle-button:after {
+  opacity: 0.8;
+}
+.about__carousel-cell .circle-button.swiper-pagination-bullet-active {
+  transform: scale(1) !important;
+}
+.about__carousel-cell .circle-button:hover {
+  transform: scale(1.15);
+}
+@keyframes circle-progress {
+  0% {
+    stroke-dashoffset: var(--cb--circle-length);
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.about__carousel-cell .circle-animate-carousel {
+  animation-duration: var(--cb--delay-slideing);
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-name: circle-progress;
+}
+.about__carousel-cell .swiper-pagination-bullet-active:after {
+  opacity: 1;
+}
+.about__carousel-cell .swiper-pagination-bullet-active .circle-button__svg circle {
+  opacity: 1;
+}
+.about__carousel {
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: 6px;
+}
+.about__carousel .swiper-slide {
+  width: calc(100% - 150px);
+  background-color: rgba(var(--color-base-background-1), 0.2);
+  border-radius: 6px;
+  height: 100% !important;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 1760px) {
+  .about__carousel .swiper-slide {
+    width: calc(100% - 100px);
+  }
+}
+@media screen and (max-width: 1560px) {
+  .about__carousel .swiper-slide {
+    width: calc(100% - 80px);
+  }
+}
+@media screen and (max-width: 1360px) {
+  .about__carousel .swiper-slide {
+    width: calc(100% - 60px);
+  }
+}
+@media screen and (max-width: 990px) {
+  .about__carousel .swiper-slide {
+    width: 100%;
+  }
+}
+.about__carousel .swiper-slide:last-child {
+  padding-right: 60px;
+  width: 100%;
+}
+@media screen and (max-width: 990px) {
+  .about__carousel .swiper-slide:last-child {
+    padding-right: 0;
+  }
+}
+.about__carousel .swiper-slide img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  object-fit: cover !important;
+  border-radius: 6px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+}
+.about__carousel .about__item-empty-svg {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}

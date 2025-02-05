@@ -1,0 +1,133 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card-extended.css' | asset_url | stylesheet_tag }}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+<script
+	src="{{ 'main-collection-banner.js' | asset_url }}"
+	defer="defer"
+></script>
+
+<div class="container collection-hero collection-hero--row">
+	<div class="color-background-2 collection-hero__row-block">
+		<div class="collection-hero__inner">
+			<div class="collection-hero__text-wrapper">
+				<div class="collection-hero__top">
+					<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+						<a
+							href="{{ routes.root_url }}"
+							title="{{ 'general.breadcrumbs.home' | t }}"
+							class="link-hover-line"
+						>
+							{{ 'general.breadcrumbs.home' | t }}
+						</a>
+						<div class="breadcrumb__delimiter"></div>
+						<span>{{ collection.title }}</span>
+					</nav>
+					<h1 class="collection-hero__title title--page">
+						<span class="visually-hidden">
+							{{- 'sections.collection_template.title' | t }}:
+						</span>
+						{{- collection.title | escape -}}
+					</h1>
+				</div>
+				{%- if section.settings.show_collection_description
+					and collection.description != blank
+				-%}
+					<div class="collection-hero__description">
+						{{ collection.description }}
+					</div>
+				{%- endif -%}
+			</div>
+
+			{%- liquid
+				assign collection_image = collection.image
+				if section.settings.image_products != blank and collection.image == blank
+					assign collection_image = section.settings.image_products
+				endif
+			-%}
+			{%- if section.settings.show_collection_image -%}
+				<div class="collection-hero__image-wrapper">
+					<div class="collection-hero__image-block">
+						<div
+							class="collection-hero__image-container media rellax"
+							data-rellax-speed="-1"
+						>
+							{%- if collection_image -%}
+								{{
+									collection_image
+									| image_url: width: 1290
+									| image_tag:
+										loading: 'lazy',
+										widths: '535, 720, 940, 1070, 1100, 1290'
+								}}
+							{%- else -%}
+								{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+							{% endif %}
+						</div>
+					</div>
+					{%- for block in section.blocks -%}
+						<div
+							class="collection-hero__small-image rellax"
+							data-rellax-speed="{%- if forloop.index == 1 -%} -2 {% elsif  forloop.index == 4 %} -3 {% else %} -2 {% endif %}"
+						>
+							{%- if block.settings.image != blank -%}
+								{{
+									block.settings.image
+									| image_url: width: 150
+									| image_tag: loading: 'lazy', widths: '150, 300'
+								}}
+							{%- else -%}
+								{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+							{% endif %}
+						</div>
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-collection-banner.name",
+	"class": "collection-banner-section spaced-section--full-width section-template--overlay",
+	"settings": [
+		{
+			"type": "paragraph",
+			"content": "t:sections.main-collection-banner.settings.paragraph.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_collection_description",
+			"default": false,
+			"label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_collection_image",
+			"default": true,
+			"label": "t:sections.main-collection-banner.settings.show_collection_image.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_products",
+			"label": "t:sections.main-collection-banner.settings.image_products.label",
+			"info": "t:sections.main-collection-banner.settings.image_products.info"
+		}
+	],
+	"blocks": [
+		{
+			"type": "column",
+			"name": "t:sections.main-collection-banner.settings.block_image.label",
+			"limit": 4,
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.main-collection-banner.settings.block_image.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

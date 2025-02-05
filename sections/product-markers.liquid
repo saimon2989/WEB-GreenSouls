@@ -1,0 +1,278 @@
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card-horizontal.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-markers.css' | asset_url | stylesheet_tag }}
+
+<script
+	src="{{ 'section-product-tags.js' | asset_url }}"
+	defer="defer"
+></script>
+
+{% style %}
+	{% render 'spaced-section' %}
+{% endstyle %}
+
+<section class="section-container container product-markers-section">
+	<div
+		class="product-markers-for-mobile"
+	>
+		{%- for block in section.blocks -%}
+			<div
+				class="product-markers__item-inner js-product-markers__item-inner color-background-2"
+				data-index="{{ forloop.index }}"
+			>
+				{% render 'product-card-horizontal',
+					product_card_product: block.settings.product_id,
+					media_size: section.settings.image_ratio,
+					media_fit: section.settings.image_fit,
+					show_secondary_image: section.settings.show_secondary_image,
+					show_vendor: section.settings.show_vendor,
+					show_desc: section.settings.show_desc,
+					section_id: section.id
+				%}
+			</div>
+		{% endfor %}
+	</div>
+
+	<div
+		class="product-markers {% if section.settings.product_markers_image == blank %}	color-background-2 {% endif %} {% if section.settings.main_image_ratio != 'adapt' %}	not-adapt	{% endif %}"
+		{%- if section.settings.main_image_ratio == 'landscape' -%}
+			style="padding-bottom: 50%;"
+		{%- endif -%}
+		{%- if section.settings.main_image_ratio == 'portrait' -%}
+			style="padding-bottom: 130%;"
+		{%- endif -%}
+		{%- if section.settings.main_image_ratio == 'square' -%}
+			style="padding-bottom: 100%;"
+		{%- endif -%}
+	>
+		{%- for block in section.blocks -%}
+			<!-- prettier-ignore -->
+			<div data-index="{{ forloop.index }}" class="product-markers__item js-product-markers__item" {{ block.shopify_attributes }} style="top: {{ block.settings.position_y }}%; left:{{ block.settings.position_x }}%">
+				<div data-index="{{ forloop.index }}" class="product-markers__item-inner js-product-markers__item-inner product-markers__item-inner--{{ block.settings.tooltip_open_position }} {% if block.settings.product_id != blank %}collection-product-card collection-popular-card featured-products__item featured-products__item--card quickview{%- if settings.quickview_hover -%}--hover{% endif %}{% endif %}">
+					{% render 'product-card-horizontal',
+						product_card_product: block.settings.product_id,
+						media_size: section.settings.image_ratio,
+						media_fit: section.settings.image_fit,
+						show_secondary_image: section.settings.show_secondary_image,
+						show_vendor: section.settings.show_vendor,
+						show_desc: section.settings.show_desc,
+						section_id: section.id
+					%}
+				</div>
+			</div>
+		{% endfor %}
+
+		{% if section.settings.product_markers_image != blank %}
+			<img
+				srcset="
+					{{ section.settings.product_markers_image | image_url: width: 1800, height: 796 }} 1x,
+					{{ section.settings.product_markers_image | image_url: width: 3600, height: 1592 }} 2x,
+					{{ section.settings.product_markers_image | image_url: width: 5400, height: 2388 }} 3x,
+				"
+				src="{{ section.settings.product_markers_image | image_url: width: 1800, height: 796 }}"
+				alt="{{ section.settings.product_markers_image.alt | escape }}"
+				width="{{ section.settings.product_markers_image.width }}"
+				height="{{ section.settings.product_markers_image.height }}"
+				loading="lazy"
+				sizes="(max-width: 1760px) 1500px, (max-width: 1560px) 1300px, (max-width: 1360px) 1100px, (max-width: 1200px) 920px, (max-width: 990px) 600px, (max-width: 750px) 500px"
+				class="product-markers__item-img"
+			>
+		{% elsif section.settings.product_markers_image == blank %}
+			<div class="product-markers__placeholder">
+				{{
+					'collection-1'
+					| placeholder_svg_tag: 'product-markers__placeholder-svg'
+				}}
+			</div>
+		{% endif %}
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "t:sections.product_markers.name",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "product_markers_image",
+			"label": "Image"
+		},
+		{
+			"type": "select",
+			"id": "main_image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__3.label"
+				},
+				{
+					"value": "adapt",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__4.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:sections.product-with-image.settings.image_ratio.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.product-with-image.settings.header__2.content"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "square",
+			"label": "t:sections.product-with-image.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "image_fit",
+			"label": "t:sections.product-with-image.settings.image_fit.label",
+			"options": [
+				{
+					"value": "contain",
+					"label": "t:sections.product-with-image.settings.image_fit.options__1.label"
+				},
+				{
+					"value": "cover",
+					"label": "t:sections.product-with-image.settings.image_fit.options__2.label"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_secondary_image",
+			"default": true,
+			"label": "t:sections.product-with-image.settings.show_secondary_image.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_vendor",
+			"default": true,
+			"label": "t:sections.product-with-image.settings.show_vendor.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_desc",
+			"default": false,
+			"label": "t:sections.product-with-image.settings.show_desc.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "product_markers_item",
+			"name": "t:sections.product_markers.name",
+			"limit": 8,
+			"settings": [
+				{
+					"type": "product",
+					"id": "product_id",
+					"label": "t:sections.product_markers.blocks.settings.product.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.product_markers.blocks.settings.marker_options.header"
+				},
+				{
+					"type": "range",
+					"id": "position_x",
+					"min": 0,
+					"max": 100,
+					"step": 1,
+					"label": "t:sections.product_markers.blocks.settings.marker_options.position_x.label",
+					"default": 1
+				},
+				{
+					"type": "range",
+					"id": "position_y",
+					"min": 0,
+					"max": 100,
+					"step": 1,
+					"label": "t:sections.product_markers.blocks.settings.marker_options.position_y.label",
+					"default": 1
+				},
+				{
+					"type": "select",
+					"id": "tooltip_open_position",
+					"options": [
+						{
+							"value": "to-top",
+							"label": "t:sections.product_markers.blocks.settings.marker_options.tooltip_open_position.options.options__1.label"
+						},
+						{
+							"value": "to-right",
+							"label": "t:sections.product_markers.blocks.settings.marker_options.tooltip_open_position.options.options__2.label"
+						},
+						{
+							"value": "to-bottom",
+							"label": "t:sections.product_markers.blocks.settings.marker_options.tooltip_open_position.options.options__3.label"
+						},
+						{
+							"value": "to-left",
+							"label": "t:sections.product_markers.blocks.settings.marker_options.tooltip_open_position.options.options__4.label"
+						}
+					],
+					"default": "to-right",
+					"label": "t:sections.product_markers.blocks.settings.marker_options.tooltip_open_position.field_name"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.product_markers.name",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

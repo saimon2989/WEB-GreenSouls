@@ -1,0 +1,463 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card-horizontal.css' | asset_url | stylesheet_tag }}
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'testimonials.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+	{% render 'spaced-section' %}
+
+	#shopify-section-{{ section.id }} .card-horizontal-wrapper {
+		background-color: rgb(var(--color-{{ section.settings.color_scheme }}))
+	}
+{% endstyle %}
+
+<div
+	class="js-get-testimonials"
+	id="section-{{ section.id }}"
+	data-section-id="{{ section.id }}"
+>
+	{% comment %}  ======== SLIDER ======== {% endcomment %}
+	{%- if section.settings.testimonials_layout == 'slider' -%}
+		<section class="testimonials testimonials--slider">
+			<div class="ts-slider-wrapper">
+				<button class="ts-slider__arrow ts-slider__arrow--prev js-ts-slider__arrow--prev">
+					{%
+						render 'icon-long-arrow-next',
+						className: "ts-slider__arrow-svg ts-slider__arrow-svg--prev",
+						width: 63.02,
+						height: 25.92,
+					%}
+				</button>
+				<button class="ts-slider__arrow ts-slider__arrow--next js-ts-slider__arrow--next">
+					{%
+						render 'icon-long-arrow-prev',
+						className: "ts-slider__arrow-svg ts-slider__arrow-svg--next",
+						width: 63.02,
+						height: 25.92,
+					%}
+				</button>
+
+				<div class="container">
+					<div class="title-wrapper title-wrapper--slider">
+						{%- if section.settings.subheading != blank -%}
+							<div class="testimonials__subtitle subtitle">
+								{{ section.settings.subheading }}
+							</div>
+						{%- endif -%}
+
+						<h2 class="testimonials__heading">
+							{{ section.settings.testimonials_heading }}
+						</h2>
+						{%- if section.settings.testimonials_heading != blank -%}
+						{%- endif -%}
+					</div>
+				</div>
+
+				<div class="ts-slider js-ts-slider">
+					<div class="swiper-wrapper ts-slider__wrap">
+						{%- for block in section.blocks -%}
+							<div class="swiper-slide ts-slider__item">
+								<div
+									class="ts-slider__item-inner"
+									{{ block.shopify_attributes }}
+								>
+									{%- if block.settings.slide_name != blank
+										or block.settings.slide_position != blank
+									-%}
+										<div
+											class="author__info"
+											data-swiper-parallax="-300"
+											data-swiper-parallax-duration="600"
+										>
+											{%- if block.settings.image != blank -%}
+												{{
+													block.settings.image
+													| image_url: width: 120
+													| image_tag:
+														loading: 'lazy',
+														sizes: '(min-width: 270px) 50vw, 100vw',
+														widths: '30, 60, 90, 120',
+														class: 'author__info-pic author__info-img'
+												}}
+											{%- else -%}
+												<span class="author__info-pic author__info-placeholder-cell">
+													{{
+														'image'
+														| placeholder_svg_tag: 'author__info-placeholder'
+													}}
+												</span>
+											{%- endif -%}
+
+											<ul class="author__info-ul">
+												{%- if block.settings.slide_name != blank -%}
+													<li
+														class="author__info-li"
+														{{ block.shopify_attributes }}
+													>
+														{{- block.settings.slide_name | truncate: 50, '' -}}
+													</li>
+												{%- endif -%}
+												{%- if block.settings.slide_position != blank -%}
+													<li
+														class="author__info-li"
+														{{ block.shopify_attributes }}
+													>
+														{{-
+															block.settings.slide_position
+															| truncate: 50, ''
+														-}}
+													</li>
+												{%- endif -%}
+											</ul>
+										</div>
+									{%- endif -%}
+
+									{%- if block.settings.slide_text != blank -%}
+										<h2
+											class="author__quote h2"
+											data-swiper-parallax="-600"
+											data-swiper-parallax-duration="1200"
+										>
+											{{ block.settings.slide_text | escape }}
+										</h2>
+									{%- endif -%}
+
+									{%- if block.settings.testimonials_product != blank -%}
+										<div
+											class="author__product {% if block.settings.testimonials_product != blank %}collection-product-card collection-popular-card quickview{%- if settings.quickview_hover -%}--hover{% endif %}{% endif %}"
+											data-swiper-parallax="-900"
+											data-swiper-parallax-duration="1500"
+										>
+											{% render 'product-card-horizontal',
+												product_card_product: block.settings.testimonials_product,
+												media_size: section.settings.image_ratio,
+												media_fit: section.settings.image_fit,
+												show_secondary_image: section.settings.show_secondary_image,
+												show_vendor: section.settings.show_vendor,
+												show_desc: section.settings.show_desc,
+												section_id: section.id
+											%}
+										</div>
+									{%- endif -%}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+			</div>
+		</section>
+	{%- endif -%}
+	{% comment %}  ======== /SLIDER ======== {% endcomment %}
+
+	{% comment %}  ======== CAROUSEL ======== {% endcomment %}
+	{%- if section.settings.testimonials_layout == 'carousel' -%}
+		<section class="testimonials testimonials--carousel">
+			<div class="container">
+				<div class="title-wrapper">
+					{%- if section.settings.subheading != blank -%}
+						<div class="testimonials__subtitle subtitle">
+							{{ section.settings.subheading }}
+						</div>
+					{%- endif -%}
+
+					{%- if section.settings.testimonials_heading != blank -%}
+						<h2 class="testimonials__heading">
+							{{ section.settings.testimonials_heading }}
+						</h2>
+					{%- endif -%}
+				</div>
+
+				<div class="swiper js-swiper-testimonials js-swiper-testimonials--{{ section.settings.testimonials_layout }}">
+					<div class="swiper-wrapper">
+						{%- for block in section.blocks -%}
+							<div class="swiper-slide" {{ block.shopify_attributes }}>
+								<div class="testimonials__card color-background-2">
+									<div class="testimonials__item-header">
+										<h2 class="testimonials__title h2">
+											{{ block.settings.slide_text | escape }}
+										</h2>
+										<div class="testimonials__account">
+											<div class="testimonials__img">
+												{%- if block.settings.image != blank -%}
+													{{
+														block.settings.image
+														| image_url: width: 120
+														| image_tag:
+															loading: 'lazy',
+															sizes: '(min-width: 270px) 50vw, 100vw',
+															widths: '30, 60, 90, 120'
+													}}
+												{%- else -%}
+													{{
+														'image'
+														| placeholder_svg_tag: 'testimonials_placeholder'
+													}}
+												{%- endif -%}
+											</div>
+											<div class="testimonials__info">
+												<span class="testimonials__name">
+													{{- block.settings.slide_name | truncate: 50, '' -}}
+												</span>
+												<span class="testimonials__position">
+													{{-
+														block.settings.slide_position
+														| truncate: 50, ''
+													-}}
+												</span>
+											</div>
+										</div>
+									</div>
+
+									{%- if block.settings.testimonials_product != blank -%}
+										<div class="testimonials__product product-with-image__product-card {% if block.settings.testimonials_product != blank %}collection-product-card collection-popular-card featured-products__item featured-products__item--card quickview{%- if settings.quickview_hover -%}--hover{% endif %}{% endif %}">
+											{% render 'product-card-horizontal',
+												product_card_product: block.settings.testimonials_product,
+												media_size: section.settings.image_ratio,
+												media_fit: section.settings.image_fit,
+												show_secondary_image: section.settings.show_secondary_image,
+												show_vendor: section.settings.show_vendor,
+												show_desc: section.settings.show_desc,
+												section_id: section.id
+											%}
+										</div>
+									{%- endif -%}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+
+				<div class="nav-tools testimonials_nav-tools">
+					<div class="nav-tools__scroll-cell">
+						<div
+							class="swiper-scrollbar js-testimonials-swiper-scrollbar"
+						></div>
+					</div>
+					<div class="nav-tools__arrows">
+						<button
+							class="nav-tools__arrow nav-tools__arrow--next js-testimonials-carousel-arrow-prev"
+						>
+							{%
+								render 'icon-long-arrow-prev',
+								className: "nav-tools__arrow--prev-svg",
+								width: 39,
+								height: 16,
+							%}
+						</button>
+						<button
+							class="nav-tools__arrow nav-tools__arrow--prev js-testimonials-carousel-arrow-next"
+						>
+							{%
+								render 'icon-long-arrow-next',
+								className: "nav-tools__arrow--next-svg",
+								width: 39,
+								height: 16,
+							%}
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	{%- endif -%}
+	{% comment %}  ======== CAROUSEL ======== {% endcomment %}
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.testimonials.name",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "select",
+			"id": "testimonials_layout",
+			"options": [
+				{
+					"value": "carousel",
+					"label": "t:sections.testimonials.settings.versions.options__1.label"
+				},
+				{
+					"value": "slider",
+					"label": "t:sections.testimonials.settings.versions.options__2.label"
+				}
+			],
+			"default": "carousel",
+			"label": "t:sections.testimonials.settings.versions.label"
+		},
+		{
+			"type": "text",
+			"id": "subheading",
+			"default": "Testimonials",
+			"label": "Subheading"
+		},
+		{
+			"type": "textarea",
+			"id": "testimonials_heading",
+			"label": "t:sections.featured-blog.settings.blog_title.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.product-with-image.settings.header__2.content"
+		},
+		{
+			"type": "select",
+			"id": "color_scheme",
+			"options": [
+				{
+					"value": "background-card",
+					"label": "t:sections.product-recommendations.settings.color_scheme.default"
+				},
+				{
+					"value": "base-background-1",
+					"label": "t:sections.all.color_scheme.options__1.label"
+				},
+				{
+					"value": "base-background-2",
+					"label": "t:sections.all.color_scheme.options__2.label"
+				}
+			],
+			"default": "base-background-1",
+			"label": "t:sections.all.color_scheme.header"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "landscape",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.product-with-image.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "square",
+			"label": "t:sections.product-with-image.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "image_fit",
+			"label": "t:sections.product-with-image.settings.image_fit.label",
+			"options": [
+				{
+					"value": "contain",
+					"label": "t:sections.product-with-image.settings.image_fit.options__1.label"
+				},
+				{
+					"value": "cover",
+					"label": "t:sections.product-with-image.settings.image_fit.options__2.label"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_secondary_image",
+			"default": true,
+			"label": "t:sections.product-with-image.settings.show_secondary_image.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_vendor",
+			"default": true,
+			"label": "t:sections.product-with-image.settings.show_vendor.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_desc",
+			"default": false,
+			"label": "t:sections.product-with-image.settings.show_desc.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "testimonials_blocks",
+			"name": "t:sections.testimonials.blocks.testimonials_slide.name",
+			"settings": [
+				{
+					"type": "product",
+					"id": "testimonials_product",
+					"label": "t:sections.testimonials.settings.product.name"
+				},
+				{
+					"type": "textarea",
+					"id": "slide_text",
+					"default": "“Description feedback from your buyers”",
+					"label": "t:sections.testimonials.blocks.testimonials_slide.settings.slide_text.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.all.author.header.content"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.all.author.avatar.label",
+					"info": "t:sections.all.author.avatar.info"
+				},
+				{
+					"type": "text",
+					"id": "slide_name",
+					"default": "Buyer's name",
+					"label": "t:sections.all.author.name.label"
+				},
+				{
+					"type": "text",
+					"id": "slide_position",
+					"default": "Buyer's position",
+					"label": "t:sections.all.author.text.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.testimonials.presets.name",
+			"blocks": [
+				{
+					"type": "testimonials_blocks"
+				},
+				{
+					"type": "testimonials_blocks"
+				},
+				{
+					"type": "testimonials_blocks"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

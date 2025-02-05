@@ -1,0 +1,248 @@
+{{ 'section-instagram-collage.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+{% endstyle %}
+
+<div class="image-collage">
+	<div class="container">
+		<ul>
+			<li>
+				<div class="image-collage__item color-background-2">
+					<div class="image-collage__item-block">
+						{%- if section.settings.heading != blank -%}
+							<h2 class="image-collage__title title--section h4">
+								{{ section.settings.heading }}
+							</h2>
+						{% endif %}
+						<div class="image-collage__follow">
+							<div class="image-collage__account">
+								{%- if section.settings.image_account != blank -%}
+									<a
+										{% if section.settings.button_link != blank %}
+											href="{{ section.settings.button_link }}"
+										{% endif %}
+										{% if section.settings.button_link == blank %}
+											aria-disabled="true"
+										{% endif %}
+										aria-label="link"
+									>
+										<figure class="image-collage__photo">
+											{{
+												section.settings.image_account
+												| image_url: width: 200
+												| image_tag:
+													loading: 'lazy',
+													widths: '50, 100, 150, 200'
+											}}
+										</figure>
+									</a>
+								{%- else -%}
+									{{
+										'image'
+										| placeholder_svg_tag: 'placeholder-svg-inst color-background-1'
+									}}
+								{%- endif -%}
+								{%- if section.settings.name_account != blank
+									or section.settings.desc_account != blank
+								-%}
+									<div class="image-collage__info">
+										{%- if section.settings.name_account != blank -%}
+											<a
+												{% if section.settings.button_link != blank %}
+													href="{{ section.settings.button_link }}"
+												{% endif %}
+												{% if section.settings.button_link == blank %}
+													aria-disabled="true"
+												{% endif %}
+											>
+												<span class="image-collage__name">
+													{{- section.settings.name_account | escape -}}
+												</span>
+											</a>
+										{% endif %}
+										{%- if section.settings.desc_account != blank -%}
+											<span class="image-collage__text">
+												{{- section.settings.desc_account | escape -}}
+											</span>
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+							{%- if section.settings.button_label != blank -%}
+								<a
+									{% if section.settings.button_link != blank %}
+										href="{{ section.settings.button_link }}"
+									{% endif %}
+									class="image-collage__link button button--primary"
+									{% if section.settings.button_link == blank %}
+										aria-disabled="true"
+									{% endif %}
+								>
+									<span>
+										{{ section.settings.button_label | escape }}
+									</span>
+									{% render 'icon-button-arrow' %}
+								</a>
+							{%- endif -%}
+						</div>
+					</div>
+				</div>
+			</li>
+			{%- for block in section.blocks -%}
+				<li {{ block.shopify_attributes }}>
+					{%- if block.settings.image != blank -%}
+						{%- capture sizes -%}
+							(min-width: 1800px)
+							{{ 1800 | minus: 100 | divided_by: 2 }}px,
+							(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+							2)
+						{%- endcapture -%}
+						{{
+							block.settings.image
+							| image_url: width: 1440
+							| image_tag:
+								loading: 'lazy',
+								sizes: sizes,
+								widths: '560, 720, 1440'
+						}}
+					{%- else -%}
+						{{
+							'image'
+							| placeholder_svg_tag: 'placeholder-svg color-background-2'
+						}}
+					{%- endif -%}
+				</li>
+			{%- endfor -%}
+		</ul>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.instagram-collage.name",
+	"tag": "section",
+	"class": "image-collage-section",
+	"max_blocks": 9,
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<p>Heading for Image collage</p>",
+			"label": "t:sections.instagram-collage.settings.heading.label",
+			"info": "t:sections.instagram-collage.settings.heading.info"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.author.header.content"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_account",
+			"label": "t:sections.all.author.avatar.label",
+			"info": "t:sections.all.author.avatar.info"
+		},
+		{
+			"type": "text",
+			"id": "name_account",
+			"default": "Some text",
+			"label": "t:sections.all.author.name.label"
+		},
+		{
+			"type": "text",
+			"id": "desc_account",
+			"default": "Some text",
+			"label": "t:sections.all.author.text.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Explore",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "instagram-collage_image",
+			"name": "t:sections.instagram-collage.blocks.instagram-collage_image.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.instagram-collage.blocks.instagram-collage_image.settings.image.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.instagram-collage.presets.name",
+			"blocks": [
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				},
+				{
+					"type": "instagram-collage_image"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

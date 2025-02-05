@@ -1,0 +1,163 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p><strong>Sostenibilidad y Mercadeo: </strong></p><h4></h4>",
+        "heading_size": "large",
+        "text_information": "Creando Marcas que Trascienden",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/siembra-empresas-greensouls.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.2,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>¿Qué sucede cuando combinamos sostenibilidad con estrategias de marketing inteligentes? El resultado son marcas que no solo triunfan en el presente, sino que también dejan una huella duradera en el mundo. La sostenibilidad ya no es una opción adicional; es una necesidad estratégica para las empresas que buscan destacar en un mercado cada vez más consciente.</p>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/marca-task.jpg",
+        "bottom_left_image": "shopify://shop_images/marca-colgate.jpg",
+        "top_right_image": "shopify://shop_images/emociones-greensouls-marcas-isdin.jpg",
+        "right_text": "<ul><li><strong>1. Consumidores Conscientes: Una nueva era de compradores</strong></li></ul><p>El 68% de los consumidores afirman estar más dispuestos a comprar productos de marcas sostenibles. Esto demuestra que las decisiones de compra ya no se basan únicamente en la calidad o el precio, sino también en el impacto que estas marcas generan en el medio ambiente y la sociedad.</p><p></p><p>En GreenSouls, entendemos que conectar emocionalmente con estos consumidores conscientes es clave para construir relaciones auténticas y leales.</p><p></p><ul><li><strong>2. Longevidad de la marca: Sostenibilidad como ventaja competitiva</strong></li></ul><p>La sostenibilidad no es una tendencia pasajera; es un compromiso a largo plazo que garantiza la relevancia y la resiliencia de las marcas. Incorporar prácticas sostenibles no solo mejora el presente, sino que también fortalece la posición de tu empresa frente a desafíos futuros, como regulaciones ambientales más estrictas o la creciente demanda de transparencia.</p>"
+      }
+    },
+    "cb_article_w_MXJaYY": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<ul><li><strong>3. Valor agregado: Más allá del producto</strong></li></ul><p>Las marcas sostenibles no solo entregan productos; ofrecen un propósito. Al involucrarse en iniciativas como limpiezas de playas, siembras de manglares o apoyo a comunidades locales, las empresas no solo generan un impacto positivo, sino que también refuerzan su propuesta de valor.</p><p>En GreenSouls, ayudamos a las marcas a traducir este impacto en una narrativa poderosa que conecte con sus audiencias.</p><ul><li><strong>4. Reputación y confianza: Los pilares del éxito</strong></li></ul><p>La sostenibilidad construye confianza. Las marcas que demuestran un compromiso genuino con el medio ambiente y las comunidades no solo mejoran su reputación, sino que también atraen a consumidores y aliados estratégicos.</p><p>La confianza es un activo invaluable que impulsa la fidelización y abre puertas a nuevas oportunidades de colaboración.</p>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/marca-yoyo.jpg",
+        "bottom_left_image": "shopify://shop_images/marca-colgate.jpg",
+        "top_right_image": "shopify://shop_images/LIMPIEZA-DE-OCEANOS-BY-GREENSOULS.png",
+        "right_text": "<p><strong>5. Retorno de la Inversión Sostenible (ROSI): Más allá del ROI</strong></p><p>El retorno de la inversión ya no se mide solo en cifras económicas. El <strong>ROSI (Retorno de la Inversión Sostenible)</strong> toma en cuenta el bienestar social, económico y ambiental. Las prácticas sostenibles generan resultados tangibles como: </p><ul><li>Reducción de costos operativos mediante procesos más eficientes.</li><li> Mayor lealtad del cliente.</li><li>Posicionamiento como líder en sostenibilidad empresarial.</li><li><strong>GreenSouls: Tu aliado en la creación de marcas que trascienden</strong></li></ul><p>En GreenSouls, integramos estrategias de marketing con un enfoque sostenible, diseñando iniciativas que generan impacto ambiental positivo y resultados empresariales significativos. Desde proyectos de conservación hasta campañas de propósito, trabajamos contigo para crear marcas que conecten, inspiren y trasciendan.</p>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Por lo tanto, este propósito no es solo una tendencia; es una respuesta esencial al llamado de los consumidores y del mismo medio ambiente, que enfrenta desafíos crecientes debido a la contaminación y la degradación ambiental. En GreenSouls, nos especializamos en diseñar y ejecutar activaciones con propósito que permiten a las marcas promocionarse de manera efectiva mientras contribuyen a la protección del planeta y sus ecosistemas.</p>",
+            "image": "shopify://shop_images/marca-localiza_bd0d9548-5d41-48ee-8166-bd0dbf53aae8.jpg"
+          }
+        },
+        "header_XtW7iA": {
+          "type": "header",
+          "settings": {
+            "text": "<h3><strong>¿Estás listo para que tu marca haga la diferencia? </strong></h3><h4>Descubre cómo podemos ayudarte a crear una estrategia que refleje tus valores y genere un impacto social positivo. ¡Juntos, podemos liderar un movimiento hacia un futuro más sostenible!</h4>",
+            "image": "shopify://shop_images/marca-bioderma_add4c4ce-fa80-44a3-866c-ca75fd55a067.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "header_XtW7iA"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "background": "#4b8e97"
+      }
+    },
+    "cb_buttons_eCthEG": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_KXiDNt": {
+          "type": "button",
+          "settings": {
+            "button_label": "GreenSouls para marcas",
+            "button_link": "shopify://pages/greensouls-aliados-corporativos-por-un-planeta-mejor",
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "button_KXiDNt"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 30
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_w_MXJaYY",
+    "cb_article_mLdNUy",
+    "cb_buttons_eCthEG",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}
+

@@ -1,0 +1,220 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-id-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-id-{{ section.id }} .cb__background-color {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .section-id-{{ section.id }} .cb__text > * {
+    color: {{ section.settings.text_color }};
+  }
+
+  .section-id-{{ section.id }} .cb__container-child {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .section-id-{{ section.id }} .cb__form-container-text {
+    display: grid;
+    align-content: center;
+    padding: 4rem;
+    gap: 3em;
+  }
+
+  .section-id-{{ section.id }} .cb__form-main-container {
+    background-color: #1d9ea4;
+    display: grid;
+    justify-content: center;
+    border-radius: 30px 0 0 30px;
+    align-content: center;
+    padding: 4em;
+  }
+
+
+  .section-id-{{ section.id }} .cb__image svg,
+  .section-id-{{ section.id }} .cb__form-image svg {
+        width: 200px;
+        height: 200px;
+        background: #FFF;
+    }
+
+    .section-id-{{ section.id }} .cb__form-image {
+        display: grid;
+        background-color: #1d9ea4;
+        place-content: center;
+        padding-right: 4rem;
+    }
+
+
+  @media(max-width: 500px) {
+    .section-id-{{ section.id }} .cb__container-child {
+      grid-template-columns: auto;
+
+    }
+
+    .section-id-{{ section.id }} .cb__title-text {
+      font-size: 24px;
+      margin-bottom: 2em;
+    }
+  
+    .section-id-{{ section.id }} .cb__form-container-text p {
+      font-size: 16px;
+    }
+
+    .section-id-{{ section.id }} .cb__form-container-text p > * {
+      font-size: 12px;
+    }
+
+    .section-id-{{ section.id }} .cb__form-image {
+        padding: 0 4rem 4rem;
+    }
+
+    .section-id-{{ section.id }} .cb__form-image img {
+        width: 100%;
+    }
+
+    .section-id-{{ section.id }} .cb__form-main-container {
+        border-radius: 30px 30px 0 0;
+        padding: 4em 2em;
+
+  }
+
+  }
+{% endstyle %}
+
+<div class="cb__container section-id-{{ section.id }}">
+    <div class="cb__container-child{% if section.settings.background_color != blank %} cb__background-color{% endif %}">
+
+        <div class="cb__form-container-text">
+            <div class="cb__image">
+                {% if section.settings.image == blank %}
+                  {{ 'image' | placeholder_svg_tag }}
+                {% else %}
+                  {% assign width = section.settings.image_width %}
+                  <img src="{{ section.settings.image | image_url }}"
+                  width="{{ width }}"
+                  >
+                {% endif %}
+            </div>
+            <div class="cb__text">{{ section.settings.text }}</div>
+        </div>
+
+            <div class="cb__form-main-container">
+      <div class="cb__form-form-container">
+        {{ section.settings.form }}
+      </div>
+    </div>
+
+        <div class="cb__form-image">
+            {% if section.settings.right_image == blank %}
+                {{ 'image' | placeholder_svg_tag }}
+              {% else %}
+                <img src="{{ section.settings.right_image | image_url }}"
+                >
+              {% endif %}
+        </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Image Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section options"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Text options"
+    }, {
+      "type": "richtext",
+      "id": "text",
+      "default": "<h2>Heading</h2>",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFF"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    },
+    {
+        "type": "range",
+        "id": "image_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "default": 200,
+        "unit": "px",
+        "label": "Image width"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image",
+        "label": "Image"
+    },
+    {
+        "type": "range",
+        "id": "right_image_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "default": 200,
+        "unit": "px",
+        "label": "Image width"
+    },
+    {
+      "type": "html",
+      "id": "form",
+      "label": "Form Code"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Image by Codebulls"
+    }
+  ]
+}
+{% endschema %}

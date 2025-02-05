@@ -1,0 +1,338 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+    .cb__container.section-id-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-id-{{ section.id }}.cb__background-color {
+        background-color: {{ section.settings.background_color }};
+    }
+
+    .section-id-{{ section.id }} .cb__title-text {
+        color: {{ section.settings.title_color }}
+    }
+
+    .section-id-{{ section.id }} .cb__subtitle-text {
+        color: {{ section.settings.subtitle_color }}
+    }
+
+    .section-id-{{ section.id }} .cb__paragraph-text {
+        color: {{ section.settings.paragraph_color }}
+    }
+
+    .section-id-{{ section.id }} .cb__imagen img {
+        width: 100%;
+        border-radius: 30px;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .section-id-{{ section.id }} .cb__imagen img:first-child {
+        margin-bottom: 24px;
+    }
+
+    .section-id-{{ section.id }} .contenedor-child {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 12rem 8rem;
+    }
+
+    .section-id-{{ section.id }} .cb__price-container {
+        padding-block: 2rem;
+        border-top: 1px solid #FFF;
+        border-bottom: 1px solid #FFF;
+        margin-top: 32px;
+        margin-bottom: 2em;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
+    .section-id-{{ section.id }} .cb__price-item {
+        color: #FFF;
+        font-weight: 900;
+        font-size: 40px;
+    }
+
+    .section-id-{{ section.id }} .product-form__buttons {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .section-id-{{ section.id }} .product-form {
+      margin-top: 24px;
+    }
+
+    .section-id-{{ section.id }} .shopify-payment-button__button {
+      border-radius: 30px;
+      background-color: #FFF;
+      color: #000;
+      font-size: var(--font-body-size);
+      font-family: var(--font-body-family);
+      font-weight: 900;
+    }
+
+    .section-id-{{ section.id }} .shopify-payment-button__button:hover {
+      background-color: #1fa0a2;
+    }
+
+    .section-id-{{ section.id }} .cb__product-description > * {
+      color: #FFF;
+      font-family: var(--font-body-family);
+    }
+
+
+    .section-id-{{ section.id }} .cb__secondary-button-outline {
+      border-color: #FFF;
+      background-color: transparent;
+      color: #FFF;
+      transition: all 300ms ease-in-out;
+    }
+
+    .section-id-{{ section.id }} .cb__secondary-button-outline:hover {
+      background-color: #FFF;
+      color: #000;
+    }
+
+    .section-id-{{ section.id }} .cb__secondary-button-outline::before {
+      left: -100%;
+      transition: all 600ms ease-in-out;
+  }
+
+
+  .section-id-{{ section.id }} .cb__secondary-button-outline:hover::before {
+    left: 100%;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-container .panel {
+    display: none;
+    overflow: hidden;
+    padding-top: 3em;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-container .panel.active {
+    display: block;
+  }
+
+
+  .section-id-{{ section.id }} .cb__accordion-text-details {
+    margin-bottom: 32px;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon img {
+    object-fit: contain;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon svg {
+    width: 100%;
+    fill: #FFF;
+  }
+
+  .section-id-{{ section.id }} .cb__accordion-details {
+    border-top: 1px solid #FFF;
+    padding-top: 2em;
+  }
+
+
+  .section-id-{{ section.id }} .cb__accordion-text-details > *,
+  .section-id-{{ section.id }} .cb__accordion-text-details-icon > *,
+  .section-id-{{ section.id }} .cb__price-text  > * {
+    color: {{ section.settings.text_color }};
+  }
+
+
+  .section-id-{{ section.id }} .cb__form-container-text {
+    display: grid;
+    align-content: center;
+    row-gap: 16px;
+  }
+
+
+    @media (min-width: 1023px){
+        .section-id-{{ section.id }} .cb__imagen.image-alignment-right {
+            grid-column-start: 2;
+        }
+
+        .section-id-{{ section.id }} .contenido.image-alignment-right {
+            grid-row-start: 1;
+        }
+    }
+
+    @media (max-width: 500px){
+        .section-id-{{ section.id }} .contenedor-child {
+            grid-template-columns: auto;
+          padding: 0;
+        }
+
+        .section-id-{{ section.id }} .contenido {
+            padding_top: 2rem;
+        }
+
+        .section-id-{{ section.id }} .cb__imagen {
+            margin-bottom: 24px;
+        }
+
+        .section-id-{{ section.id }} .cb__imagen img {
+            height: 320px;
+        }
+
+        .section-id-{{ section.id }} .cb__price-item {
+            font-size: 32px;
+        }
+
+        .section-id-{{ section.id }} .product-form__buttons {
+          grid-template-columns: auto;
+          gap: 0;
+        }
+
+        .section-id-{{ section.id }} .cb__accordion-text-details-icon {
+          grid-template-columns: auto;
+        }
+    }
+{% endstyle %}
+
+<div class="cb__container section-id-{{ section.id }}">
+  <div class="contenedor-child">
+    <div class="cb__form-container-text">
+      <div class="cb__title-text">{{ section.settings.title }}</div>
+      <div class="cb__subtitle-text">{{ section.settings.subtitle }}</div>
+      <div class="cb__paragraph-text">{{ section.settings.paragraph }}</div>
+    </div>
+
+    <div class="contenido{% if section.settings.images_alignment == 'right' %} image-alignment-right{% endif %}">
+      <div
+        {% if section.settings.button_label_1 == blank and section.settings.button_label_2 == blank %}
+          style="margin-top: 0;"
+        {% endif %}
+        class="cb__button-container {% if section.settings.block_buttons %}cb__block-buttons{% endif %}"
+      >
+        <a class="cb__primary-button" href="{{ section.settings.button_link_1 }}">
+          {{- section.settings.button_label_1 -}}
+        </a>
+        <a class="cb__primary-button" href="{{ section.settings.button_link_2 }}">
+          {{- section.settings.button_label_2 -}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Itinerary by Codebulls",
+  "tag": "section",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section options"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_top.label"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_bottom.label"
+            },
+            {
+                "type": "header",
+                "content": "Text options"
+            },
+            {
+                "type": "richtext",
+                "id": "title",
+                "default": "<h2>Heading</h2>",
+                "label": "Title"
+            },
+            {
+                "type": "color",
+                "id": "title_color",
+                "label": "Title color",
+                "default": "#000"
+            },
+            {
+                "type": "richtext",
+                "id": "subtitle",
+                "default": "<h2>Subheading</h2>",
+                "label": "Subtitle"
+            },
+            {
+                "type": "color",
+                "id": "subtitle_color",
+                "label": "Subtitle color",
+                "default": "#000"
+            },
+            {
+                "type": "richtext",
+                "id": "paragraph",
+                "default": "<p>Some description</p>",
+                "label": "Paragraph"
+            },
+            {
+                "type": "color",
+                "id": "paragraph_color",
+                "label": "Paragraph color",
+                "default": "#000"
+            },
+            {
+                "type": "header",
+                "content": "Button options"
+            },
+            {
+                "type": "checkbox",
+                "default": false,
+                "id": "block_buttons",
+                "label": "Block buttons"
+            },
+            {
+                "type": "richtext",
+                "id": "button_label_1",
+                "default": "<p>Button label</p>",
+                "label": "t:sections.all.button.button_text.label"
+            },
+            {
+                "type": "url",
+                "id": "button_link_1",
+                "label": "t:sections.all.button.button_link.label"
+            },
+            {
+                "type": "richtext",
+                "id": "button_label_2",
+                "default": "<p>Button label</p>",
+                "label": "Button label"
+            },
+            {
+                "type": "url",
+                "id": "button_link_2",
+                "label": "t:sections.all.button.button_link.label"
+            }
+        ],
+  "presets": [
+    {
+      "name": "Itinerary by Codebulls"
+    }
+  ]
+}
+{% endschema %}

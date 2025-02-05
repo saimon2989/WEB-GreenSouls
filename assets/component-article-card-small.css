@@ -1,0 +1,107 @@
+.article-card-small {
+  position: relative;
+  padding-block: 1rem;
+  border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+@media screen and (min-width: 450px) {
+  .article-card-small {
+    padding-block: 3.3rem;
+  }
+}
+.article-card-small__image {
+  width: 10rem;
+  height: 5rem;
+  border-radius: 0.2rem;
+  transition: transform var(--duration-default) ease;
+}
+.article-card-small__title {
+  margin: 0;
+  text-transform: none;
+  text-decoration: none;
+  word-break: break-word;
+  font-size: 1.4rem;
+}
+.article-card-small__title a {
+  position: relative;
+  text-decoration: none;
+  background: no-repeat 0 100%;
+  background-image: linear-gradient(rgb(var(--color-accent)), rgb(var(--color-accent)));
+  background-size: 0% 0.1rem;
+  line-height: 22px;
+  color: rgb(var(--color-foreground-title));
+  transition: background-size var(--duration-long) ease;
+  z-index: 5;
+  font-weight: 500;
+}
+.article-card-small__title a .icon-button-arrow {
+  flex: none;
+  margin-left: 0.8rem;
+  color: rgb(var(--color-button));
+  transition: opacity var(--duration-long);
+  opacity: 0;
+}
+.article-card-small__title a:hover {
+  background-size: 100% 0.1rem;
+}
+.article-card-small__title a:hover .icon-button-arrow {
+  opacity: 1;
+}
+.article-card-small-link {
+  display: block !important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+.article-card-small__meta {
+  display: flex;
+  color: rgba(var(--color-foreground), 0.8);
+}
+.article-card-small__header {
+  line-height: 1;
+  text-transform: none;
+}
+.article-card-small__header:not(:last-child) {
+  margin-bottom: 1.6rem;
+}
+.article-card-small__header h5 {
+  margin: 0 0 0.2rem;
+  --font-heading-weight: 500;
+}
+.article-card-small__header h5:only-child {
+  margin: 0;
+}
+.article-card-small__header h5:not(:first-child) {
+  margin-top: 0.8rem;
+}
+.article-card-small__header span {
+  display: inline-flex;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 0.8rem;
+}
+.article-card-small__author span {
+  margin-left: 3px;
+  margin-top: 0;
+}
+.article-card-small .line-divider::after {
+  background: rgba(var(--color-foreground), 0.6);
+}
+
+.article-small-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  transition: padding var(--duration-default) ease;
+}
+@media screen and (min-width: 450px) {
+  .article-small-content {
+    flex-direction: row;
+  }
+}
+.article-small-content:hover .article-card-small__image {
+  transform: translateX(0.4rem);
+}

@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>La liberación de especies como solución a la sobrepesca y la degradación de los ecosistemas marinos</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/banner-prayainfoC.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.4,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h2><strong>La sobrepesca y la degradación de los ecosistemas marinos son dos de las amenazas más graves que enfrentan nuestros océanos hoy en día.</strong></h2><p>La explotación desmedida de los recursos pesqueros no solo pone en riesgo la biodiversidad, sino que también afecta a las comunidades costeras que dependen de los mares para su sustento. En GreenSouls, creemos que la liberación de especies marinas es una estrategia eficaz para enfrentar estos desafíos y restaurar el equilibrio en los ecosistemas acuáticos.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/liberacion.jpg",
+        "bottom_left_image": "shopify://shop_images/libera-especies.jpg",
+        "top_right_image": "shopify://shop_images/libera.jpg",
+        "right_text": "<p>La liberación de especies implica reintroducir ejemplares de peces y otras criaturas marinas en su hábitat natural, ayudando a repoblar áreas afectadas por la pesca excesiva. Esto no solo beneficia a las especies directamente afectadas, sino que también contribuye a la protección de la biodiversidad marina, un pilar clave para mantener el equilibrio en los ecosistemas marinos. En proyectos como \"Un Arrecife de Vida\", esta estrategia se ha implementado con éxito junto con la siembra de corales, restaurando tanto las especies como sus hábitats.</p><p><br/>Además de contrarrestar la sobrepesca, la liberación de especies ayuda a mitigar los efectos de la contaminación del medio ambiente. Las aguas contaminadas y la pérdida de hábitats naturales provocan el declive de las poblaciones marinas, pero la reintroducción controlada de especies refuerza la resiliencia de estos ecosistemas y ayuda a restaurar las cadenas alimenticias marinas. Este enfoque no solo es una solución práctica, sino también una muestra de cómo el ser humano puede cuidar el medio ambiente a través de acciones conscientes y responsables.</p><p></p><p></p>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<h4>En GreenSouls, promovemos el uso de técnicas de liberación de especies alineadas con la sostenibilidad ambiental. En destinos como San Andrés, donde el turismo es clave para la economía, la restauración de especies marinas fortalece los esfuerzos por promover un turismo con propósito que apoya la conservación de los océanos.</h4>",
+            "image": "shopify://shop_images/liberaar-especies.jpg"
+          }
+        },
+        "header_XtW7iA": {
+          "type": "header",
+          "settings": {
+            "text": "<p>En conclusión, la liberación de especies es una solución práctica y eficiente para enfrentar los desafíos de la sobrepesca y la degradación de los ecosistemas marinos. </p><p>A través de la reintroducción de especies y la restauración de sus hábitats, podemos contribuir a la protección del medio ambiente y crear un impacto positivo que beneficiará tanto a la naturaleza como a las comunidades que dependen de ella. </p><p>En GreenSouls, seguimos comprometidos con liderar proyectos de sostenibilidad que no solo promuevan la conservación, sino que también inspiren a otros a unirse a este movimiento global.</p>",
+            "image": "shopify://shop_images/liberacion-de-especies.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "header_XtW7iA"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#4b8e97"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

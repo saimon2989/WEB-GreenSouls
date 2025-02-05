@@ -1,0 +1,253 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+{{ 'cb__eventos-section.css' | asset_url | stylesheet_tag }}
+
+<div class="cb__container cb__eventos-container">
+  <div class="contenedor-child">
+    <div class="contenido">
+      <h1 class="cb__title-text">Eventos</h1>
+      <p class="cb__subtitle-text">
+        GreenSouls 
+      </p>
+      <p class="cb__paragraph-text">
+        Aparta tu cupo
+      </p>
+    </div>
+    <div class="cb__eventos-items-container">
+      <div class="cb__eventos-items">
+          <div class="cb__eventos-image">
+              <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/greensouls-eventos-santa-marta.jpg?v=1694791993" alt="" />
+              <span class="cb__eventos-place">
+                  Santa Marta
+              </span>
+          </div>
+          <div class="cb__eventos-date">
+              <p class="cb__eventos-month">Abril</p>
+              <p class="cb__eventos-location">GreenSouls:</br>Gaia</p>
+          </div>
+          <div class="cb__eventos-description-container">
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_8.png?v=1694791950" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Siembra de corales, Buceo con propósito (Limpieza submarina, Buceo en guarderias de coral)
+                  </p>
+              </div>
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_10.png?v=1694791951" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Liberación de especies 
+y Limpieza de playas
+                  </p>
+              </div>
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_10.png?v=1694791951" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Torneo de Surf con premios a las comunidades locales.
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="cb__eventos-items">
+          <div class="cb__eventos-image">
+              <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/greensouls-eventos-nuqui.jpg?v=1694791992" alt="" />
+              <span class="cb__eventos-place">
+                  Nuquí
+              </span>
+          </div>
+          <div class="cb__eventos-date">
+              <p class="cb__eventos-month">Abril</p>
+              <p class="cb__eventos-location">GreenSouls:</br>Gigantes Azules</p>
+          </div>
+          <div class="cb__eventos-description-container">
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_8.png?v=1694791950" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Liberación de especies, Avistamiento de ballenas jorobadas, Limpieza de playas
+                  </p>
+              </div>
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_9.png?v=1694791951" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Restauración de espacios comunitarios dentro del municipio.
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="cb__eventos-items">
+          <div class="cb__eventos-image">
+              <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/greensouls-eventos-san-andres.jpg?v=1694791993" alt="" />
+              <span class="cb__eventos-place">
+                  San Andrés
+              </span>
+          </div>
+          <div class="cb__eventos-date">
+              <p class="cb__eventos-month">Abril</p>
+              <p class="cb__eventos-location">GreenSouls:</br>La isla de los 7 colores</p>
+          </div>
+          <div class="cb__eventos-description-container">
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_8.png?v=1694791950" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Limpieza de playas, Siembra de corales, Buceo con propósito 
+(Limpieza submarina, Buceo en guarderias de coral)
+                  </p>
+              </div>
+              <div class="cb__eventos-description-item">
+                  <span class="cb__eventos-description-icon">
+                      <img src="https://cdn.shopify.com/s/files/1/0819/9674/2976/files/Asset_7.png?v=1694791951" alt="" srcset="">
+                  </span>
+                  <p class="cb__eventos-description-text">
+                      Donación de computadores 
+a niños estudiantes de una escuela local, Restauración de espacios comunitarios dentro de la isla.
+                  </p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+    {
+      "name": "Section by Codebulls",
+      "tag": "section",
+            "settings": [
+            {
+                "type": "header",
+                "content": "Section options"
+            },
+            {
+                    "type": "range",
+                    "id": "padding_top",
+                    "min": 0,
+                    "max": 200,
+                    "step": 10,
+                    "default": 60,
+                    "unit": "px",
+                    "label": "t:sections.all.section-padding.padding_top.label"
+                },
+                {
+                    "type": "range",
+                    "id": "padding_bottom",
+                    "min": 0,
+                    "max": 200,
+                    "step": 10,
+                    "default": 60,
+                    "unit": "px",
+                    "label": "t:sections.all.section-padding.padding_bottom.label"
+                },
+                {
+                    "type": "checkbox",
+                    "default": true,
+                    "id": "show-border",
+                    "label": "Show border"
+                },
+                {
+                    "type": "color",
+                    "id": "border-color",
+                    "label": "Border color",
+                    "default": "#08393f"
+                },
+                {
+                    "type": "color",
+                    "id": "background-color",
+                    "label": "Background color",
+                    "default": "#FFF"
+                },
+                {
+                    "type": "header",
+                    "content": "Icon options"
+                },
+                {
+                    "type": "checkbox",
+                    "default": true,
+                    "id": "show-icon",
+                    "label": "Show icon"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "icono",
+                    "label": "Icon"
+                },
+                {
+                    "type": "header",
+                    "content": "Text options"
+                },
+                {
+                    "type": "text",
+                    "id": "titulo",
+                    "default": "Turismo con propósito",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "subtitulo",
+                    "default": "Vive la experiencia <strong>#GreenSouls</strong> como siempre lo soñaste y sé parte de una comunidad comprometida con ser la solución",
+                    "label": "Subtitle"
+                },
+                {
+                    "type": "text",
+                    "id": "parrafo",
+                    "default": "¡Elige tu destino y fecha favorita, y prepara tus maletas para vivir una experiencia inolvidable!",
+                    "label": "Paragraph"
+                },
+                {
+                    "type": "header",
+                    "content": "Image options"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "header",
+                    "content": "Button options"
+                },
+                {
+                    "type": "checkbox",
+                    "default": false,
+                    "id": "block_buttons",
+                    "label": "Block buttons"
+                },
+                {
+                    "type": "text",
+                    "id": "button_label_1",
+                    "default": "Conoce más",
+                    "label": "t:sections.all.button.button_text.label"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link_1",
+                    "label": "t:sections.all.button.button_link.label"
+                },
+                {
+                    "type": "text",
+                    "id": "button_label_2",
+                    "default": "Aparta tu cupo",
+                    "label": "t:sections.all.button.button_text.label"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link_2",
+                    "label": "t:sections.all.button.button_link.label"
+                }
+            ],
+      "presets": [
+        {   
+          "name": "Events Section by Codebulls"
+        }
+      ]
+    }
+    {% endschema %}

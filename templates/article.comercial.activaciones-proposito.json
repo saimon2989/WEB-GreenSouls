@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>Activaciones de Marca con Propósito: </p><h4></h4>",
+        "heading_size": "large",
+        "text_information": "Cómo Promocionar su Marca Mientras Ayuda al Medio Ambiente",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/GAIA-MARKETING-GREENSOULS.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.2,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>En GreenSouls, estamos convencidos de que cada marca tiene el poder de hacer una diferencia significativa. Hoy en día, las activaciones de marca no son solo una herramienta promocional; representan oportunidades para generar un impacto ambiental positivo. A través del marketing de sostenibilidad, las empresas pueden conectar con sus audiencias de manera auténtica, mientras contribuyen al cuidado del medio ambiente y fomentan la responsabilidad social.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/marca-task.jpg",
+        "bottom_left_image": "shopify://shop_images/marca-colgate.jpg",
+        "top_right_image": "shopify://shop_images/marca-UNIPLES.jpg",
+        "right_text": "<p>Las estrategias que integramos en las activaciones de marca permiten que las empresas se posicionen como líderes en la protección del planeta. Estas acciones no solo crean experiencias de marca inolvidables que resuenan con los valores de los consumidores conscientes, sino que también fortalecen el compromiso de las personas a tomar acción en favor del planeta.</p><p><br/>Una activación de marca con propósito puede incluir la colaboración con proyectos de conservación de océanos o la implementación de actividades eco amigables que refuercen el compromiso de la empresa con la protección de la biodiversidad. En GreenSouls, hemos visto cómo estas iniciativas pueden transformar la percepción de una marca y crear una conexión emocional duradera con su audiencia.</p><p></p><p></p>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<p>Por lo tanto, este propósito no es solo una tendencia; es una respuesta esencial al llamado de los consumidores y del mismo medio ambiente, que enfrenta desafíos crecientes debido a la contaminación y la degradación ambiental. En GreenSouls, nos especializamos en diseñar y ejecutar activaciones con propósito que permiten a las marcas promocionarse de manera efectiva mientras contribuyen a la protección del planeta y sus ecosistemas.</p>",
+            "image": "shopify://shop_images/marca-localiza_bd0d9548-5d41-48ee-8166-bd0dbf53aae8.jpg"
+          }
+        },
+        "header_XtW7iA": {
+          "type": "header",
+          "settings": {
+            "text": "<h3><strong>¿Estás listo para que tu marca haga la diferencia? </strong></h3><h4>Descubre cómo podemos ayudarte a crear una estrategia que refleje tus valores y genere un impacto social positivo. ¡Juntos, podemos liderar un movimiento hacia un futuro más sostenible!</h4>",
+            "image": "shopify://shop_images/marca-bioderma_add4c4ce-fa80-44a3-866c-ca75fd55a067.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "header_XtW7iA"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 0,
+        "background": "#4b8e97"
+      }
+    },
+    "cb_buttons_eCthEG": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_KXiDNt": {
+          "type": "button",
+          "settings": {
+            "button_label": "GreenSouls para marcas",
+            "button_link": "shopify://pages/greensouls-aliados-corporativos-por-un-planeta-mejor",
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "button_KXiDNt"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 30
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_buttons_eCthEG",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

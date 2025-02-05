@@ -1,0 +1,13 @@
+.badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  line-height: 1.9rem;
+  font-family: var(--font-button-family);
+  font-style: var(--font-button-style);
+  font-weight: 700;
+  word-break: break-word;
+  color: rgb(var(--color-badge-icon));
+  background-color: rgb(var(--color-background-badge-icon));
+  border-radius: 0.2rem;
+}

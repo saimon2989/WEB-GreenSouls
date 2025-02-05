@@ -1,0 +1,267 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+	assign image_ratio = section.settings.image_ratio
+-%}
+
+{%- if image_ratio == 'adapt' and section.settings.image != blank -%}
+	{%- style -%}
+		#Banner-{{ section.id }}.image--overlay::before, #Banner-{{ section.id }} .banner__media::before {
+		     padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+		     content: '';
+		     display: block;
+		   }
+	{%- endstyle -%}
+{%- elsif image_ratio == 'adapt' and section.settings.image == blank -%}
+	{%- style -%}
+		#Banner-{{ section.id }}.image--overlay::before, #Banner-{{ section.id }} .banner__media::before {
+					padding-bottom: 25%;
+					content: '';
+					display: block;
+				}
+	{%- endstyle -%}
+{%- endif -%}
+
+{% style %}
+	{% render 'spaced-section' %}
+
+	 .banner__overlay {
+	  background-color: rgba(var(--color-overlay), {{ section.settings.opacity_overlay }});
+	}
+{% endstyle %}
+
+<div class="image-banner {% if section.settings.full_width %}{% else %}container{% endif %}">
+	<div
+		id="Banner-{{ section.id }}"
+		class="banner banner--{{ section.settings.image_ratio }} image--overlay {% if section.settings.full_width %}banner--container{% else %}{% endif %} {% if section.settings.image == blank %}banner--padding{% endif %} color-background-3"
+	>
+		{%- if section.settings.image != blank -%}
+			<div class="banner__media media">
+				<img
+					srcset="
+						{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+						{%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+						{%- if section.settings.image.width >= 1296 -%}{{ section.settings.image | img_url: '1296x' }} 1296w,{%- endif -%}
+						{%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+						{%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+						{%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+						{%- if section.settings.image.width >= 2800 -%}{{ section.settings.image | img_url: '2800x' }} 2800w{%- endif -%}
+					"
+					src="{{ section.settings.image | img_url: '1296x' }}"
+					loading="lazy"
+					alt="{{ section.settings.image.alt | escape }}"
+					width="{{ section.settings.image.width }}"
+					height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+					style="object-position: {{ section.settings.image.presentation.focal_point }}"
+				>
+				<span class="banner__overlay"></span>
+			</div>
+		{%- endif -%}
+		<div class="image-banner__wrapper {% if section.settings.text_align != 'left' %}image-banner__column--center{% endif %} {% if section.settings.full_width %}container{% else %}{% endif %}">
+			{%- if section.settings.subheading != blank -%}
+				<div class="image-banner__subheading subtitle">
+					{{ section.settings.subheading }}
+				</div>
+			{%- endif -%}
+			<div class="image-banner__column {% if section.settings.text_order != 'row' %}image-banner__column--column{% endif %}">
+				{%- if section.settings.heading != blank -%}
+					<h2 class="image-banner__heading title--section title--decorate title--section-mt-none {% if section.settings.heading_size == 'medium' %}h2{% else %}h1{% endif %}">
+						{{ section.settings.heading }}
+					</h2>
+				{%- endif -%}
+
+				{%- if section.settings.text_information != blank
+					or section.settings.button_label != blank
+				-%}
+					<div class="image-banner__information">
+						{%- if section.settings.text_information != blank -%}
+							<p class="image-banner__text">
+								{{ section.settings.text_information | escape }}
+							</p>
+						{%- endif -%}
+
+						{%- if section.settings.button_label != blank -%}
+							<a
+								{% if section.settings.button_link != blank %}
+									href="{{ section.settings.button_link }}"
+								{% endif %}
+								class="button image-banner__button button--primary-size button--{{ section.settings.button_style }}"
+								{% if section.settings.button_link == blank %}
+									aria-disabled="true"
+								{% endif %}
+							>
+								<span>
+									{{- section.settings.button_label | escape -}}
+								</span>
+								{%- render 'icon-button-arrow' -%}
+							</a>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.image-banner.name",
+	"tag": "section",
+	"class": "image-banner-section spaced-section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full_width",
+			"default": true,
+			"label": "t:sections.image-banner.settings.full_width.label"
+		},
+		{
+			"type": "text",
+			"id": "subheading",
+			"default": "Subheading",
+			"label": "t:sections.image-banner.settings.subheading.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<p>Some header for your collection</p>",
+			"label": "t:sections.image-banner.settings.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "medium",
+					"label": "t:sections.image-banner.settings.heading_size.options__1.label"
+				},
+				{
+					"value": "large",
+					"label": "t:sections.image-banner.settings.heading_size.options__2.label"
+				}
+			],
+			"default": "medium",
+			"label": "t:sections.image-banner.settings.heading_size.label"
+		},
+		{
+			"type": "textarea",
+			"id": "text_information",
+			"default": "Some descriptive text for your collection. For better alignment, it is better to use text in several lines.",
+			"label": "t:sections.image-banner.settings.text_information.label"
+		},
+		{
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:sections.image-banner.settings.text_align.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.image-banner.settings.text_align.options__2.label"
+				}
+			],
+			"default": "left",
+			"label": "t:sections.image-banner.settings.text_align.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Shop now",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "select",
+			"id": "button_style",
+			"options": [
+				{
+					"value": "primary",
+					"label": "t:sections.all.button.button_style.options__1.label"
+				},
+				{
+					"value": "secondary",
+					"label": "t:sections.all.button.button_style.options__2.label"
+				}
+			],
+			"default": "primary",
+			"label": "t:sections.all.button.button_style.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header__2.content"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:sections.image-banner.settings.image.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.image-banner.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "landscape",
+					"label": "t:sections.image-banner.settings.image_ratio.options__2.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:sections.image-banner.settings.image_ratio.label"
+		},
+		{
+			"type": "range",
+			"id": "opacity_overlay",
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"label": "t:sections.image-banner.settings.opacity_overlay.label",
+			"default": 0.5
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-banner.presets.name"
+		}
+	]
+}
+{% endschema %}

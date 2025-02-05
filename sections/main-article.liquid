@@ -1,0 +1,655 @@
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+
+<div class="breadcrumb_border">
+	<div class="container">
+		<nav
+			class="breadcrumb {% if section.settings.header_variant == 'column' %} breadcrumb--column {%- endif -%} {% if section.settings.header_variant == 'row' %} breadcrumb--row {%- endif -%} {% if section.settings.header_variant == 'overlay' %} breadcrumb--overlay {%- endif -%}"
+			role="navigation"
+			aria-label="breadcrumbs"
+		>
+			<a
+				href="{{ routes.root_url }}"
+				title="{{ 'general.breadcrumbs.home' | t }}"
+				class="link-hover-line"
+			>
+				{{ 'general.breadcrumbs.home' | t }}
+			</a>
+			<div class="breadcrumb__delimiter"></div>
+			<a
+				href="{{ blog.url }}"
+				title="{{ blog.title }}"
+				class="link-hover-line"
+			>
+				{{ blog.title }}
+			</a>
+			<div class="breadcrumb__delimiter"></div>
+			<span> {{ article.title }}</span>
+		</nav>
+	</div>
+
+	<article
+		class="article-template {% if section.settings.header_variant == 'overlay' %} section--has-overlay article-template--overlay {% endif %}"
+		itemscope
+		itemtype="http://schema.org/BlogPosting"
+	>
+		{%- for block in section.blocks -%}
+			{%- case block.type -%}
+				{%- when '@app' -%}
+					<div
+						class="container page-width--narrow"
+						{{ block.shopify_attributes }}
+					>
+						{% render block %}
+					</div>
+				{%- when 'article-header' -%}
+					<header
+						class=" article-template__header {% if section.settings.header_variant == 'column' %} article-template__header--column container{%- endif -%} {% if section.settings.header_variant == 'row' %} article-template__header--row container {%- endif -%} {% if section.settings.header_variant == 'overlay' %} article-template__header--overlay {%- endif -%}{% if section.settings.header_variant == 'overlay' %} article-template__header--{{ block.settings.image_height }} {% endif %}"
+						{{ block.shopify_attributes }}
+					>
+						<div class="article-template__info-wrapper">
+							<div
+								class="{% if section.settings.header_variant == 'row' %}container{%- endif -%} {%- if article.tags == blank or block.settings.blog_show_tags == false and section.settings.header_variant == 'row' -%}-article{%- endif -%}"
+							>
+								{%- if article.tags != blank
+									and block.settings.blog_show_tags == true
+									and section.settings.header_variant == 'row'
+								-%}
+									<ul class="article-template__tags">
+										{% for tag in article.tags %}
+											<li class="article-template__tag">
+												<a
+													href="{{ blog.url }}/tagged/{{ tag | handle }}"
+													class="link-hover-arrow link-hover-line"
+												>
+													<span title="{{ tag }}">{{ tag }}</span>
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{%- endif -%}
+								<div class="article-template__info">
+									<div class="article-template__text">
+										<h1
+											class="article-template__title title--page"
+											itemprop="headline"
+										>
+											{{ article.title | escape }}
+										</h1>
+										{%- if article.excerpt.size > 0
+											and block.settings.blog_show_excerpt
+										-%}
+											<p class="article-template__excerpt">
+												{{ article.excerpt | strip_html | truncatewords: 30 }}
+											</p>
+										{%- endif -%}
+									</div>
+									<div class="article-template__meta">
+										{%- if article.tags != blank
+											and block.settings.blog_show_tags == true
+											and section.settings.header_variant != 'row'
+										-%}
+											<ul class="article-template__tags">
+												{% for tag in article.tags %}
+													<li class="article-template__tag">
+														<a
+															href="{{ blog.url }}/tagged/{{ tag | handle }}"
+															class="link-hover-arrow"
+														>
+															<span title="{{ tag }}">{{ tag }}</span>
+														</a>
+													</li>
+												{% endfor %}
+											</ul>
+										{%- endif -%}
+										{%- if block.settings.blog_show_date -%}
+											<span
+												class="caption-with-letter-spacing article-template__meta-date"
+												itemprop="dateCreated pubdate datePublished"
+											>
+												{{ 'general.blog.update' | t }}
+												<span
+													>&nbsp;
+													{{- article.updated_at | time_tag: '%B %d, %Y' -}}
+												</span>
+											</span>
+										{%- endif -%}
+
+										{%- if block.settings.blog_show_author -%}
+											<span
+												class="caption-with-letter-spacing"
+												itemprop="author"
+												itemscope
+												itemtype="http://schema.org/Person"
+											>
+												<span>{{- 'general.blog.author' | t }}&nbsp; </span>
+												{%- if block.settings.blog_image_author != blank -%}
+													<div class="article-template__meta-image">
+														<img
+															srcset="{{ block.settings.blog_image_author | img_url: '30px' }} 1x, {{ block.settings.blog_image_author | img_url: '30px', scale: 2 }} 2x"
+															src="{{ block.settings.blog_image_author | img_url: '30px' }}"
+															alt="{{ block.settings.blog_image_author.alt | escape }}"
+															width="30"
+															height="30"
+															loading="lazy"
+															class="article-template__meta-image_author"
+														>
+													</div>
+												{%- endif -%}
+												<span
+													itemprop="name"
+													class="article-template__meta-author"
+												>
+													<span>{{ article.author }}</span>
+												</span>
+											</span>
+										{%- endif -%}
+										{%- if block.settings.show_share_facebook
+											or block.settings.show_share_twitter
+											or block.settings.show_share_pinterest
+											or block.settings.show_share_copy
+										-%}
+										{%- endif -%}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="article-template__hero" {{ block.shopify_attributes }}>
+							{%- if article.image -%}
+								<div
+									class="{% if section.settings.header_variant != 'overlay' %} article-template__hero-{{ block.settings.image_height }} {% endif %} article-template__hero-wrapper js-parallax"
+									itemprop="image"
+									data-parallax-property="translateY"
+									data-parallax-property-value="-100"
+									data-parallax-steps="0, 100"
+								>
+									<div
+										{% if block.settings.image_height == 'adapt'
+											and article.image
+										%}
+											style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%; height: 100%;"
+										{% else %}
+											style="height: 100%;"
+										{% endif %}
+									>
+										<img
+											srcset="
+												{% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+												{% if article.image.width >= 700 %}{{ article.image | image_url: width: 700 }} 700w,{% endif %}
+												{% if article.image.width >= 749 %}{{ article.image | image_url: width: 749 }} 749w,{% endif %}
+												{% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
+												{% if article.image.width >= 1300 %}{{ article.image | image_url: width: 1300 }} 1300w,{% endif %}
+												{% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
+												{% if article.image.width >= 1700 %}{{ article.image | image_url: width: 1700 }} 1700w,{% endif %}
+												{% if article.image.width >= 2000 %}{{ article.image | image_url: width: 2000 }} 2000w,{% endif %}
+												{% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w{% endif %}
+											"
+											src="{{ article.image | image_url: width: 2200 }}"
+											loading="lazy"
+											width="{{ article.image.width }}"
+											height="{{ article.image.height }}"
+											alt="{{ article.image.alt | escape }}"
+										>
+									</div>
+								</div>
+							{%- endif -%}
+						</div>
+
+						{%- if block.settings.image_height == 'adapt' and article.image -%}
+							{%- style -%}
+								.article-template__header--overlay::before {
+								padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;
+								content: '';
+								display: block;
+								}
+							{%- endstyle -%}
+						{%- endif -%}
+					</header>
+					{%- if section.settings.header_variant == 'row' -%}
+						<div class="article-template__header--row-border container">
+							<div></div>
+						</div>
+					{%- endif -%}
+				{%- when 'content' -%}
+					<div
+						class="article-template__content container rte"
+						itemprop="articleBody"
+						{{ block.shopify_attributes }}
+					>
+						{{ article.content }}
+					</div>
+				{%- when 'article-footer' -%}
+					<div class="article-template__footer container">
+						<div class="article-template__footer-content container">
+							<div class="article-template__meta article-template__meta-date">
+								{%- if block.settings.blog_show_date -%}
+									<span
+										class="caption-with-letter-spacing"
+										itemprop="dateCreated pubdate datePublished"
+									>
+										{{ 'general.blog.publish' | t | append: ' ' }}
+										<span
+											>&nbsp;{{ article.published_at | time_tag: '%B %d, %Y' -}}
+										</span></span
+									>
+								{%- endif -%}
+								{%- if block.settings.blog_show_date -%}
+									<span
+										class="caption-with-letter-spacing"
+										itemprop="dateCreated pubdate datePublished"
+									>
+										{{- 'general.blog.update' | t }}
+										<span
+											>&nbsp;{{ article.updated_at | time_tag: '%B %d, %Y' -}}
+										</span></span
+									>
+								{%- endif -%}
+								{%- if block.settings.blog_show_author -%}
+									<span
+										class="caption-with-letter-spacing"
+										itemprop="author"
+										itemscope
+										itemtype="http://schema.org/Person"
+									>
+										<span>{{- 'general.blog.author' | t }}&nbsp;</span>
+										{%- if block.settings.blog_image_author != blank -%}
+											<div class="article-template__meta-image">
+												<img
+													srcset="{{ block.settings.blog_image_author | img_url: '30px' }} 1x, {{ block.settings.blog_image_author | img_url: '30px', scale: 2 }} 2x"
+													src="{{ block.settings.blog_image_author | img_url: '30px' }}"
+													alt="{{ block.settings.blog_image_author.alt | escape }}"
+													width="30"
+													height="30"
+													loading="lazy"
+													class="article-template__meta-image_author"
+												>
+											</div>
+										{%- endif -%}
+										<span itemprop="name" class="article-template__meta-author">
+											<span>{{ article.author }}</span></span
+										>
+									</span>
+								{%- endif -%}
+							</div>
+							{%- if block.settings.show_social -%}
+								<div class="footer__column footer__column--social">
+									<ul class="footer__list-social list-unstyled" role="list">
+										{%- if settings.social_twitter_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_twitter_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-twitter' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Twi</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.twitter' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_facebook_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_facebook_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-facebook' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Fb</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.facebook' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_pinterest_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_pinterest_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-pinterest' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Pint</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.pinterest' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_instagram_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_instagram_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-instagram' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Inst</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.instagram' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_tiktok_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_tiktok_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-tiktok' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">TT</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.tiktok' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_tumblr_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_tumblr_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-tumblr' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Tumb</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.tumblr' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_snapchat_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_snapchat_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-snapchat' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Snap</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.snapchat' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_youtube_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_youtube_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-youtube' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">YT</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.youtube' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_vimeo_link != blank -%}
+											<li class="list-social__item">
+												<a
+													href="{{ settings.social_vimeo_link }}"
+													class="link link--text list-social__link"
+													aria-describedby="a11y-external-message"
+													{% if settings.open_new_tab %} target="_blank" {% endif %}
+												>
+													{% if block.settings.show_social_icons %}
+														<span class="list-social__text">
+															{% render 'icon-vimeo' -%}
+														</span>
+													{% else %}
+														<span class="list-social__text">Vim</span>
+													{% endif %}
+													<span class="visually-hidden">
+														{{- 'general.social.links.vimeo' | t -}}
+													</span>
+												</a>
+											</li>
+										{%- endif -%}
+									</ul>
+								</div>
+							{%- endif -%}
+						</div>
+					</div>
+			{%- endcase -%}
+		{%- endfor -%}
+		{%- if blog.comments_enabled? -%}
+			{% render 'article-comments' %}
+		{%- endif -%}
+	</article>
+</div>
+
+<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "Article",
+	  "articleBody": {{ article.content | strip_html | json }},
+	  "mainEntityOfPage": {
+	    "@type": "WebPage",
+	    "@id": {{ request.origin | append: page.url | json }}
+	  },
+	  "headline": {{ article.title | json }},
+	  {% if article.excerpt != blank %}
+	    "description": {{ article.excerpt | strip_html | json }},
+	  {% endif %}
+	  {% if article.image %}
+				{% assign image_size = article.image.width | append: 'x' %}
+	    "image": [
+	      {{ article | img_url: image_size | prepend: "https:" | json }}
+	    ],
+	  {% endif %}
+	  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+	  "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+	  "author": {
+	    "@type": "Person",
+	    "name": {{ article.author | json }}
+	  },
+	  "publisher": {
+	    "@type": "Organization",
+	    {% if settings.share_image %}
+					{% assign image_size = settings.share_image.width | append: 'x' %}
+	      "logo": {
+	        "@type": "ImageObject",
+	        "height": {{ settings.share_image.height | json }},
+	        "url": {{ settings.share_image | img_url: image_size | prepend: "https:" | json }},
+	        "width": {{ settings.share_image.width | json }}
+	      },
+	    {% endif %}
+	    "name": {{ shop.name | json }}
+	  }
+	}
+</script>
+
+{% schema %}
+{
+	"name": "t:sections.main-article.name",
+	"tag": "section",
+	"class": "section-main-article",
+	"settings": [
+		{
+			"type": "select",
+			"id": "header_variant",
+			"options": [
+				{
+					"value": "column",
+					"label": "t:sections.main-article.settings.header_variant.column.label"
+				},
+				{
+					"value": "row",
+					"label": "t:sections.main-article.settings.header_variant.row.label"
+				}
+			],
+			"default": "column",
+			"label": "t:sections.main-article.settings.header_variant.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "article-header",
+			"name": "t:sections.main-article.blocks.article-header.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "checkbox",
+					"id": "blog_show_tags",
+					"default": false,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_tags.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_excerpt",
+					"default": false,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_excerpt.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_date",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_date.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_author",
+					"default": false,
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_show_author.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "blog_image_author",
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_image_author.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.main-article.blocks.article-header.settings.header__1.content"
+				},
+				{
+					"type": "select",
+					"id": "image_height",
+					"options": [
+						{
+							"value": "adapt",
+							"label": "t:sections.main-article.blocks.article-header.settings.image_height.options__1.label"
+						},
+						{
+							"value": "medium",
+							"label": "t:sections.main-article.blocks.article-header.settings.image_height.options__2.label"
+						},
+						{
+							"value": "large",
+							"label": "t:sections.main-article.blocks.article-header.settings.image_height.options__3.label"
+						}
+					],
+					"default": "large",
+					"label": "t:sections.main-article.blocks.article-header.settings.image_height.label",
+					"info": "t:sections.main-article.blocks.article-header.settings.image_height.info"
+				}
+			]
+		},
+		{
+			"type": "content",
+			"name": "t:sections.main-article.blocks.content.name",
+			"limit": 1
+		},
+		{
+			"type": "article-footer",
+			"name": "t:sections.main-article.blocks.article-footer.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "checkbox",
+					"id": "blog_show_date",
+					"default": true,
+					"label": "t:sections.main-article.blocks.article-footer.settings.blog_show_date.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "blog_show_author",
+					"default": false,
+					"label": "t:sections.main-article.blocks.article-footer.settings.blog_show_author.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "blog_image_author",
+					"label": "t:sections.main-article.blocks.article-header.settings.blog_image_author.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.footer.settings.header__2.content",
+					"info": "t:sections.footer.settings.header__2.info"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_social",
+					"default": false,
+					"label": "t:sections.footer.settings.show_social.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_social_icons",
+					"default": false,
+					"label": "t:sections.footer.settings.show_social_icons.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,189 @@
+<div class="product-parameters">
+	{% if product.has_only_default_variant == true
+		and product.selected_or_first_available_variant.available == true
+	%}
+		<div class="product-parameters__item product-parameters__variant">
+			<variant-selects
+				class="color-background-2 no-js-hidden"
+				data-section="{{ section.id }}"
+				data-url="{{ product.url }}"
+				{{ block.shopify_attributes }}
+			>
+				<div class="product-parameters__item product-parameters__quantity">
+					<div
+						class="product-form__input product-form__quantity"
+						{{ block.shopify_attributes }}
+					>
+						<quantity-input class="quantity">
+							<button
+								class="quantity__button no-js-hidden"
+								name="minus"
+								type="button"
+							>
+								<span class="visually-hidden">
+									{{-
+										'products.product.quantity.decrease'
+										| t: product: product.title
+										| escape
+									-}}
+								</span>
+								{% render 'icon-minus' %}
+							</button>
+							<input
+								class="quantity__input"
+								type="number"
+								name="quantity"
+								id="Quantity-{{ section.id }}"
+								min="1"
+								value="1"
+								form="{{ product_form_id }}"
+								aria-label="quantity"
+							>
+							<button
+								class="quantity__button no-js-hidden"
+								name="plus"
+								type="button"
+							>
+								<span class="visually-hidden">
+									{{-
+										'products.product.quantity.increase'
+										| t: product: product.title
+										| escape
+									-}}
+								</span>
+								{% render 'icon-plus' %}
+							</button>
+						</quantity-input>
+					</div>
+				</div>
+			</variant-selects>
+		</div>
+	{% elsif product.has_only_default_variant == true
+		and product.selected_or_first_available_variant.available == false
+	%}
+		<div class="product-parameters__item product-parameters__variant"></div>
+	{% else %}
+		<div class="product-parameters__item product-parameters__variant">
+			<variant-selects
+				class="color-background-2 no-js-hidden"
+				data-section="{{ section.id }}"
+				data-url="{{ product.url }}"
+				{{ block.shopify_attributes }}
+			>
+				{%- for option in product.options_with_values -%}
+					<div class="product-form__input product-form__input--dropdown">
+						<p class="product-form__group-name">{{ option.name }}</p>
+						<div class="select">
+							<select
+								id="Option-{{ section.id }}-{{ forloop.index0 }}"
+								class="select__select"
+								name="options[{{ option.name | escape }}]"
+								form="{{ product_form_id }}"
+							>
+								{%- for value in option.values -%}
+									<option
+										value="{{ value | escape }}"
+										{% if option.selected_value == value %}
+											selected="selected"
+										{% endif %}
+									>
+										{{ value }}
+									</option>
+								{%- endfor -%}
+							</select>
+							{% render 'icon-button-arrow' %}
+						</div>
+					</div>
+				{%- endfor -%}
+
+				<div class="product-parameters__item product-parameters__quantity">
+					<div
+						class="product-form__input product-form__quantity"
+						{{ block.shopify_attributes }}
+					>
+						<quantity-input class="quantity">
+							<button
+								class="quantity__button no-js-hidden"
+								name="minus"
+								type="button"
+							>
+								<span class="visually-hidden">
+									{{-
+										'products.product.quantity.decrease'
+										| t: product: product.title
+										| escape
+									-}}
+								</span>
+								{% render 'icon-minus' %}
+							</button>
+							<input
+								class="quantity__input"
+								type="number"
+								name="quantity"
+								id="Quantity-{{ section.id }}"
+								min="1"
+								value="1"
+								form="{{ product_form_id }}"
+								aria-label="quantity"
+							>
+							<button
+								class="quantity__button no-js-hidden"
+								name="plus"
+								type="button"
+							>
+								<span class="visually-hidden">
+									{{-
+										'products.product.quantity.increase'
+										| t: product: product.title
+										| escape
+									-}}
+								</span>
+								{% render 'icon-plus' %}
+							</button>
+						</quantity-input>
+					</div>
+				</div>
+
+				<script type="application/json">
+					{{ product.variants | json }}
+				</script>
+			</variant-selects>
+
+			<noscript class="product-form__noscript-wrapper-{{ section.id }}">
+				<div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+					<p class="product-form__group-name">
+						{{ 'products.product.product_variants' | t }}
+					</p>
+					<div class="select">
+						<select
+							name="id"
+							id="Variants-{{ section.id }}"
+							class="select__select"
+							form="{{ product_form_id }}"
+						>
+							{%- for variant in product.variants -%}
+								<option
+									{% if variant == product.selected_or_first_available_variant
+									%}
+										selected="selected"
+									{% endif %}
+									{% if variant.available == false %}
+										disabled
+									{% endif %}
+									value="{{ variant.id }}"
+								>
+									{{ variant.title }}
+									{%- if variant.available == false %}
+										- {{ 'products.product.sold_out' | t -}}
+									{%- endif %}
+									- {{ variant.price | money | strip_html }}
+								</option>
+							{%- endfor -%}
+						</select>
+						{% render 'icon-caret' %}
+					</div>
+				</div>
+			</noscript>
+		</div>
+	{% endif %}
+</div>

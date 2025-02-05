@@ -1,0 +1,257 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .cb__container.section-id-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-id-{{ section.id }} .contenedor-child {
+      grid-template-columns: 1fr 1fr;
+  }
+
+  .section-id-{{ section.id }} .contenido {
+      padding: 12rem 8rem;
+  }
+
+  .section-{{ section.id }}.cb__show-border {
+      border-width: 1px;
+      border-color: {{ section.settings.border-color }};
+      border-style: solid;
+  }
+
+  .section-{{ section.id }}.cb__background-color {
+      background-color: {{ section.settings.background-color }};
+  }
+
+  .section-{{ section.id }} .imagen {
+      transform: scale(1.05);
+      transform-origin: right;
+  }
+
+  .section-{{ section.id }} .cb__title-text {
+      color: {{ section.settings.titulo_color }};
+  }
+
+  .section-{{ section.id }} .cb__subtitle-text {
+      color: {{ section.settings.subtitulo_color }};
+  }
+
+  .section-{{ section.id }} .cb__paragraph-text {
+      color: {{ section.settings.parrafo_color }};
+  }
+
+
+  @media (max-width: 500px){
+      .section-id-{{ section.id }} .contenido {
+          padding: 4rem 3rem;
+          grid-row-start: 2;
+      }
+
+  .section-id-{{ section.id }} .contenedor-child {
+          grid-template-columns: auto;
+      }
+
+    .section-{{ section.id }} .imagen {
+        transform: scale(1);
+    }
+  }
+{% endstyle %}
+
+<div class="cb__container section-id-{{ section.id }}">
+  <div class="section-{{ section.id }} contenedor-child cb__background-color {% if section.settings.show-border %}cb__show-border{% endif %}">
+    <div class="contenido">
+      <div
+        {% if section.settings['show-icon'] != true or section.settings.icono == blank %}
+          style="margin-bottom: 0;"
+        {% endif %}
+        class="icon"
+      >
+        {% if section.settings['show-icon'] %}
+          {% if section.settings.icono == blank %}
+            {{ 'image' | placeholder_svg_tag: 'cb__placeholder-icon' }}
+          {% else %}
+            <img src="{{ section.settings.icono | image_url }}">
+          {% endif %}
+        {% endif %}
+      </div>
+      <h1 class="cb__title-text">{{ section.settings.titulo }}</h1>
+      <p class="cb__subtitle-text">{{ section.settings.subtitulo }}</p>
+      <p class="cb__paragraph-text">{{ section.settings.parrafo }}</p>
+
+      <div
+        {% if section.settings.button_label_1 == blank and section.settings.button_label_2 == blank %}
+          style="margin-top: 0; display: none;"
+        {% endif %}
+        class="cb__button-container {% if section.settings.block_buttons %}cb__block-buttons{% endif %}"
+      >
+        <a class="cb__primary-button" href="{{ section.settings.button_link_1 }}">
+          {{- section.settings.button_label_1 -}}
+        </a>
+        <a class="cb__primary-button" href="{{ section.settings.button_link_2 }}">
+          {{- section.settings.button_label_2 -}}
+        </a>
+      </div>
+    </div>
+
+    <div class="imagen">
+      {% if section.settings.image == blank %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% else %}
+        <img src="{{ section.settings.image | image_url }}">
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section by Codebulls",
+  "tag": "section",
+        "settings": [
+        {
+            "type": "header",
+            "content": "Section options"
+        },
+        {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_top.label"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 10,
+                "default": 60,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_bottom.label"
+            },
+            {
+                "type": "checkbox",
+                "default": true,
+                "id": "show-border",
+                "label": "Show border"
+            },
+            {
+                "type": "color",
+                "id": "border-color",
+                "label": "Border color",
+                "default": "#08393f"
+            },
+            {
+                "type": "color",
+                "id": "background-color",
+                "label": "Background color",
+                "default": "#FFF"
+            },
+            {
+                "type": "header",
+                "content": "Icon options"
+            },
+            {
+                "type": "checkbox",
+                "default": false,
+                "id": "show-icon",
+                "label": "Show icon"
+            },
+            {
+                "type": "image_picker",
+                "id": "icono",
+                "label": "Icon"
+            },
+            {
+                "type": "header",
+                "content": "Text options"
+            },
+            {
+                "type": "text",
+                "id": "titulo",
+                "default": "Turismo con propósito",
+                "label": "Title"
+            },
+            {
+                "type": "color",
+                "id": "titulo_color",
+                "label": "Title color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "subtitulo",
+                "default": "Vive la experiencia <strong>#GreenSouls</strong> como siempre lo soñaste y sé parte de una comunidad comprometida con ser la solución",
+                "label": "Subtitle"
+            },
+            {
+                "type": "color",
+                "id": "subtitulo_color",
+                "label": "Subtitle color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "parrafo",
+                "default": "¡Elige tu destino y fecha favorita, y prepara tus maletas para vivir una experiencia inolvidable!",
+                "label": "Paragraph"
+            },
+            {
+                "type": "color",
+                "id": "parrafo_color",
+                "label": "Paragraph color",
+                "default": "#000"
+            },
+            {
+                "type": "header",
+                "content": "Image options"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "header",
+                "content": "Button options"
+            },
+            {
+                "type": "checkbox",
+                "default": false,
+                "id": "block_buttons",
+                "label": "Block buttons"
+            },
+            {
+                "type": "text",
+                "id": "button_label_1",
+                "default": "Conoce más",
+                "label": "t:sections.all.button.button_text.label"
+            },
+            {
+                "type": "url",
+                "id": "button_link_1",
+                "label": "t:sections.all.button.button_link.label"
+            },
+            {
+                "type": "text",
+                "id": "button_label_2",
+                "default": "Aparta tu cupo",
+                "label": "t:sections.all.button.button_text.label"
+            },
+            {
+                "type": "url",
+                "id": "button_link_2",
+                "label": "t:sections.all.button.button_link.label"
+            }
+        ],
+  "presets": [
+    {
+      "name": "Section by Codebulls"
+    }
+  ]
+}
+{% endschema %}

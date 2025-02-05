@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cb_fullwidth_text_section_3eGyK4": {
+      "type": "cb-fullwidth-text-section",
+      "settings": {
+        "fullwidth_section": false,
+        "padding_top": 200,
+        "padding_bottom": 200,
+        "background_image": "shopify://shop_images/greensouls-limpieza-de-playas-pasa-a-la-accion_1_f7cb3bca-7dec-42e6-959b-55b3aed95bae.jpg",
+        "title": "<p>Así nació <strong>GreenSouls</strong></p>",
+        "title_color": "#ffffff",
+        "title_alignment": "right"
+      }
+    },
+    "rich_text_JDJhRQ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_AiEKAY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GreenSouls nació de una visión audaz y <strong>una</strong> <strong>necesidad urgente de impacto ambiental tangible</strong>. Todo comenzó con <a href=\"https://www.instagram.com/fokusgreen/\" target=\"_blank\" title=\"https://www.instagram.com/fokusgreen/\">FokusGreen</a>, una marca pionera en la creación de prendas a partir de PET reciclado. Esta innovadora empresa no solo transformaba residuos en moda, sino que también soñaba con llevar su compromiso con el medio ambiente más allá de los límites tradicionales.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_AiEKAY"
+      ],
+      "custom_css": [
+        ".rich-text {padding-block: 2em; position: relative;}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_article_ipzizd": {
+      "type": "cb-article",
+      "blocks": {
+        "header_dVqgKL": {
+          "type": "header",
+          "settings": {
+            "text": "<h4>Fue así como en 2018, FokusGreen dio el primer paso decisivo hacia ese sueño, organizando su primera jornada de <strong>limpieza de playas</strong>. </h4><p>Este evento no fue una simple actividad de conservación; se convirtió en un poderoso acto de storytelling, donde cada acción y cada grano de arena limpio narraban una historia convincente de cambio y responsabilidad.</p>",
+            "image": "shopify://shop_images/greenSoulsFestivals_13.jpg"
+          }
+        },
+        "block_Tn9AjQ": {
+          "type": "block",
+          "settings": {
+            "text": "<p>Pronto, FokusGreen se dio cuenta de que su viaje hacia un impacto sostenible resonaba con un coro de marcas que compartían un propósito similar.  <strong>Empresas como ISDIN, Nosotras, Arnette y VIVA AIR, reconocieron que la sostenibilidad no era solo una moda pasajera, sino una obligación crucial y una oportunidad de conectarse auténticamente con sus consumidores. </strong></p><p></p><h5>Así nació GreenSouls, como una extensión natural de FokusGreen, pero con un enfoque más amplio y una misión clara: unir a diversas marcas en un esfuerzo colectivo para proteger y preservar el medio ambiente.</h5>",
+            "image": "shopify://shop_images/banner-2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_dVqgKL",
+        "block_Tn9AjQ"
+      ],
+      "settings": {
+        "margin_top": 110,
+        "margin_bottom": 170,
+        "background": "#000000"
+      }
+    },
+    "cb_article_w_rWzKRr": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h5>GreenSouls se convirtió rápidamente en algo más que un colectivo de marketing con propósito. </h5><h5>_____________</h5><h4>Era un movimiento, un grito de guerra para todos aquellos que creían que <em>\"pequeñas acciones pueden hacer grandes cambios\".</em></h4><p></p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/bannerfuerza4.jpg",
+        "bottom_left_image": "shopify://shop_images/greensouls-pasa-a-la-accion.jpg",
+        "top_right_image": "shopify://shop_images/stivtoro-2238.jpg",
+        "right_text": "<p>La iniciativa creció rápidamente, expandiendo su alcance más allá de la <strong>limpieza de playas. </strong></p><p><strong>_______________________</strong></p><h5>Iniciativas como la siembra de árboles y corales, conservación de fauna marina y silvestre, y las donaciones a comunidades locales se convirtieron en el corazón de GreenSouls. Cada actividad estaba imbuida de un profundo sentido de cuidado y conexión con la naturaleza, y cada acción individual se sumaba a un impacto colectivo significativo.</h5>"
+      }
+    },
+    "rich_text_LYah8R": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iUxdkY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>La historia de GreenSouls es un testimonio de <strong>cómo una visión compartida y una colaboración genuina pueden crear un cambio significativo. </strong>Desde sus humildes comienzos con FokusGreen hasta convertirse en un faro de sostenibilidad y acción, GreenSouls sigue demostrando que cuando las marcas y los consumidores unen fuerzas bajo un propósito común, los resultados pueden ser verdaderamente extraordinarios.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iUxdkY"
+      ],
+      "custom_css": [
+        ".rich-text {padding: 4em 1em; position: relative; border-radius: 30px;}",
+        "@media (min-width: 1024px) {.rich-text {padding: 4em; }}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_buttons_mrhzYF": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_Dzw3ne": {
+          "type": "button",
+          "settings": {
+            "button_label": "Lee más artículos",
+            "button_link": "shopify://blogs/news"
+          }
+        }
+      },
+      "block_order": [
+        "button_Dzw3ne"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_featured_blogs_YpePkn": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 2,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "cb_fullwidth_text_section_3eGyK4",
+    "rich_text_JDJhRQ",
+    "cb_article_ipzizd",
+    "cb_article_w_rWzKRr",
+    "rich_text_LYah8R",
+    "cb_buttons_mrhzYF",
+    "cb_featured_blogs_YpePkn"
+  ]
+}

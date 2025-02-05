@@ -1,0 +1,195 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }} .cb__primary-button {
+    text-decoration: none;
+    color: #000;
+    padding: 15px 50px;
+    background: transparent;
+    border: 1px solid #0c5b5e;
+    border-radius: 30px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: var(--font-body-size);
+    font-family: var(--font-body-family);
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 500ms ease-in-out;
+  }
+
+  .cb__primary-button:hover {
+    color: #FFF;
+    background-color: transparent;
+  }
+
+  .cb__primary-button::before {
+    content: '';
+    position: absolute;
+    background: #0c5b5e;
+    left: -90%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 300ms ease-in-out;
+    z-index: -1;
+  }
+
+
+  .cb__primary-button:hover::before {
+    left: 0;
+  }
+
+  .blog-articles {
+    background-color: #d1dbd9;
+    border-radius: 30px;
+    padding: 2em;
+    margin-bottom: 2em;
+  }
+
+
+  .article__img {
+    border-radius: 30px;
+    height: 400px;
+    margin-bottom: 2em;
+  }
+
+  .article__info-block {
+    margin-bottom: 2em;
+  }
+
+  .article__content {
+    padding: 0;
+  }
+
+  .article__title {
+    margin: 0;
+  }
+
+  .article__title {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .blog-pagination.pagination-wrapper {
+    width: 100%;
+  }
+
+  .pagination__item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #08393f25;
+    border-radius: 50%;
+    margin: 0 auto;
+    top: -20px;
+  }
+
+  .pagination__item--current::before {
+    background-color: #08393f;
+  }
+
+  .pagination__item-arrow.pagination__item-arrow {
+    border-radius: 50%;
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+  }
+
+  nav.pagination {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .pagination__item-arrow .icon.icon {
+    width: 2rem;
+  }
+
+  @media (min-width: 1200px) {
+    .blog-articles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 3em;
+      padding: 8em;
+    }
+
+    .article {
+      width: 100%;
+      display: grid;
+      align-items: start;
+      grid-template-rows: max-content auto auto;
+    }
+
+    .article__button {
+      align-self: end;
+    }
+
+    .blog-pagination.pagination-wrapper {
+      grid-column: span 3;
+      margin-top: 0;
+    }
+
+    .pagination__item-arrow.pagination__item-arrow {
+      width: 80px;
+      height: 80px;
+    }
+
+    .pagination__item-arrow .icon.icon {
+      width: 4rem;
+    }
+  }
+{% endstyle %}
+
+<script src="{{ "load-more.js" | asset_url }}" defer="defer"></script>
+
+{% assign count = 6 %}
+
+{%- paginate blog.articles by count -%}
+  <div class="main-blog container">
+    <div class="blog-articles">
+      {%- for article in blog.articles -%}
+        {%- render 'article-card',
+          article: article,
+          show_image: section.settings.show_image,
+          button_label: section.settings.button_label
+        -%}
+      {%- endfor -%}
+      {%- if paginate.pages > 1 -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section-main-blog",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label",
+      "info": "t:sections.main-blog.settings.show_image.info"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "¡Quiero leerlo!"
+    }
+
+  ]
+}
+{% endschema %}

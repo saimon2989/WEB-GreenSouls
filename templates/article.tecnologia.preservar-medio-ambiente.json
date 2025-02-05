@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "Un Arrecife de Vida",
+        "heading": "<h4>En GreenSouls, creemos firmemente que la tecnología es una herramienta poderosa para empoderar a las comunidades locales en su lucha por la preservación del medio ambiente. </h4>",
+        "heading_size": "medium",
+        "text_information": "A medida que el mundo enfrenta retos ecológicos sin precedentes, es vital que las comunidades se unan y utilicen soluciones tecnológicas innovadoras para proteger nuestros recursos naturales. Desde la reforestación hasta la gestión de residuos, la tecnología puede ser un aliado clave en la construcción de un futuro sostenible.",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/esofondodes.jpg",
+        "image_ratio": "landscape",
+        "opacity_overlay": 0.6,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<p>Una de las maneras en que la tecnología puede transformar nuestras comunidades es a través de la reforestación. Iniciativas tecnológicas que permiten la plantación eficiente de árboles ayudan a restaurar ecosistemas y capturar carbono. Al promover la reforestación, no solo restauramos el paisaje, sino que también fomentamos el sentido de pertenencia y responsabilidad entre los miembros de la comunidad.<br/><br/>La tecnología también ha revolucionado la manera en que gestionamos los residuos. A través de aplicaciones móviles y plataformas en línea, las comunidades pueden coordinar programas de reciclaje, organizar limpiezas y fomentar una cultura de reducción de desechos. Esto no solo ayuda a reducir la contaminación, sino que también genera conciencia sobre la importancia de cuidar nuestro entorno.<br/><br/>Además, la educación ambiental es otro campo en el que la tecnología juega un papel crucial. Las plataformas de e-learning y los recursos digitales permiten a las comunidades acceder a información valiosa sobre prácticas sostenibles, cambio climático y conservación. Al capacitar a las comunidades con conocimientos, estamos sembrando las semillas para un futuro más verde.<br/><br/>En GreenSouls, también hemos visto cómo la tecnología facilita la recopilación y análisis de datos ambientales. Herramientas como sensores y drones pueden monitorear la salud de los ecosistemas en tiempo real, proporcionando información crucial para la toma de decisiones informadas. Estos datos permiten a las comunidades actuar de manera proactiva y eficiente para proteger su entorno.<br/><br/>En conclusión, la tecnología es un aliado indispensable en la preservación del medio ambiente y el fortalecimiento de las comunidades locales. En GreenSouls, estamos convencidos de que, al unir esfuerzos y aprovechar la innovación, podemos crear un impacto significativo y duradero en nuestro planeta. Te invito a unirte a nosotros en este viaje hacia la sostenibilidad.<br/></p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/donaciones-gaia2.jpg",
+        "bottom_left_image": "shopify://shop_images/banner4_cba3a4d5-6dca-44ca-bba3-466f86547a17.jpg",
+        "top_right_image": "shopify://shop_images/1.jpg",
+        "right_text": ""
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<p>Actúa hoy: adopta nuevas tecnologías en tu comunidad, infórmate y comparte tus experiencias con el hashtag #Greensouls. Juntos, podemos marcar la diferencia y construir un futuro en armonía con la naturaleza. ¡El momento de actuar es ahora!</p>",
+            "image": "shopify://shop_images/snorkeling-greensouls.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#000000"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

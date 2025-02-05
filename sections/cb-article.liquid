@@ -1,0 +1,236 @@
+{% style %}
+.cb__container {
+  max-width: 1840px;
+  margin: 0 auto;
+}
+
+  .cb__container.cb__container--{{ section.id }} {
+    padding-inline: 2rem;
+    padding-block: 0;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+  }
+
+  .cb__container--{{ section.id }}
+  .cb__content {
+    background-color: {{ section.settings.background }};
+    padding: 2em 1em;
+    border-radius: 30px;
+  }
+
+  .cb__container--{{ section.id }}
+  .cb__title {
+    margin: 4em 0 2em;
+  }
+
+  .cb__container--{{ section.id }}
+  .cb__column {
+    display: grid;
+    gap: 3em;
+  }
+
+  .cb__container--{{ section.id }}
+  .cb__image svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cb__container--{{ section.id }}
+  .cb__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cb__container--{{ section.id }}
+  .cb__text > * {
+    color: #FFF;
+  }
+
+  .cb__container--{{ section.id }} .cb__svg {
+    background-color: #FFF2;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cb__container--{{ section.id }} .cb__item {
+    display: grid;
+    gap: 2em;
+  }
+
+  .cb__container--{{ section.id }} .cb__image {
+    grid-row-start: 1;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.cb__container--{{ section.id }} .cb__item:last-child .cb__text {
+    position: relative;
+    padding-top: 2em;
+    margin-top: 1em;
+}
+
+.cb__container--{{ section.id }} .cb__item:last-child .cb__text::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100px;
+    height: 2px;
+    background-color: #FFF;
+}
+
+
+  @media (min-width: 1023px) {
+
+  .cb__container--{{ section.id }}
+  .cb__content {
+    padding: 4em 3em;
+  }
+
+  .cb__container--{{ section.id }} .cb__image {
+    height: 420px;
+    
+}
+    .cb__container--{{ section.id }} .cb__item:last-child .cb__image {
+    grid-row-start: inherit;
+    height: 320px;
+    
+}
+
+.cb__container--{{ section.id }} .cb__item:last-child {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4em;
+    align-items: center;
+}
+
+.cb__container--{{ section.id }} .cb__item:last-child .cb__text::before {
+    height: 6px;
+}
+
+  }
+{% endstyle %}
+
+<div class="cb__container cb__container--{{ section.id }}">
+  <div class="cb__content">
+    <div class="cb__column {%  if forloop.index < 2 %} cb__column--3{% endif %}">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'header' %}
+            <div class="cb__item">
+              <div class="cb__image">
+                {% if block.settings.image == blank %}
+                  <div class="cb__svg">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% else %}
+                  <img src="{{ block.settings.image | image_url }}" loading="lazy">
+                {% endif %}
+              </div>
+              <div class="cb__text">
+                {{ block.settings.text }}
+              </div>
+
+            </div>
+          {% when 'block' %}
+            <div class="cb__item">
+              <div class="cb__text">
+                {{ block.settings.text }}
+              </div>
+              <div class="cb__image">
+                {% if block.settings.image == blank %}
+                  <div class="cb__svg">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% else %}
+                  <img src="{{ block.settings.image | image_url }}" loading="lazy">
+                {% endif %}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Article by Codebulls",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section options"
+      }, {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin top"
+      }, {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin bottom"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "default": "#000",
+        "label": "Background Color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "header",
+        "name": "Header",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Durante el evento, los participantes llevaron a cabo diversas actividades en beneﬁcio del medio ambiente y las comunidades locales. El primer día se llevó a cabo una siembra de 60 fragmentos de corales utilizando vidrio reciclado de las botellas de Dislicores. Estos fragmentos de corales hacen parte de la iniciativa a largo plazo de GreenSouls y Dislicores en colaboración con los biólogos expertos de Corpamag y la fundación CIMCaribe: “Un Arrecife de Vida” con el que se busca sembrar más de 20.000 fragmentos en el 2023.</p>",
+            "label": "Text"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }, {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>La liberación de 20 tortugasn marinas de las especies caguamas y verdes rescatadas y rehabilitadas por más de 2 años por Corpamag también formó parte de las actividades más que más tocó el corazón de los asistentes.</p>",
+            "label": "Description"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Article by Codebulls",
+        "blocks": [
+        {
+            "type": "header"
+        }, {
+            "type": "block"
+        }
+         ]
+      }
+    ]
+  }
+{% endschema %}

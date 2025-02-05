@@ -1,0 +1,193 @@
+.collapsible-content__top {
+  max-width: 89rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.collapsible-content__heading {
+  margin: 0;
+  align-self: center;
+}
+
+.collapsible-content__text {
+  line-height: 1.5;
+  color: rgb(var(--color-foreground));
+  margin-top: 0.8rem;
+}
+
+.collapsible-content__items {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 750px) {
+  .collapsible-content__items {
+    margin-top: 3.1rem;
+  }
+}
+.collapsible-content__item {
+  border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+
+.collapsible-content__item .collapsible-content__toggle {
+  position: relative;
+}
+
+.collapsible-content__item .collapsible-content__toggle::before,
+.collapsible-content__item .collapsible-content__toggle::after {
+  content: "";
+  width: 0;
+  height: 0.1rem;
+  background-color: rgb(var(--color-button-tertiary-text));
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  transition: var(--duration-default);
+}
+
+.collapsible-content__item .collapsible-content__toggle::before {
+  top: -0.1rem;
+}
+
+.collapsible-content__item .collapsible-content__toggle::after {
+  bottom: -0.1rem;
+}
+
+.collapsible-content__item:first-child {
+  border-top: 0.1rem solid rgb(var(--color-border));
+}
+
+.collapsible-content__item:hover .collapsible-content__question {
+  color: rgb(var(--color-accent));
+}
+
+.collapsible-content__item:hover .collapsible-content__toggle::before,
+.collapsible-content__item:hover .collapsible-content__toggle::after {
+  width: 100%;
+}
+
+.collapsible-content__item:hover .button--simple {
+  background-color: rgba(var(--color-button-tertiary-text));
+  color: #fff;
+}
+
+.collapsible-content__item.active .collapsible-content__icon svg {
+  transform: rotate(316deg);
+}
+
+.collapsible-content__item.active .collapsible-content__toggle::before {
+  width: 100%;
+}
+
+.collapsible-content__item.active .collapsible-content__toggle::after {
+  width: 100%;
+}
+
+.collapsible-content__item.active:hover .collapsible-content__toggle::after {
+  width: 100%;
+}
+
+.collapsible-content__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0.5rem 1.5rem 0;
+  cursor: pointer;
+}
+
+@media (min-width: 750px) {
+  .collapsible-content__toggle {
+    padding: 3rem 1rem 3rem 0;
+  }
+}
+.collapsible-content__toggle-group {
+  display: flex;
+  align-items: center;
+}
+
+.collapsible-content__question {
+  margin: 0;
+  transition: var(--duration-default);
+}
+
+.collapsible-content__digit,
+.collapsible-content__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.collapsible-content__digit {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-right: 0.8rem;
+  color: rgb(var(--color-button));
+  border-radius: 50%;
+  background-color: rgb(244, 244, 244);
+}
+
+@media (min-width: 750px) {
+  .collapsible-content__digit {
+    width: 4.7rem;
+    height: 4.7rem;
+    font-size: 1.8rem;
+    margin-right: 1.6rem;
+  }
+}
+.collapsible-content__icon {
+  display: flex;
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+}
+@media (max-width: 750px) {
+  .collapsible-content__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+  .collapsible-content__icon .button--simple {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.collapsible-content__icon svg {
+  transition: var(--duration-default);
+  transform: rotate(134deg);
+}
+
+.collapsible-content__answer {
+  display: none;
+  border-top: 0.1rem solid rgb(var(--color-foreground-title));
+  padding: 2.4rem 0;
+}
+
+@media (min-width: 990px) {
+  .collapsible-content__answer {
+    padding: 2.4rem 6.3rem;
+  }
+}
+.collapsible-content__answer-inner {
+  max-width: 90.3rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: rgb(var(--color-foreground-title));
+}
+
+@media (min-width: 750px) {
+  .collapsible-content__answer-inner {
+    font-size: 1.8rem;
+  }
+}
+.collapsible-content__answer-inner p {
+  margin: 0;
+}
+
+.collapsible-content .container {
+  max-width: 1235px;
+}

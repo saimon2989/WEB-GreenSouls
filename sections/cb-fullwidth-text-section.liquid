@@ -1,0 +1,210 @@
+{{ 'cb__custom-styles.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-id-{{ section.id }} .cb__title-text {
+      color: {{ section.settings.title_color }};
+      font-size: 48px;
+  }
+
+  .section-id-{{ section.id }} .content-alignment-left {
+      justify-content: left
+  }
+
+  .section-id-{{ section.id }} .content-alignment-center {
+      justify-content: center;
+  }
+
+  .section-id-{{ section.id }} .content-alignment-right {
+      justify-content: right;
+  }
+
+  .section-id-{{ section.id }} .title-alignment-left {
+      text-align: left;
+  }
+
+  .section-id-{{ section.id }} .title-alignment-center {
+      text-align: center;
+  }
+
+  .section-id-{{ section.id }} .title-alignment-right {
+      text-align: right;
+  }
+
+  .fullwidth-section-{{ section.id }}.placeholder-background,
+  .default-section-{{ section.id }}.placeholder-background {
+      background-color: #f4f4f4;
+      position: relative;
+  }
+
+  .fullwidth-section-{{ section.id }} .placeholder-bg,
+  .default-section-{{ section.id }} .placeholder-bg {
+      position: absolute;
+      inset: 0;
+      opacity: .1;
+      z-index: 1;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+  }
+
+  .fullwidth-section-{{ section.id }} .contenedor-child,
+  .default-section-{{ section.id }} .contenedor-child {
+      position: relative;
+      z-index: 2;
+  }
+
+  .default-section-{{ section.id }} {
+      border-radius: 30px;
+  }
+
+  .fullwidth-section-{{ section.id }}.cb__background-image,
+  .default-section-{{ section.id }}.cb__background-image {
+      background-image: url({% if section.settings.background_image != blank %}{{ section.settings.background_image | image_url }}{% endif %});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      position: relative;
+      overflow: hidden;
+  }
+
+    .fullwidth-section-{{ section.id }}.cb__background-image::before,
+  .default-section-{{ section.id }}.cb__background-image::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        inset: 0;
+      }
+
+  @media (min-width: 1023px){
+      .section-id-{{ section.id }} .cb__title-text {
+          width: 100%;
+          margin: 0 auto;
+      }
+
+      .default-section-{{ section.id }}.cb__background-image {
+          padding-inline: 4rem;
+      }
+  }
+
+  @media (max-width: 500px){
+      .default-section-{{ section.id }}.cb__background-image {
+          padding-inline: 3rem;
+      }
+
+      .section-id-{{ section.id }} .cb__title-text {
+          font-size: 32px;
+      }
+  }
+{% endstyle %}
+
+<div
+  class="
+    cb__container section-id-{{ section.id }} {% if section.settings.fullwidth_section == true %}fullwidth-section-{{ section.id }}
+    {% if section.settings.background_image == blank %} placeholder-background {% else %}cb__background-image{% endif %}{% endif %}
+  "
+>
+  <div
+    class="
+      {% if section.settings.fullwidth_section == false %}
+      default-section-{{ section.id }} {% if section.settings.background_image == blank %} placeholder-background {% else %}cb__background-image{% endif %}{% endif %}
+    "
+  >
+    {% if section.settings.background_image == blank %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-bg' }}
+    {% endif %}
+
+    <div class="contenedor-child">
+      <div class="contenido content-alignment-{{ section.settings.title_alignment }}">
+        <h1 class="cb__title-text title-alignment-{{ section.settings.title_alignment }}">
+          {{ section.settings.title }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section by Codebulls",
+  "tag": "section",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section options"
+            },
+            {
+                "type": "checkbox",
+                "default": true,
+                "id": "fullwidth_section",
+                "label": "Fullwidth section"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 400,
+                "step": 10,
+                "default": 200,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_top.label"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 400,
+                "step": 10,
+                "default": 200,
+                "unit": "px",
+                "label": "t:sections.all.section-padding.padding_bottom.label"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+            },
+            {
+                "type": "header",
+                "content": "Text options"
+            },
+            {
+                "type": "richtext",
+                "id": "title",
+                "default": "<p>Heading</p>",
+                "label": "Title"
+            },
+            {
+                "type": "color",
+                "id": "title_color",
+                "label": "Title color",
+                "default": "#000"
+            },
+            {
+                "type": "select",
+                "id": "title_alignment",
+                "label": "Title alignment",
+                "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                }, {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+                ],
+                "default": "left"
+            }
+        ],
+  "presets": [
+    {
+      "name": "Fullwidth Text by Codebulls"
+    }
+  ]
+}
+{% endschema %}

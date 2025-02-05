@@ -1,0 +1,266 @@
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{{ 'login-register.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ "login.js" | asset_url }}" defer="defer"></script>
+
+<div class="breadcrumb_border">
+	<div class="container">
+		<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+			<a
+				href="{{ routes.root_url }}"
+				title="{{ 'general.breadcrumbs.home' | t }}"
+				class="link-hover-line"
+			>
+				{{ 'general.breadcrumbs.home' | t }}
+			</a>
+			<div class="breadcrumb__delimiter"></div>
+			<span>{{- section.settings.login_heading -}}</span>
+		</nav>
+	</div>
+</div>
+
+<div class="login-page container collection-hero collection-hero--row">
+	<div class="color-background-2 collection-hero__row-block">
+		<div class="collection-hero__inner">
+			<div class="collection-hero__text-wrapper">
+				<div class="login-page__form">
+					<div class="login__reset">
+						<div class="page-header" id="recover">
+							<div class="page-header__inner">
+								<h1
+									class="main-page-title page-title title--page"
+									tabindex="-1"
+								>
+									{{ 'customer.recover_password.title' | t }}
+								</h1>
+								<p>
+									{{ 'customer.recover_password.subtext' | t }}
+								</p>
+							</div>
+						</div>
+						<div>
+							{%- form 'recover_customer_password' -%}
+								{% assign recover_success = form.posted_successfully? %}
+								<div class="field">
+									<input
+										type="email"
+										value=""
+										name="email"
+										id="RecoverEmail"
+										autocorrect="off"
+										autocapitalize="off"
+										autocomplete="email"
+										{% if form.errors %}
+											aria-invalid="true"
+											aria-describedby="RecoverEmail-email-error"
+											autofocus
+										{% endif %}
+										placeholder="{{ 'customer.login_page.email' | t }}"
+									>
+									<label
+										for="RecoverEmail"
+										placeholder="{{ 'customer.login_page.email' | t }}"
+									></label>
+								</div>
+
+								<div class="customer__buttons login__buttons">
+									<button class="button button--primary login__sign-in">
+										<span>{{ 'customer.login_page.submit' | t }}</span>
+										{% render 'icon-button-arrow' %}
+									</button>
+
+									<a class="button button--tertiary login__create-acc login__toggle">
+										<span>{{ 'customer.login_page.cancel' | t }}</span>
+										{% render 'icon-button-arrow' %}
+									</a>
+								</div>
+							{%- endform -%}
+						</div>
+					</div>
+
+					<div class="login__form">
+						<h1 class="login-page__title">
+							{{- section.settings.login_heading -}}
+						</h1>
+						<p>
+							{{- section.settings.login_text -}}
+						</p>
+						<div class="login__fields">
+							{%- form 'customer_login', novalidate: 'novalidate' -%}
+								<div class="field login__field">
+									<input
+										type="email"
+										name="customer[email]"
+										class="field__input"
+										id="CustomerEmail"
+										autocomplete="email"
+										autocorrect="off"
+										autocapitalize="off"
+										required
+										{% if form.errors contains 'form' %}
+											aria-invalid="true"
+											aria-describedby="LoginForm-email-error"
+										{% endif %}
+										placeholder="{{ 'customer.login_page.email' | t }}"
+									>
+									<label
+										for="CustomerEmail"
+										placeholder="{{ 'customer.login_page.email' | t }}"
+									></label>
+								</div>
+								{% unless template.name == 'register' %}
+									{{ form.errors | default_errors }}
+								{% endunless %}
+
+								{%- if form.password_needed -%}
+									<div class="field login__field">
+										<input
+											type="password"
+											value=""
+											name="customer[password]"
+											class="field__input"
+											id="CustomerPassword"
+											autocomplete="current-password"
+											{% if form.errors contains 'form' %}
+												aria-invalid="true"
+											{% endif %}
+											required
+											placeholder="{{ 'customer.login_page.password' | t }}"
+										>
+										<label
+											for="CustomerPassword"
+											placeholder="{{ 'customer.login_page.password' | t }}"
+										></label>
+									</div>
+									{% unless template.name == 'register' %}
+										{{ form.errors | default_errors }}
+									{% endunless %}
+
+									<div class="login__forgot-password">
+										<a class="login__toggle" href="#">
+											{{- 'customer.login_page.forgot_password' | t -}}
+										</a>
+									</div>
+								{%- endif -%}
+
+								<div class="customer__buttons login__buttons">
+									<button class="button button--primary login__sign-in">
+										<span>{{ 'customer.login_page.sign_in' | t }}</span>
+										{% render 'icon-button-arrow' %}
+									</button>
+
+									<a
+										class="button button--tertiary login__create-acc"
+										href="{{ routes.account_register_url }}"
+									>
+										<span>{{ 'customer.login_page.create_account' | t }}</span>
+										{% render 'icon-button-arrow' %}
+									</a>
+								</div>
+							{%- endform -%}
+						</div>
+					</div>
+
+					{%- if shop.checkout.guest_login -%}
+						<div>
+							<hr>
+							<h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+
+							{%- form 'guest_login' -%}
+								<button>
+									{{ 'customer.login_page.guest_continue' | t }}
+								</button>
+							{%- endform -%}
+						</div>
+					{%- endif -%}
+				</div>
+			</div>
+			{%- liquid
+				assign collection_image = collection.image
+				if collection_image == blank and collection.id == blank
+					assign collection_image = section.settings.image_products
+				endif
+			-%}
+			{%- if section.settings.show_collection_image -%}
+				<div class="collection-hero__image-wrapper">
+					<div class="collection-hero__image-container media">
+						{%- if section.settings.image_products -%}
+							{{
+								section.settings.image_products
+								| image_url: width: 1290
+								| image_tag:
+									loading: 'lazy',
+									widths: '535, 720, 940, 1070, 1100, 1290'
+							}}
+						{%- else -%}
+							{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+						{% endif %}
+					</div>
+					{%- for block in section.blocks -%}
+						<div
+							class="collection-hero__small-image rellax"
+							data-rellax-speed="{%- if forloop.index == 1 -%} -2 {% elsif  forloop.index == 4 %} -3 {% else %} -2 {% endif %}"
+						>
+							{%- if block.settings.image != blank -%}
+								{{
+									block.settings.image
+									| image_url: width: 300
+									| image_tag: loading: 'lazy', widths: '150, 300'
+								}}
+							{%- else -%}
+								{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+							{% endif %}
+						</div>
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-login.name",
+	"tag": "section",
+	"class": "login-section",
+	"settings": [
+		{
+			"type": "text",
+			"id": "login_heading",
+			"default": "Log In",
+			"label": "t:sections.main-login.settings.heading.label"
+		},
+		{
+			"type": "textarea",
+			"id": "login_text",
+			"default": "Additional text for subscribe form.",
+			"label": "t:sections.main-login.settings.descriptions.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_collection_image",
+			"default": false,
+			"label": "t:sections.main-collection-banner.settings.show_collection_image.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_products",
+			"label": "t:sections.main-collection-banner.settings.image_products.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "column",
+			"name": "t:sections.main-collection-banner.settings.block_image.label",
+			"limit": 4,
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.main-collection-banner.settings.block_image.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

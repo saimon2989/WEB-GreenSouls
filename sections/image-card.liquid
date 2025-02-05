@@ -1,0 +1,308 @@
+{{ 'section-image-card.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+{% endstyle %}
+
+<section
+	id="section-{{ section.id }}"
+	data-section-id="{{ section.id }}"
+	class="section-container js-data-image-card section-image-card container"
+>
+	<div class="segment">
+		<div class="image-card">
+			{%- for block in section.blocks -%}
+				{%- case block.type -%}
+					{%- when 'image-card_block' -%}
+						<div
+							class="color-background-2 card {% if block.settings.color_scheme == "theme-dark" %}theme-dark{% else %}theme-light{% endif %}"
+							{{ block.shopify_attributes }}
+						>
+							<div class="card__side card__side--1 js-card__side--1">
+								<div class="card__typography">
+									{% if block.settings.card_subtitle != blank %}
+										<span class="card__subheading subheading card__subheading--side-1 subheading js-card__subheading--side-1 subtitle">
+											{{ block.settings.card_subtitle }}
+										</span>
+									{%- endif %}
+									{% if block.settings.card_title != blank %}
+										<h2 class="card__title card__title--side-1 h2 js-card__title--side-1">
+											{{ block.settings.card_title -}}
+										</h2>
+									{%- endif %}
+								</div>
+								{% if block.settings.button_link != blank %}
+									<a
+										class="card__full-link"
+										{% if block.settings.button_link != blank %}
+											href="{{ block.settings.button_link }}"
+										{% endif %}
+										{% if block.settings.button_link == blank %}
+											aria-disabled="true"
+										{% endif %}
+										aria-label="link"
+    									{% if block.settings.new_tab != false %}
+                                          target="_blank"
+                                        {% endif %}></a>
+								{% endif %}
+							</div>
+
+							<div class="card__side card__side--2 js-card__side--2">
+								<div class="card__side--2-box">
+									{% if block.settings.button_link != blank %}
+										<a
+											class="card__full-link"
+											{% if block.settings.button_link != blank %}
+												href="{{ block.settings.button_link }}"
+											{% endif %}
+											{% if block.settings.button_link == blank %}
+												aria-disabled="true"
+											{% endif %}
+											aria-label="link"
+    										{% if block.settings.new_tab != false %}
+                                              target="_blank"
+                                            {% endif %}></a>
+									{% endif %}
+									{% if block.settings.card_subtitle != blank %}
+										<span class="card__subheading card__subheading--side-2 subheading js-card__subheading--side-2 subtitle">
+											{{ block.settings.card_subtitle }}
+										</span>
+									{%- endif %}
+
+									{% if block.settings.card_title != blank %}
+										<h2 class="card__title card__title--side-2 h2 js-card__title--side-2">
+											{{ block.settings.card_title }}
+										</h2>
+									{%- endif %}
+
+									{% if block.settings.card_image_hover != null %}
+										<img
+											srcset="
+												{{ block.settings.card_image_hover | image_url: width: 193, height: 225 }} 1x,
+												{{ block.settings.card_image_hover | image_url: width: 386, height: 450 }} 2x,
+												{{ block.settings.card_image_hover | image_url: width: 579, height: 675 }} 3x,
+												{{ block.settings.card_image_hover | image_url: width: 772, height: 900 }} 4x
+											"
+											src="{{ block.settings.card_image_hover | image_url: width: 772, height: 900 }}"
+											alt="{{ block.settings.card_image_hover.alt | escape }}"
+											width="{{ block.settings.card_image_hover.width }}"
+											height="{{ block.settings.card_image_hover.height }}"
+											loading="lazy"
+											class="card__short-img js-card__short-img"
+										>
+									{% elsif block.settings.card_image_hover == null %}
+										<div class="card__short-placeholder js-card__short-img">
+											{{
+												'collection-1'
+												| placeholder_svg_tag: 'card__short-placeholder-svg'
+											}}
+										</div>
+									{% endif %}
+
+									{% if block.settings.card_desctiption_hover != blank %}
+										<div class="card__description js-card__description">
+											{{ block.settings.card_desctiption_hover }}
+										</div>
+									{%- endif %}
+
+									{%- if block.settings.button_label != blank -%}
+										<div class="card__btn-container js-card__button">
+											<a
+												class="button button--link"
+												{% if block.settings.button_link != blank %}
+													href="{{ block.settings.button_link }}"
+												{% endif %}
+												{% if block.settings.button_link == blank %}
+													aria-disabled="true"
+												{% endif %}
+    											{% if block.settings.new_tab != false %}
+                                                  target="_blank"
+                                                {% endif %}>
+												<span>
+													{{- block.settings.button_label }}
+												</span>
+												{% render 'icon-button-arrow' %}
+											</a>
+										</div>
+									{%- endif -%}
+								</div>
+							</div>
+
+							<div class="card__pic">
+								<i class="card__pic-cover js-card__pic-cover color-background-2">
+									&nbsp;
+								</i>
+								<i
+									class="card__pic-overlay"
+									style="opacity: {{ block.settings.opacity_overlay }}"
+									>&nbsp;</i
+								>
+
+								{% if block.settings.card_image != null %}
+									<img
+										srcset="
+											{{ block.settings.card_image | image_url: width: 595, height: 695 }} 1x,
+											{{ block.settings.card_image | image_url: width: 1190, height: 1390 }} 2x,
+											{{ block.settings.card_image | image_url: width: 1785, height: 2085 }} 3x
+											{{ block.settings.card_image | image_url: width: 2380, height: 2780 }} 4x
+										"
+										src="{{ block.settings.card_image | image_url: width: 2380, height: 2780 }}"
+										alt="{{ block.settings.card_image.alt | escape }}"
+										width="{{ block.settings.card_image.width }}"
+										height="{{ block.settings.card_image.height }}"
+										loading="lazy"
+										class="card__pic-img"
+									>
+								{% elsif block.settings.card_image == null %}
+									<div class="card__placeholder">
+										{{
+											'collection-1'
+											| placeholder_svg_tag: 'card__placeholder-svg'
+										}}
+									</div>
+								{% endif %}
+							</div>
+						</div>
+				{% endcase %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<script src="{{ 'image-card.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+	"name": "t:sections.image-card.name",
+	"max_blocks": 3,
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 170,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "image-card_block",
+			"name": "Card",
+			"settings": [
+				{
+					"type": "select",
+					"id": "color_scheme",
+					"options": [
+						{
+							"value": "theme-dark",
+							"label": "t:sections.image-card.blocks.color_scheme.options__1.label"
+						},
+						{
+							"value": "theme-light",
+							"label": "t:sections.image-card.blocks.color_scheme.options__2.label"
+						}
+					],
+					"default": "theme-light",
+					"label": "t:sections.image-card.blocks.color_scheme.label"
+				},
+				{
+					"type": "text",
+					"id": "card_subtitle",
+					"default": "Subheading for card",
+					"label": "t:sections.image-card.blocks.card_subtitle.label"
+				},
+				{
+					"type": "text",
+					"id": "card_title",
+					"default": "Heading for card",
+					"label": "t:sections.image-card.blocks.card_title.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "card_image",
+					"label": "t:sections.image-card.blocks.card_image.label"
+				},
+
+				{
+					"type": "image_picker",
+					"id": "card_image_hover",
+					"label": "t:sections.image-card.blocks.card_image_hover.label"
+				},
+
+				{
+					"type": "range",
+					"id": "opacity_overlay",
+					"min": 0,
+					"max": 1,
+					"step": 0.1,
+					"label": "t:sections.image-parallax.blocks.opacity_overlay.label",
+					"default": 0
+				},
+
+				{
+					"type": "textarea",
+					"id": "card_desctiption_hover",
+					"default": "Additional text for card",
+					"label": "t:sections.image-card.blocks.card_desctiption_hover.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.all.button.header_button.content"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"default": "Shop All",
+					"label": "t:sections.all.button.button_text.label"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:sections.all.button.button_link.label"
+				},
+                {
+                  "type": "checkbox",
+                  "id": "new_tab",
+                  "label": "Open link in new tab",
+                  "default": false
+                }
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-card.presets.name",
+			"blocks": [
+				{
+					"type": "image-card_block"
+				},
+				{
+					"type": "image-card_block"
+				},
+				{
+					"type": "image-card_block"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

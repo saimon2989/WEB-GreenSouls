@@ -1,0 +1,258 @@
+{% style %}
+  .cb__container.section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .section-{{ section.id }}
+  .cb-card
+  , .section-{{ section.id }}
+  .cb-card__item
+  , .section-{{ section.id }}
+  .cb-block {
+    display: grid;
+    gap: 2em;
+  }
+
+  .section-{{ section.id }}
+  .cb-block__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .section-{{ section.id }}
+  .cb-block__item {
+    display: grid;
+    gap: 2em;
+    border: 1px solid #000;
+    border-radius: 30px;
+    padding: 3em;
+    align-items: center;
+  }
+
+  .section-{{ section.id }}
+  .cb-block__price {
+    border: 1px solid #000;
+    display: inline-block;
+    padding: 1em;
+    border-radius: 30px;
+  }
+
+  .section-{{ section.id }}
+  .cb-block__price > * {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__svg {
+    background-color: #f2f2f2;
+    border-radius: 30px;
+  }
+
+  .section-{{ section.id }}
+  .cb-card__image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0 30px 30px 0;
+  }
+
+  @media (min-width: 1023px) {
+    .section-{{ section.id }} .cb-card__item {
+        align-content: end;
+    }
+    .section-{{ section.id }}
+    .cb-block {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .section-{{ section.id }} .cb-card {
+      grid-template-columns: 2fr 1fr;
+    }
+  
+     .section-{{ section.id }}
+    .cb-card__text--width {
+      width: 600px;
+      margin-bottom: 4em;
+    }
+
+    .section-{{ section.id }}
+    .cb-card__item--images {
+        gap: 0;
+    }
+
+  }
+{% endstyle %}
+
+<div class="cb__container section-{{ section.id }}">
+  <div class="cb-card">
+    <div class="cb-card__item">
+      <div class="cb-card__text cb-card__text--width">
+        {{ section.settings.heading }}
+      </div>
+      <div class="cb-block">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'plan' %}
+              <div class="cb-block__item">
+                <div class="cb-block__icon">
+                  {% render 'cb-arrow-down' %}
+                </div>
+                <div class="cb-block__text">
+                  {{ block.settings.text }}
+                </div>
+                <div class="cb-block__list">
+                  {{ block.settings.list }}
+                </div>
+                <div class="cb-block__price">
+                  {{ block.settings.price }}
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="cb-card__item cb-card__item--images">
+      {% if section.settings.image_1 == blank %}
+        <div class="cb-card__svg">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% else %}
+        <div>
+          <img
+            class="cb-card__image"
+            src="{{ section.settings.image_1 | image_url }}"
+            alt="{{ section.settings.image_1.alt | default: shop.name | escape }}"
+            loading="lazy">
+        </div>
+      {% endif %}
+
+      {% if section.settings.image_2 == blank %}
+        <div class="cb-card__svg">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% else %}
+        <div>
+          <img
+            class="cb-card__image"
+            src="{{ section.settings.image_2 | image_url }}"
+            alt="{{ section.settings.image_2.alt | default: shop.name | escape }}"
+            loading="lazy">
+        </div>
+      {% endif %}
+      {% if section.settings.image_3 == blank %}
+        <div class="cb-card__svg">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% else %}
+        <div>
+          <img
+            class="cb-card__image"
+            src="{{ section.settings.image_3 | image_url }}"
+            alt="{{ section.settings.image_3.alt | default: shop.name | escape }}"
+            loading="lazy">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Enjoy by Codebulls",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section options"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin top"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 60,
+        "unit": "px",
+        "label": "Margin bottom"
+      },
+      {
+        "type": "header",
+        "content": "Text options"
+      }, {
+        "type": "richtext",
+        "id": "heading",
+        "default": "<h3>¡Sabemos que es difícil elegir!</h3><h2>Por eso también puedes disfrutar de los 3 días con el paquete VIP</h2>",
+        "label": "Heading"
+      }, {
+        "type": "header",
+        "content": "Images options"
+      }, {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image"
+      }, {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image"
+      }, {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "plan",
+        "name": "Plan",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "default": "<h4><b>Con Alojamiento</b></h4><p>Incluye:</p>",
+            "label": "Text details"
+          }, {
+            "type": "richtext",
+            "id": "list",
+            "default": "<ul><li>Paquete todo incluido por actividad</li><li>Alojamiento en el hotel de lujo</li></ul>",
+            "label": "Price details"
+          }, {
+            "type": "richtext",
+            "id": "price",
+            "default": "<p><b><i>Valor por pax: $2.350.000</i></b></p>",
+            "label": "Price details"
+          }
+        ]
+
+      }
+    ],
+    "presets": [
+      {
+        "name": "Enjoy by Codebulls",
+        "blocks": [
+          {
+            "type": "plan"
+          }, {
+            "type": "plan"
+          }
+        ]
+      }
+
+    ]
+  }
+{% endschema %}

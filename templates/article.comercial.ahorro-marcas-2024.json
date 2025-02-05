@@ -1,0 +1,128 @@
+
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_fdCdz3": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": true,
+        "subheading": "G R E E N S O U L S",
+        "heading": "<p>Conoce el ahorro estimado de las marcas en 2024: Cómo GreenSouls optimiza recursos con propósito</p>",
+        "heading_size": "medium",
+        "text_information": "",
+        "text_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "image": "shopify://shop_images/aqua-4.jpg",
+        "image_ratio": "adapt",
+        "opacity_overlay": 0.2,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_article_w_Lcfy3C": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h5>En un panorama empresarial donde los costos publicitarios son cada vez más altos, encontrar soluciones que combinen <strong>rentabilidad con impacto positivo </strong>es esencial. En <strong>GreenSouls</strong>, hemos desarrollado estrategias que no solo generan un <strong>impacto ambiental positivo</strong>, sino que también permiten a las marcas optimizar sus recursos y alcanzar resultados extraordinarios.</h5><h3>Ahorros significativos con impacto real</h3><h3></h3><h5>Durante nuestros <strong>eventos signature de 2024</strong>, y gracias a la colaboración de marcas como <strong>Colgate, Task, Ceipa, YOYO Jeans, Isdin, Dislicores</strong>, entre muchas otras, logramos:</h5><h5><br/>✔ <strong>$887 millones de pesos colombianos</strong> ahorrados en marketing de influencers.<br/>✔ Más de <strong>292 menciones orgánicas</strong> de alta calidad que ampliaron el alcance sin costos adicionales.<br/>✔ <strong>Contenido exclusivo y auténtico</strong>, generado en actividades alineadas con la <strong>sostenibilidad ambiental y social</strong>.</h5>",
+        "show_additional_image": "no",
+        "top_left_image": "shopify://shop_images/LIMPIEZA-DE-PLAYAS-GREENSOULS.png",
+        "bottom_left_image": "shopify://shop_images/banner4_cba3a4d5-6dca-44ca-bba3-466f86547a17.jpg",
+        "top_right_image": "shopify://shop_images/LAS-PLAYAS-GREENSOULS.png",
+        "right_text": "<h5>Estos logros no solo reflejan un ahorro tangible, sino también la capacidad de combinar el <strong>marketing</strong> con estrategias que priorizan el <strong>cuidado del medio ambiente</strong>.</h5><h3>Nuestra fórmula para el éxito</h3><h5>En GreenSouls, seguimos una metodología clara y efectiva:</h5><ul><li><h5><strong>Optimización de recursos:</strong> Diseñamos actividades que generan contenido orgánico, reduciendo los costos asociados a la contratación de influencers y producción publicitaria.</h5></li><li><h5><strong>Colaboración estratégica:</strong> Creamos alianzas con comunidades, empresas e influencers que comparten nuestra visión, maximizando los recursos y minimizando los costos operativos.</h5></li><li><h5> <strong>Eventos con propósito:</strong> Diseñamos iniciativas como <strong>limpiezas de playas</strong> y la <strong>siembra de manglares</strong>, que generan un doble impacto: visibilidad para las marcas y contribuciones a la <strong>conservación de ecosistemas</strong>.</h5></li><li><h5><strong>Marketing de sostenibilidad:</strong> Convertimos cada acción en una oportunidad para posicionar a las marcas como líderes en <strong>sostenibilidad empresarial</strong>.</h5></li></ul><h3>¿Por qué este modelo funciona?</h3><h5>Porque une dos aspectos fundamentales para las marcas: <strong>ahorro y propósito</strong>. En un mercado donde el <strong>impacto ambiental positivo</strong> es cada vez más valorado, nuestras estrategias no solo optimizan recursos, sino que también fortalecen la reputación de las marcas, alineándolas con las expectativas de los consumidores conscientes.</h5>"
+      }
+    },
+    "cb_article_mLdNUy": {
+      "type": "cb-article",
+      "blocks": {
+        "header_Ji6bDt": {
+          "type": "header",
+          "settings": {
+            "text": "<h3>Sé parte de este cambio</h3><h4>En <strong>GreenSouls</strong>, creemos que las acciones sostenibles benefician tanto al planeta como a las empresas. Si buscas optimizar tus recursos y unirte a iniciativas que marquen la diferencia, <strong>contáctanos hoy</strong>.</h4><p><strong>Juntos podemos crear un impacto positivo que trascienda generaciones.</strong></p>",
+            "image": "shopify://shop_images/LIMPIEZA-DE-OCEANOS.png"
+          }
+        },
+        "header_XtW7iA": {
+          "type": "header",
+          "disabled": true,
+          "settings": {
+            "text": "<h5>Te invitamos a unirte a nosotros en nuestra próxima limpieza de playas y ser parte de un movimiento que protege la biodiversidad marina y promueve la sostenibilidad. </h5><h5><a href=\"/products/oasis-santa-marta-nos-espera\" title=\"Oasis -  By GreenSouls Santa Marta nos espera\"><em>¡Haz clic aquí para conocer OASIS </em></a> para obtener más información sobre cómo puedes participar y contribuir a la conservación de océanos. ¡Juntos, podemos hacer una diferencia significativa en la salud de nuestro planeta!</h5>",
+            "image": "shopify://shop_images/LIMPIEZA-DE-OCEANOS2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_Ji6bDt",
+        "header_XtW7iA"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "background": "#4b8e97"
+      }
+    },
+    "cb_featured_blogs_bbbD8x": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 5,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_social": true,
+            "show_social_icons": false
+          }
+        },
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": true,
+            "blog_show_excerpt": true,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "medium"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "article_footer",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "header_variant": "column"
+      }
+    }
+  },
+  "order": [
+    "image_banner_fdCdz3",
+    "cb_article_w_Lcfy3C",
+    "cb_article_mLdNUy",
+    "cb_featured_blogs_bbbD8x",
+    "main"
+  ]
+}

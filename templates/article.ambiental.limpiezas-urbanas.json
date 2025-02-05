@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cb_fullwidth_text_section_3eGyK4": {
+      "type": "cb-fullwidth-text-section",
+      "settings": {
+        "fullwidth_section": false,
+        "padding_top": 150,
+        "padding_bottom": 150,
+        "background_image": "shopify://shop_images/plogging_94dfdd61-aa90-4a61-8820-71785ea59d25.png",
+        "title": "<p>El Impacto Transformador de las Limpiezas Urbanas en la <strong>Sostenibilidad Empresarial</strong></p>",
+        "title_color": "#ffffff",
+        "title_alignment": "right"
+      }
+    },
+    "rich_text_JDJhRQ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_AiEKAY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>La limpieza de nuestras ciudades es una actividad que más que un simple acto de recoger basura, se convierte en un poderoso catalizador para la sostenibilidad urbana, la conservación de la biodiversidad y la acción climática.</p><p></p><p></p>"
+          }
+        },
+        "heading_z3mEKP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h5>Y para las empresas que buscan reducir su huella de carbono y generar un impacto sostenible medible, entender el valor detrás de estas acciones es fundamental.</h5>",
+            "heading_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "text_AiEKAY",
+        "heading_z3mEKP"
+      ],
+      "custom_css": [
+        ".rich-text {padding-block: 2em; position: relative;}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 50,
+        "margin_bottom": 60
+      }
+    },
+    "cb_article_ipzizd": {
+      "type": "cb-article",
+      "blocks": {
+        "header_dVqgKL": {
+          "type": "header",
+          "settings": {
+            "text": "<h4><strong>Reduciendo la Contaminación Visual y Física</strong></h4><p>La acumulación de residuos en nuestras ciudades no es solo un problema estético; representa un serio riesgo para la salud y el bienestar de nuestros ecosistemas urbanos. Al recoger los residuos, las empresas y sus colaboradores pueden disminuir significativamente la contaminación visual y física, contribuyendo a un entorno más limpio y saludable para todos.</p><h4><strong>Protegiendo Nuestros Cuerpos de Agua</strong></h4><p></p><p>La basura que no se recoge adecuadamente suele terminar en ríos, mares y otros cuerpos de agua, amenazando la vida acuática y contribuyendo a la creciente problemática de la contaminación por plásticos. Las iniciativas de limpieza urbana juegan un papel crucial en la prevención de este flujo de residuos, salvaguardando nuestras aguas y las especies que en ellas habitan.</p><h4><strong>Preservando la Biodiversidad Urbana</strong></h4><p>Nuestras ciudades son más que concreto y asfalto; son hogar de una sorprendente diversidad de vida. La limpieza de los hábitats urbanos es esencial para la preservación de estas especies, muchas de las cuales sufren debido a los residuos que alteran sus entornos naturales.</p><h4><strong>Mitigando el Cambio Climático</strong></h4><p>Materiales como los plásticos liberan gases de efecto invernadero mientras se descomponen, exacerbando el cambio climático. Una gestión adecuada de los residuos urbanos no solo reduce este impacto, sino que también contribuye a los esfuerzos globales de mitigación climática.</p><h4><strong>Impacto Social de las Limpiezas Urbanas</strong></h4><p>Las empresas que toman la iniciativa en estas actividades no solo fomentan una cultura de responsabilidad ambiental entre sus empleados, sino que también educan a la comunidad en general. Involucrar a la comunidad en la gestión de residuos y la sostenibilidad promueve prácticas más conscientes y sostenibles, fortaleciendo el tejido social.</p><h4><strong>Beneficios para las Empresas</strong></h4><p>Participar en limpiezas urbanas no solo mejora la imagen pública de una empresa; también demuestra un compromiso genuino con la sostenibilidad. Esto puede ser una ventaja competitiva significativa, atrayendo tanto a consumidores como a talentos que priorizan la responsabilidad ambiental.</p>",
+            "image": "shopify://shop_images/jostivfilms-3115.jpg"
+          }
+        },
+        "block_3tJzEW": {
+          "type": "block",
+          "settings": {
+            "text": "<h5>En GreenSouls, estamos profundamente comprometidos con la implementación de iniciativas sostenibles que cumplen con las regulaciones pertinentes y van más allá. A través de evento como CityPlogging en donde mediante nuestros informes de sostenibilidad, ofrecemos una visión transparente de los resultados de nuestros eventos, reafirmando nuestro compromiso con la mejora ambiental y la eficacia de nuestras prácticas.</h5>",
+            "image": "shopify://shop_images/jostivfilms-2771.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_dVqgKL",
+        "block_3tJzEW"
+      ],
+      "settings": {
+        "margin_top": 50,
+        "margin_bottom": 70,
+        "background": "#000000"
+      }
+    },
+    "rich_text_LYah8R": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iUxdkY": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>Para las empresas interesadas en reducir su huella de carbono y causar un impacto sostenible, participar en y/o iniciar limpiezas urbanas es un paso estratégico hacia la realización de estos objetivos. La acción colectiva en pro de la sostenibilidad no solo beneficia al planeta, sino que también fortalece la marca y la comunidad interna de la empresa, creando un futuro más verde y prometedor para todos.</h5>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iUxdkY"
+      ],
+      "custom_css": [
+        ".rich-text {padding: 4em 1em; position: relative; border-radius: 30px;}",
+        "@media (min-width: 1024px) {.rich-text {padding: 4em; }}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_buttons_mrhzYF": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_Dzw3ne": {
+          "type": "button",
+          "settings": {
+            "button_label": "Lee más artículos",
+            "button_link": "shopify://blogs/news",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "button_Dzw3ne"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_featured_blogs_YpePkn": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 2,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "cb_fullwidth_text_section_3eGyK4",
+    "rich_text_JDJhRQ",
+    "cb_article_ipzizd",
+    "rich_text_LYah8R",
+    "cb_buttons_mrhzYF",
+    "cb_featured_blogs_YpePkn"
+  ]
+}
+

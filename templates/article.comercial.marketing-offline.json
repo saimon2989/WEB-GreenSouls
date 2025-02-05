@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cb_fullwidth_text_section_3eGyK4": {
+      "type": "cb-fullwidth-text-section",
+      "settings": {
+        "fullwidth_section": false,
+        "padding_top": 200,
+        "padding_bottom": 200,
+        "background_image": "shopify://shop_images/bannerfuerza2.jpg",
+        "title": "<p>¿Cómo utilizar el marketing offline para mejorar su estrategia digital?</p>",
+        "title_color": "#ffffff",
+        "title_alignment": "right"
+      }
+    },
+    "rich_text_JDJhRQ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_AiEKAY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>En un mundo dominado por la <strong>digitalización</strong>, las estrategias de <strong>mercadeo offline </strong>ofrecen una oportunidad única para destacar y fortalecer tu presencia online.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_AiEKAY"
+      ],
+      "custom_css": [
+        ".rich-text {padding-block: 2em; position: relative;}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_article_ipzizd": {
+      "type": "cb-article",
+      "blocks": {
+        "header_dVqgKL": {
+          "type": "header",
+          "settings": {
+            "text": "<h4>1️⃣ <strong>Crea un Impacto Emocional REAL a través de Experiencias Offline</strong>:</h4><p></p><p>En la era digital, las conexiones humanas auténticas han cobrado un valor sin precedentes. Eventos en vivo, activaciones de marca y experiencias inmersivas generan un fuerte vínculo emocional con tu audiencia, que luego se refleja en el mundo digital. Debido a su naturaleza tangible y sensorial, estas experiencias dejan una impresión duradera en los participantes, convirtiéndolos en defensores de la marca y generando contenido orgánico y auténtico que resuena en plataformas digitales. Con GreenSouls, integramos <strong>estrategias de mercadeo offline</strong> para crear campañas de mercadeo que generan un impacto emocional duradero.</p>",
+            "image": "shopify://shop_images/DSC00303.jpg"
+          }
+        },
+        "block_Tn9AjQ": {
+          "type": "block",
+          "settings": {
+            "text": "<h4>2️⃣ <strong>En una Era donde Todo es Online, lo Offline se Vuelve Exclusivo</strong>:</h4><p>Lo raro y único siempre atrae la atención. Al organizar eventos o experiencias offline, estás ofreciendo algo que no puede ser replicado digitalmente. Esta exclusividad crea un atractivo especial y genera revuelo en redes sociales y otras plataformas digitales, ya que a la gente le encanta compartir experiencias únicas y memorables. En GreenSouls, nos enfocamos en ofrecer <strong>estrategias de mercadeo</strong> que resalten por su exclusividad y autenticidad.</p>",
+            "image": "shopify://shop_images/bannerfuerza.jpg"
+          }
+        },
+        "block_9DAd9j": {
+          "type": "block",
+          "settings": {
+            "text": "<h4>3️⃣ <strong>El Marketing Digital está SATURADO</strong>: </h4><p>En un mundo inundado de anuncios digitales y contenido constante, una experiencia offline ofrece un respiro muy necesario. Es una oportunidad para captar la atención de tu audiencia de una manera más relajada y personal, lo cual puede ser increíblemente refrescante. Al hacer esto, no solo capturas su atención en el momento, sino que también mejoras la percepción de tu marca en el espacio digital. Con nuestras<strong>estrategias de mercadeo</strong>, GreenSouls te ayuda a destacar en un mercado saturado, ofreciendo una alternativa refrescante y efectiva.</p>",
+            "image": "shopify://shop_images/bannerfuerza2_f1ae68d7-f078-4ab3-b6b1-a61114c78656.jpg"
+          }
+        },
+        "block_3tJzEW": {
+          "type": "block",
+          "settings": {
+            "text": "<h4>4️⃣<strong>Integra lo Offline con lo Digital</strong>: </h4><p>La clave está en utilizar experiencias offline para alimentar tu estrategia digital. Por ejemplo, utiliza eventos offline para generar contenido digital exclusivo, como videos detrás de cámaras, testimonios de participantes o incluso transmisiones en vivo. Estas acciones no solo aumentan el alcance de tu evento, sino que también agregan una capa de autenticidad y compromiso a tu contenido digital. GreenSouls abraza esta<strong>estrategia de mercadeo</strong>para fusionar lo mejor de ambos mundos.</p>",
+            "image": "shopify://shop_images/banner3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "header_dVqgKL",
+        "block_Tn9AjQ",
+        "block_9DAd9j",
+        "block_3tJzEW"
+      ],
+      "settings": {
+        "margin_top": 110,
+        "margin_bottom": 170,
+        "background": "#000000"
+      }
+    },
+    "cb_article_w_rWzKRr": {
+      "type": "cb-article-w",
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60,
+        "text": "<h4>¿Por qué no hacerlo con eventos que toquen el corazón de tu audiencia?</h4><p>Únete a <strong>#GreenSouls </strong>y juntos podremos crear eventos que no solo sean memorables, sino que también tengan un impacto significativo tanto online como offline.</p>",
+        "show_additional_image": "yes",
+        "top_left_image": "shopify://shop_images/bannerfuerza4.jpg",
+        "bottom_left_image": "shopify://shop_images/bannerfuerza_490dbbc9-cdfe-4161-b8c7-6b4fde75bf34.jpg",
+        "top_right_image": "shopify://shop_images/stivtoro-2238.jpg",
+        "right_text": "<h6>Creamos experiencias que no solo se comparten, sino que también inspiran y motivan.</h6><h4>Con GreenSouls, tu marca puede trascender el ruido digital y conectar con las personas de una manera genuina y memorable.</h4>"
+      }
+    },
+    "rich_text_LYah8R": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iUxdkY": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>¡Es hora de pensar más allá de lo digital y explorar cómo las estrategias offline pueden enriquecer y revitalizar tu presencia online!</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_iUxdkY"
+      ],
+      "custom_css": [
+        ".rich-text {padding: 4em 1em; position: relative; border-radius: 30px;}",
+        "@media (min-width: 1024px) {.rich-text {padding: 4em; }}",
+        ".rich-text__blocks {position: relative; z-index: 1;}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cb_buttons_mrhzYF": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_Dzw3ne": {
+          "type": "button",
+          "settings": {
+            "button_label": "Lee más artículos",
+            "button_link": "shopify://blogs/news"
+          }
+        }
+      },
+      "block_order": [
+        "button_Dzw3ne"
+      ],
+      "settings": {
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "cb_featured_blogs_YpePkn": {
+      "type": "cb-featured-blogs",
+      "settings": {
+        "blog": "news",
+        "post_limit": 2,
+        "show_image": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "cb_fullwidth_text_section_3eGyK4",
+    "rich_text_JDJhRQ",
+    "cb_article_ipzizd",
+    "cb_article_w_rWzKRr",
+    "rich_text_LYah8R",
+    "cb_buttons_mrhzYF",
+    "cb_featured_blogs_YpePkn"
+  ]
+}
+
