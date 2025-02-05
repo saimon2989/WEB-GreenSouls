@@ -73,7 +73,7 @@
         "button_style": "primary",
         "image": "shopify://shop_images/Banner_greensouls_desktop-pfti.jpg",
         "mobile_image": "shopify://shop_images/Banner_greensouls_mobile-pfti.jpg",
-        "image_ratio": "adapt",
+        "image_ratio": "landscape",
         "opacity_overlay": 0.3,
         "margin_top": 0,
         "margin_bottom": 0
