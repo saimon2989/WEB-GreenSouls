@@ -58,26 +58,6 @@
         "margin_bottom": 0
       }
     },
-    "banner_responsive_by_soda_lab_hELRaF": {
-      "type": "banner-responsive-BySodaLab",
-      "settings": {
-        "full_width": true,
-        "subheading": "Subheading",
-        "heading": "<p>Some header for your collection</p>",
-        "heading_size": "medium",
-        "text_information": "Some descriptive text for your collection. For better alignment, it is better to use text in several lines.",
-        "text_align": "left",
-        "button_label": "Shop now",
-        "button_link": "#",
-        "button_style": "primary",
-        "image": "shopify://shop_images/Banner_greensouls_desktop-pfti.jpg",
-        "mobile_image": "shopify://shop_images/Banner_greensouls_mobile-pfti.jpg",
-        "image_ratio": "adapt",
-        "opacity_overlay": 0.5,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
     "rich_text_DFHtCG": {
       "type": "rich-text",
       "blocks": {
@@ -862,7 +842,6 @@
     "video_banner_8MzLcC",
     "pagefly_section_9aHfWB",
     "cb_image_banner_biKMND",
-    "banner_responsive_by_soda_lab_hELRaF",
     "rich_text_DFHtCG",
     "b31ed9ff-ac90-41e8-b4d4-7424761edbc6",
     "image_card_MnJrPx",
