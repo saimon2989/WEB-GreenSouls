@@ -71,6 +71,7 @@
         "button_label": "Shop now",
         "button_link": "",
         "button_style": "primary",
+        "logo_image": "shopify://shop_images/GREEN.png",
         "image": "shopify://shop_images/Banner_greensouls_desktop-pfti.jpg",
         "mobile_image": "shopify://shop_images/Banner_greensouls_mobile-pfti.jpg",
         "image_ratio": "landscape",
