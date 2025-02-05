@@ -71,35 +71,160 @@
   "class": "image-banner-section spaced-section",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "default": true,
-      "label": "Full Width"
-    },
-    {
-      "type": "image_picker",
-      "id": "desktop_image",
-      "label": "Desktop Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Mobile Image"
-    },
-    {
-      "type": "range",
-      "id": "opacity_overlay",
-      "min": 0,
-      "max": 1,
-      "step": 0.1,
-      "label": "Overlay Opacity",
-      "default": 0.5
-    }
-  ],
-  "presets": [
-    {
-      "name": "Responsive Image Banner"
-    }
-  ]
+			"type": "checkbox",
+			"id": "full_width",
+			"default": true,
+			"label": "t:sections.image-banner.settings.full_width.label"
+		},
+		{
+			"type": "text",
+			"id": "subheading",
+			"default": "Subheading",
+			"label": "t:sections.image-banner.settings.subheading.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<p>Some header for your collection</p>",
+			"label": "t:sections.image-banner.settings.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "medium",
+					"label": "t:sections.image-banner.settings.heading_size.options__1.label"
+				},
+				{
+					"value": "large",
+					"label": "t:sections.image-banner.settings.heading_size.options__2.label"
+				}
+			],
+			"default": "medium",
+			"label": "t:sections.image-banner.settings.heading_size.label"
+		},
+		{
+			"type": "textarea",
+			"id": "text_information",
+			"default": "Some descriptive text for your collection. For better alignment, it is better to use text in several lines.",
+			"label": "t:sections.image-banner.settings.text_information.label"
+		},
+		{
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:sections.image-banner.settings.text_align.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.image-banner.settings.text_align.options__2.label"
+				}
+			],
+			"default": "left",
+			"label": "t:sections.image-banner.settings.text_align.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.button.header_button.content"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Shop now",
+			"label": "t:sections.all.button.button_text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.all.button.button_link.label"
+		},
+		{
+			"type": "select",
+			"id": "button_style",
+			"options": [
+				{
+					"value": "primary",
+					"label": "t:sections.all.button.button_style.options__1.label"
+				},
+				{
+					"value": "secondary",
+					"label": "t:sections.all.button.button_style.options__2.label"
+				}
+			],
+			"default": "primary",
+			"label": "t:sections.all.button.button_style.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header__2.content"
+		},
+        {
+			"type": "image_picker",
+			"id": "logo_image",
+			"label": "Logo image"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:sections.image-banner.settings.image.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.image-banner.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "landscape",
+					"label": "t:sections.image-banner.settings.image_ratio.options__2.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:sections.image-banner.settings.image_ratio.label"
+		},
+		{
+			"type": "range",
+			"id": "opacity_overlay",
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"label": "t:sections.image-banner.settings.opacity_overlay.label",
+			"default": 0.5
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.section-margin.header.content"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_top.label"
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 10,
+			"default": 0,
+			"unit": "px",
+			"label": "t:sections.all.section-margin.margin_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "Img banner by Codebulls"
+		}
+	]
 }
 {% endschema %}
