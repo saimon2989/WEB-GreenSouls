@@ -309,6 +309,61 @@
         "margin_bottom": 20
       }
     },
+    "card_grid_EgaT3R": {
+      "type": "card-grid",
+      "blocks": {
+        "column_BckfTN": {
+          "type": "column",
+          "settings": {
+            "block_image": "shopify://shop_images/marca-localiza.jpg",
+            "opacity_overlay": 0,
+            "card_width": "2",
+            "active": true,
+            "block_title": "Some heading",
+            "block_text": "Some description",
+            "block_link": ""
+          }
+        },
+        "column_kGybjA": {
+          "type": "column",
+          "settings": {
+            "block_image": "shopify://shop_images/colgate-y-greenosuls-san-andres.jpg",
+            "opacity_overlay": 0,
+            "card_width": "1",
+            "active": true,
+            "block_title": "Some heading",
+            "block_text": "Some description",
+            "block_link": ""
+          }
+        },
+        "column_mYGeJ4": {
+          "type": "column",
+          "settings": {
+            "block_image": "shopify://shop_images/LIMPIEZA-DE-PLAYAS-BY-GREENSOULS-QUE-HACEMOS_729a7157-64c8-48a9-9dcf-e49f73b40e4d.jpg",
+            "opacity_overlay": 0,
+            "card_width": "1",
+            "active": true,
+            "block_title": "Some heading",
+            "block_text": "Some description",
+            "block_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_BckfTN",
+        "column_kGybjA",
+        "column_mYGeJ4"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "subtitle": "Subheading",
+        "title": "Some header",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 170,
+        "margin_bottom": 0
+      }
+    },
     "image_tabs_jAUMyG": {
       "type": "image-tabs",
       "blocks": {
@@ -965,6 +1020,7 @@
     "image_card_MnJrPx",
     "image_card_rUw6hc",
     "cb_buttons_UMWTrE",
+    "card_grid_EgaT3R",
     "image_tabs_jAUMyG",
     "video_banner_gBMCrJ",
     "image_parallax_Ada9d3",
