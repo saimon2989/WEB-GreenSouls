@@ -309,6 +309,26 @@
         "margin_bottom": 20
       }
     },
+    "cb_buttons_Lmb6iV": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_9r8U3T": {
+          "type": "button",
+          "settings": {
+            "button_label": "Ver más",
+            "button_link": "",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "button_9r8U3T"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 20
+      }
+    },
     "card_grid_EgaT3R": {
       "type": "card-grid",
       "blocks": {
@@ -1021,6 +1041,7 @@
     "image_card_rUw6hc",
     "cb_buttons_UMWTrE",
     "card_grid_EgaT3R",
+    "cb_buttons_Lmb6iV",
     "image_tabs_jAUMyG",
     "video_banner_gBMCrJ",
     "image_parallax_Ada9d3",
