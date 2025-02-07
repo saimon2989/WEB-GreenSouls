@@ -309,26 +309,6 @@
         "margin_bottom": 20
       }
     },
-    "cb_buttons_Lmb6iV": {
-      "type": "cb-buttons",
-      "blocks": {
-        "button_9r8U3T": {
-          "type": "button",
-          "settings": {
-            "button_label": "Ver más",
-            "button_link": "",
-            "new_tab": false
-          }
-        }
-      },
-      "block_order": [
-        "button_9r8U3T"
-      ],
-      "settings": {
-        "margin_top": 0,
-        "margin_bottom": 20
-      }
-    },
     "card_grid_EgaT3R": {
       "type": "card-grid",
       "blocks": {
@@ -382,6 +362,81 @@
         "padding_bottom": 0,
         "margin_top": 170,
         "margin_bottom": 0
+      }
+    },
+    "card_grid_eHQGwi": {
+      "type": "card-grid",
+      "blocks": {
+        "column_mHqiBB": {
+          "type": "column",
+          "settings": {
+            "block_image": "shopify://shop_images/colgate-y-greenosuls-san-andres.jpg",
+            "opacity_overlay": 0,
+            "card_width": "1",
+            "active": true,
+            "block_title": "Some heading",
+            "block_text": "Some description",
+            "block_link": ""
+          }
+        },
+        "column_iDyJPX": {
+          "type": "column",
+          "settings": {
+            "block_image": "shopify://shop_images/LIMPIEZA-DE-PLAYAS-BY-GREENSOULS-QUE-HACEMOS_729a7157-64c8-48a9-9dcf-e49f73b40e4d.jpg",
+            "opacity_overlay": 0,
+            "card_width": "1",
+            "active": true,
+            "block_title": "Some heading",
+            "block_text": "Some description",
+            "block_link": ""
+          }
+        },
+        "column_KGaUBF": {
+          "type": "column",
+          "settings": {
+            "block_image": "shopify://shop_images/marca-localiza.jpg",
+            "opacity_overlay": 0,
+            "card_width": "2",
+            "active": true,
+            "block_title": "Some heading",
+            "block_text": "Some description",
+            "block_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_mHqiBB",
+        "column_iDyJPX",
+        "column_KGaUBF"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "subtitle": "",
+        "title": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 10,
+        "margin_bottom": 0
+      }
+    },
+    "cb_buttons_Lmb6iV": {
+      "type": "cb-buttons",
+      "blocks": {
+        "button_9r8U3T": {
+          "type": "button",
+          "settings": {
+            "button_label": "Ver más",
+            "button_link": "",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "button_9r8U3T"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 20
       }
     },
     "image_tabs_jAUMyG": {
@@ -1041,6 +1096,7 @@
     "image_card_rUw6hc",
     "cb_buttons_UMWTrE",
     "card_grid_EgaT3R",
+    "card_grid_eHQGwi",
     "cb_buttons_Lmb6iV",
     "image_tabs_jAUMyG",
     "video_banner_gBMCrJ",
